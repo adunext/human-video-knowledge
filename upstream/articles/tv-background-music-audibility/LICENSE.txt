@@ -1,0 +1,10 @@
+Towards a Characterization of Background Music Audibility in Broadcasted TV
+Authors: Roser Batlle-Roca, Perfecto Herrera-Boyer, Blai Meléndez-Catalán, Emilio Molina, Xavier Serra
+DOI: 10.3390/ijerph20010123
+Rights: © 2022 by the authors.
+License: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/
+Article: https://www.mdpi.com/1660-4601/20/1/123
+Exact upstream JATS: https://mdpi-res.com/d_attachment/ijerph/ijerph-20-00123/article_deploy/ijerph-20-00123.xml
+Exact original SHA-256: 66fff7af088acab0225efdc1bc3380eb2972970c3e643e0c6ef48d898ba58996
+
+Changes and scope: Adapted article text from publisher JATS: abstract, selected author sections, aggregate tables where retained, and references. Omits figures, linked packages, audio, stimuli materials and samples, individual data, contacts, and selected quotations. Not the original JATS or a complete illustrated article.

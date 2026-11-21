@@ -1,0 +1,3407 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink"><!-- Adapted article text from publisher JATS: abstract, selected author sections, aggregate tables where retained, and references. Omits figures, linked packages, audio, stimuli materials and samples, individual data, contacts, and selected quotations. Not the original JATS or a complete illustrated article. --><front><article-meta><article-id pub-id-type="doi">10.3390/app8010059</article-id>
+      <article-id pub-id-type="publisher-id">applsci-08-00059</article-id>
+      <title-group>
+        <article-title>Automatic Speech-to-Background Ratio Selection to Maintain Speech Intelligibility in Broadcasts Using an Objective Intelligibility Metric</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0003-1149-4272</contrib-id>
+          <name>
+            <surname>Tang</surname>
+            <given-names>Yan</given-names>
+          </name>
+          <xref rid="c1-applsci-08-00059" ref-type="corresp">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-3912-0582</contrib-id>
+          <name>
+            <surname>Fazenda</surname>
+            <given-names>Bruno M.</given-names>
+          </name>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-4075-7564</contrib-id>
+          <name>
+            <surname>Cox</surname>
+            <given-names>Trevor J.</given-names>
+          </name>
+        </contrib>
+      </contrib-group>
+      <pub-date pub-type="epub">
+        <day>03</day>
+        <month>01</month>
+        <year>2018</year>
+      </pub-date>
+      <pub-date pub-type="collection">        <month>01</month>
+        <year>2018</year>
+      </pub-date>
+      <volume>8</volume>
+      <issue>1</issue>
+      <elocation-id>59</elocation-id>
+      <permissions>
+        <copyright-statement>© 2018 by the authors.</copyright-statement>
+        <copyright-year>2018</copyright-year>
+        <license license-type="open-access">
+          <license-p>Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (<ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</ext-link>).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>While mixing, sound producers and audio professionals empirically set the speech-to- background ratio (SBR) based on rules of thumb and their own perception of sounds. There is no guarantee that the speech content will be intelligible for the general population consuming content over a wide variety of devices, however. In this study, an approach to automatically determine the appropriate SBR for a scene using an objective intelligibility metric is introduced. The model-estimated SBR needed for a preset minimum intelligibility level was compared to the listener-preferred SBR for a range of background sounds. It was found that an extra gain added to the model estimation is needed even for listeners with normal hearing. This gain is needed so an audio scene can be auditioned with comfort and without compromising the sound effects contributed by the background. When the background introduces little informational masking, the extra gain holds almost constant across the various background sounds. However, a larger gain is required for a background that induces informational masking, such as competing speech. The results from a final subjective rating study show that the model-estimated SBR with the additional gain, yields the same listening experience as the SBR preferred by listeners.</p>
+      </abstract>
+      </article-meta></front><body>
+    <sec sec-type="intro" id="sec1-applsci-08-00059">
+      <title>1. Introduction</title>
+      <p>Audience research conducted by the British Broadcasting Corporation (BBC) has shown that approximately 60% of viewers in the UK experience some difficulties understanding speech content in programmes. This is due to a combination of factors such as background sound effects, intrinsically unintelligible speech, unfamiliar accents and loud ambient noise in the listening environment [<xref ref-type="bibr" rid="B1-applsci-08-00059">1</xref>]. This paper focusses on masking caused by inappropriate levels of background sound.</p>
+      <p>In films, TV and radio programmes, speech content is usually accompanied by background sounds and effects. These sounds (e.g., music) may be added by a programme producer for narrative purposes or to create a certain atmosphere. The sounds and effects may also exist in the original speech recordings, for example the recording might contain reverberation in a large conference room and clapping by an audience. While these background sounds and effects may improve an audience’s experiences by providing ‘realistic’ or ‘being there’ feelings, they can also lead to poorer speech intelligibility. In some situations, even listeners with normal hearing struggle to understand what is being said in programmes. It is even more difficult for listeners with hearing impairments or whose native language is different from that of the programme [<xref ref-type="bibr" rid="B2-applsci-08-00059">2</xref>].</p>
+      <p>A sound designer or producer usually decides on the mixing level of the speech and background based on his/her intentions and experiences. The speech-to-background ratio (SBR) may be chosen according to certain rules of thumb. Here are some examples for broadcasting from sound producers and audio professionals [<xref ref-type="bibr" rid="B3-applsci-08-00059">3</xref>]:<list list-type="bullet">
+        <list-item>
+          <p>In the presence of background music, while the music is usually set to <inline-formula>
+              <mml:math id="mm1" display="block">
+                <mml:semantics>
+                  <mml:mrow>
+                    <mml:mo>−</mml:mo>
+                    <mml:mn>20</mml:mn>
+                  </mml:mrow>
+                </mml:semantics>
+              </mml:math>
+            </inline-formula> dB, the dialogue is about <inline-formula>
+              <mml:math id="mm2" display="block">
+                <mml:semantics>
+                  <mml:mrow>
+                    <mml:mo>−</mml:mo>
+                    <mml:mn>20</mml:mn>
+                  </mml:mrow>
+                </mml:semantics>
+              </mml:math>
+            </inline-formula> to <inline-formula>
+              <mml:math id="mm3" display="block">
+                <mml:semantics>
+                  <mml:mrow>
+                    <mml:mo>−</mml:mo>
+                    <mml:mn>12</mml:mn>
+                  </mml:mrow>
+                </mml:semantics>
+              </mml:math>
+            </inline-formula> dB. This makes sure that the background music does not interfere with the dialogue. Alternatively, speech level is empirically expected to be at between 4 and 6 (0 dB and +8 dB) on a peak programme meter. Music and effects are balanced to satisfy the artistic intentions.</p>
+        </list-item>
+        <list-item>
+          <p>The mixing level may greatly vary across different programmes based on the producer’s experiences and taste. As such, the relative level between dialogue and other tracks may be determined solely based on the producer’s preference.</p>
+        </list-item>
+        <list-item>
+          <p>The studio often represents optimal listening conditions. A responsible mixer/producer also checks mixes on other reproduction systems other than those in the studio, because there is always a compromise after the point when the mix sounds as good as it should in the studio. For example, the producer listens to the programme on TV speakers at the post-production stage in order to know how it would sound on the audiences’ TVs.</p>
+        </list-item>
+        <list-item>
+          <p>An approach to check the balance between the dialogue and music or sound effects is to trigger the variation of frequency sensitivity with volume (represented well by the Fletcher-Munson equal-loudness curves) by listening to the mix at low volume. If the dialogue is sufficiently intelligible at low volume, it will work on most speaker setups.</p>
+        </list-item>
+      </list></p>
+      <p>It is clear that in most cases, the decision on the final mixing level of broadcasting programmes relies to a great extent on sound producers’ own perception to the mix, and is based on their personal preference. Furthermore, all the checking work has to be done manually by the sound producer or someone during the postproduction stage, in order to make sure that the mixing level does not compromise both speech intelligibility and artistic intentions. Despite precautions, the audience still often needs the assistance of on-screen captions: 10% of the BBC audience uses subtitles [<xref ref-type="bibr" rid="B4-applsci-08-00059">4</xref>]. It is possible that the producer is so familiar with the script, and thus with the speech content, that the chosen SBR is set too low. While mumbled speech may not be a problem for the producer who has repeatedly heard the dialog during editing, audiences may struggle.</p>
+      <p>Sound designers or producers seem to lack a psychoacoustic guide that allows them to estimate the likelihood of the audience being able to understand the speech at their preferred mixing levels, or gives them minimum mixing levels for a desired intelligibility. Consequently, the mixing level decided by conventional empirical approaches may fail in maintaining intelligibility in two aspects. First, the mixing level may not work for all reproduction output configurations. While high-end spatial audio systems (e.g., 22.2 and 9.1) can preserve sufficient spatial cues (e.g., source azimuth) which listeners can use to enhance speech intelligibility, other systems with reduced spatial capabilities and often use down-mixed versions of the programme material (e.g., stereo) and so may not be able to provide the same level of intelligibility. Many studies (e.g., [<xref ref-type="bibr" rid="B5-applsci-08-00059">5</xref>,<xref ref-type="bibr" rid="B6-applsci-08-00059">6</xref>,<xref ref-type="bibr" rid="B7-applsci-08-00059">7</xref>,<xref ref-type="bibr" rid="B8-applsci-08-00059">8</xref>,<xref ref-type="bibr" rid="B9-applsci-08-00059">9</xref>]) have suggested that spatial cues can significantly improve speech intelligibility even when the SBR remains constant. Loss of these spatial cues may lead to poor intelligibility in low-end systems. Unfortunately, stereo loudspeakers in TVs are often of poor quality and mono audition is common for radios and mobile devices. Second, background sounds vary in their masking effect. It is well documented that the type of background sound affects listener speech perception differently [<xref ref-type="bibr" rid="B10-applsci-08-00059">10</xref>,<xref ref-type="bibr" rid="B11-applsci-08-00059">11</xref>,<xref ref-type="bibr" rid="B12-applsci-08-00059">12</xref>,<xref ref-type="bibr" rid="B13-applsci-08-00059">13</xref>,<xref ref-type="bibr" rid="B14-applsci-08-00059">14</xref>,<xref ref-type="bibr" rid="B15-applsci-08-00059">15</xref>,<xref ref-type="bibr" rid="B16-applsci-08-00059">16</xref>,<xref ref-type="bibr" rid="B17-applsci-08-00059">17</xref>]. Compared to fluctuating background sounds (e.g., temporally-modulated sounds), stationary background sounds (e.g., pink noise) usually introduce stronger masking effects to speech even at the same SBR level. This implies that an optimal SBR, which maintains speech intelligibility while providing a reasonable atmosphere to the audio scene, should vary over time.</p>
+      <p>Some research has focused on solving this problem by enabling the audience to gain control of the foreground-background mixing level. Shirley and Oldfield [<xref ref-type="bibr" rid="B18-applsci-08-00059">18</xref>] introduced an approach for ‘clean’ audio in TV broadcast, which is compatible to ISO/IEC 23008 High Efficiency Coding and Media Delivery in Heterogeneous Environments. This object-based method allows the stream carrying the speech content to be separately transmitted; end users therefore can alter the SBR level to achieve better intelligibility for the speech content. Paulus et al. [<xref ref-type="bibr" rid="B19-applsci-08-00059">19</xref>] proposed an object-based coding system to enhance dialogues for TV and radio broadcasts. This system enables renderer-listener interaction and permits listeners to control the mixing level for personalised intelligibility. Similar to [<xref ref-type="bibr" rid="B18-applsci-08-00059">18</xref>], this approach essentially adjusts the gain of speech as a single object against the gain of other objects in the background. Further subjective rating experiments suggested that this system improved listeners’ experience when auditioning speech content in background sounds. However, in order to make adaptations the system expects input from the listener, but the desired SBR varies as the broadcast material changes. Thus, this begs the question: is it possible to automatically adjust the mixing level? In this way, a preset intelligibility goal (set by either the sound producer or listener) can be ensured over time.</p>
+      <p>Objective intelligibility models (OIMs) have been improving in accuracy for almost a century. State-of-the-art OIMs (e.g., [<xref ref-type="bibr" rid="B20-applsci-08-00059">20</xref>,<xref ref-type="bibr" rid="B21-applsci-08-00059">21</xref>,<xref ref-type="bibr" rid="B22-applsci-08-00059">22</xref>,<xref ref-type="bibr" rid="B23-applsci-08-00059">23</xref>,<xref ref-type="bibr" rid="B24-applsci-08-00059">24</xref>]) are capable of making accurate intelligibility predictions in various masking conditions, with their binaural counterparts able to deal with more realistic situations [<xref ref-type="bibr" rid="B25-applsci-08-00059">25</xref>,<xref ref-type="bibr" rid="B26-applsci-08-00059">26</xref>,<xref ref-type="bibr" rid="B27-applsci-08-00059">27</xref>,<xref ref-type="bibr" rid="B28-applsci-08-00059">28</xref>]. Compared to conventional subjective evaluations which are usually time-consuming and expensive, OIMs are computationally fast and thus easy to incorporate into a closed-loop optimisation framework for intelligibility. OIMs have been used for interim speech intelligibility evaluations for optimising speech modification algorithms developed to boost speech intelligibility in noise (e.g., [<xref ref-type="bibr" rid="B29-applsci-08-00059">29</xref>,<xref ref-type="bibr" rid="B30-applsci-08-00059">30</xref>,<xref ref-type="bibr" rid="B31-applsci-08-00059">31</xref>]), prior to final subjective evaluation. Having demonstrated its applications, it may be possible to adopt an OIM in an audio system as an intelligibility meter and further as a guide to select appropriate mixing levels for the speech content. There are several reasons that OIMs may be useful for these purposes: (1) OIMs are physically and physiologically plausible—they are built based on valid auditory models, (2) their prediction is evaluated against human listeners’ perceptual performance in various conditions, (3) they can be treated as an independent input-output component, and hence can be plugged into existing systems without substantial alteration to other components in the entire system, and (4) from word to sentence, they can make predictions over time and thus enable dynamic online operation. Müsch attempted to adopt the Speech intelligibility Index (SII) [<xref ref-type="bibr" rid="B20-applsci-08-00059">20</xref>] to control the background level in a 5.1 system, in order to increases overall comprehension and to reduce listening effort for elderly people [<xref ref-type="bibr" rid="B32-applsci-08-00059">32</xref>]. However, the intelligibility criterion used to alter the background level was not detailed and the proposed system was not systematically evaluated. Thus, its performance is unknown.</p>
+      <p>In this article, we propose an approach to automate mixing levels based on intelligibility predictions from an OIM for an object-based audio system. In <xref ref-type="sec" rid="sec2-applsci-08-00059">Section 2</xref>, the framework of the proposed system is described. The first attempt to predict an appropriate SBR mixing level uses the OIM Binaural Distortion-Weighted Glimpse Proportion (BiDWGP) [<xref ref-type="bibr" rid="B9-applsci-08-00059">9</xref>]. This is detailed in <xref ref-type="sec" rid="sec3-applsci-08-00059">Section 3</xref>, where the predictive accuracy is also compared to four other OIMs including two standard intelligibility measures—SII and Speech Transmission Index (STI) [<xref ref-type="bibr" rid="B21-applsci-08-00059">21</xref>]—the Normalised-Covariance Measure (NCM) [<xref ref-type="bibr" rid="B33-applsci-08-00059">33</xref>], and the Short-Time Objective Intelligibility (STOI) [<xref ref-type="bibr" rid="B23-applsci-08-00059">23</xref>]. <xref ref-type="sec" rid="sec4-applsci-08-00059">Section 4</xref> details a psychoacoustic experiment where listeners give their preferred SBR. It is found that the SBR is not the same as that expected from the OIM work. A gain adjustment to the SBR is required and this depends on the type of background sound. <xref ref-type="sec" rid="sec5-applsci-08-00059">Section 5</xref> details a subjective experiment to access the performance of the OIM system with the suggested gain adjustment from the previous experiment. Finally, conclusions are drawn in <xref ref-type="sec" rid="sec6-applsci-08-00059">Section 6</xref>.</p>
+    </sec>
+    <sec id="sec2-applsci-08-00059">
+      <title>2. Proposed System</title>
+      <p>A schematic overview of the proposed system is shown in <xref ref-type="fig" rid="applsci-08-00059-f001">Figure 1</xref>. In an object-based audio system, the intelligibility module using an OIM may sit prior to the renderer in the pipeline, acting on the metadata. In this case, no changes to the existing rendering algorithms are required. This intelligibility module essentially consists of two main components—the speech intelligibility meter and the mixing level optimiser that sets the SBR. The speech intelligibility meter takes speech and background sound objects and the default mixing level, <inline-formula>
+        <mml:math id="mm4" display="block">
+          <mml:semantics>
+            <mml:mrow>
+              <mml:mi>S</mml:mi>
+              <mml:mi>B</mml:mi>
+              <mml:mi>R</mml:mi>
+            </mml:mrow>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula>, as inputs, and it calculates an objective intelligibility score <inline-formula>
+        <mml:math id="mm5" display="block">
+          <mml:semantics>
+            <mml:mrow>
+              <mml:mi>O</mml:mi>
+              <mml:mi>S</mml:mi>
+              <mml:mi>I</mml:mi>
+            </mml:mrow>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula>. The objective score is then fed into a decision component, which makes a judgement on whether the intelligibility meets the minimum required (<xref ref-type="sec" rid="sec3-applsci-08-00059">Section 3</xref>). If the current default SBR leads to satisfactory intelligibility then nothing is altered. If the speech intelligibility falls below the minimum, then the optimiser will look for a new mixing level <inline-formula>
+        <mml:math id="mm6" display="block">
+          <mml:semantics>
+            <mml:mrow>
+              <mml:mi>S</mml:mi>
+              <mml:mi>B</mml:mi>
+              <mml:msup>
+                <mml:mi>R</mml:mi>
+                <mml:mo>′</mml:mo>
+              </mml:msup>
+            </mml:mrow>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula> that should push the intelligibility above the minimum required. To further take listener listening effort into account, <inline-formula>
+        <mml:math id="mm7" display="block">
+          <mml:semantics>
+            <mml:mrow>
+              <mml:mi>S</mml:mi>
+              <mml:mi>B</mml:mi>
+              <mml:msup>
+                <mml:mi>R</mml:mi>
+                <mml:mo>′</mml:mo>
+              </mml:msup>
+            </mml:mrow>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula> may need further adjustment to achieve an optimal mixing level <inline-formula>
+        <mml:math id="mm8" display="block">
+          <mml:semantics>
+            <mml:mrow>
+              <mml:mi>S</mml:mi>
+              <mml:mi>B</mml:mi>
+              <mml:msup>
+                <mml:mi>R</mml:mi>
+                <mml:mrow>
+                  <mml:mo>″</mml:mo>
+                </mml:mrow>
+              </mml:msup>
+            </mml:mrow>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula> (See <xref ref-type="sec" rid="sec4-applsci-08-00059">Section 4</xref>).</p>
+      <sec id="sec2dot1-applsci-08-00059">
+        <title>2.1. Selection of OIM</title>
+        <p>In principle, any OIM may serve as the intelligibility meter in <xref ref-type="fig" rid="applsci-08-00059-f001">Figure 1</xref>. However, previous studies (e.g., [<xref ref-type="bibr" rid="B24-applsci-08-00059">24</xref>,<xref ref-type="bibr" rid="B34-applsci-08-00059">34</xref>]) have shown that some OIMs do not work well across the broad range of maskers found in broadcast audio. The background may vary over time from music to crowd babble sound, from general soundscapes to competing talkers. Building a large database of statistics of various background sounds to rectify each model output is therefore impractical. To solve this problem, Tang proposed a metric—distortion-weighted glimpse proportion (DWGP, [<xref ref-type="bibr" rid="B24-applsci-08-00059">24</xref>])—based on a notion that both masked audibility and disturbance on speech modulation resulting from the masking effect of the noise masker, should account for the reduction of speech intelligibility in noise. The former aspect is quantified in each analytical frequency band as the percentage of the time-frequency regions on the speech signal with a speech-to-noise ratio above a pre-defined threshold (e.g., 3 dB); the latter effect is calculated as the distortion factor for each frequency, using cross-correlation between the envelopes of the clean and the noise-corrupted speech signals. The distortion factor is then used to weight the masked audibility in each band. The final predictive score is the sum of the masked audibilities across all the frequencies after further being weighted by the band importance function [<xref ref-type="bibr" rid="B20-applsci-08-00059">20</xref>], which determines the contribution of each frequency to the overall intelligibility. In assessment, the DWGP metric has demonstrated a good match to subjective data when treating each noise separately and across a wide range of background noise, with squared Pearson correlation coefficients <inline-formula>
+          <mml:math id="mm9" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>&gt;</mml:mo>
+                <mml:mn>0.71</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> [<xref ref-type="bibr" rid="B24-applsci-08-00059">24</xref>].</p>
+        <p>In 2015, Tang et al. further extended the DWGP metric to binaural DWGP (BiDWGP), thus affording a more ecologically valid application of the metric [<xref ref-type="bibr" rid="B9-applsci-08-00059">9</xref>]. See [<xref ref-type="bibr" rid="B28-applsci-08-00059">28</xref>] for implementation details of BiDWGP. Two prominent aspects of binaural listening are modelled in this extension: the better-ear effect due to the head-shadowing and binaural unmasking. BiDWGP can predict intelligibility either directly from the binaural recordings or from monophonic recordings of each sound source along with their locations. Predictions made using the two input forms are almost identical in anechoic conditions [<xref ref-type="bibr" rid="B28-applsci-08-00059">28</xref>]. As an extension to DWGP, when BiDWGP is used for monaural situations it operates the same to DWGP. Therefore, BiDWGP is able to replace its monaural counterpart in any cases.</p>
+        <p>The evaluations in both anechoic [<xref ref-type="bibr" rid="B28-applsci-08-00059">28</xref>] and reverberant [<xref ref-type="bibr" rid="B34-applsci-08-00059">34</xref>] conditions have suggested that the BiDWGP outperformed the standard metrics such as the SII (<inline-formula>
+          <mml:math id="mm10" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>≥</mml:mo>
+                <mml:mn>0.48</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>) and the STI (<inline-formula>
+          <mml:math id="mm11" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>≥</mml:mo>
+                <mml:mn>0.62</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>) in many conditions, and was able to provide reliable intelligibility estimations (<inline-formula>
+          <mml:math id="mm12" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>≥</mml:mo>
+                <mml:mn>0.77</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>). <xref ref-type="fig" rid="applsci-08-00059-f002">Figure 2</xref> furthers compares the listeners’ word recognition rates at sentence level from three previous studies [<xref ref-type="bibr" rid="B9-applsci-08-00059">9</xref>,<xref ref-type="bibr" rid="B34-applsci-08-00059">34</xref>,<xref ref-type="bibr" rid="B35-applsci-08-00059">35</xref>] against BiDWGP predictions in both anechoic and reverberant conditions, in which stimuli were presented monaurally or binaurally. A strong linear relationship between the subjective data and BiDWGP prediction is evident with <inline-formula>
+          <mml:math id="mm13" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.81</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> across all 190 data points/conditions. Providing its robust predictive power, the BiDWGP metric was hence chosen as the OIM for intelligibility metering in the work presented here.</p>
+      </sec>
+      <sec id="sec2dot2-applsci-08-00059">
+        <title>2.2. Intelligibility Criteria</title>
+        <p>Sound reproduction setup in end users’ living rooms can vary in their specifications. It may be unfeasible to build a system which is capable of making accurate speech intelligibility predictions for all different audio systems from high end down to low end, and in particular making adaptions to accommodate each system automatically. However, as aforementioned, down-mixing, from 22.2 to a stereo system for example, effectively leads to the gradual loss of spatial cues such as relative source separation and distance between objects. As such, given a dialogue scene with a default mixing level, intelligibility may decrease monotonically from a 22.2 to a mono system, with the worst intelligibility in the latter case. In turn, if the intelligibility of the mono system is guaranteed, with the same mixing level there should not be any further intelligibility issue for high-end systems in which spatial cues may be preserved.</p>
+        <p>The BiDWGP metric is in the form of a numeric index like other OIMs (e.g., SII and STI), which falls into the range of 0–1 with larger numbers indicating better intelligibility. The output does not directly provide any information about the SBR, however, and so a transformation from index to SBR is needed. What SBR is optimal for speech? To answer this key question, an assumption is made that the optimal SBR should guarantee that all the information conveyed by the speech will be well understood by listeners. The next section details an experiment to measure the minimum SBR leading to 100% intelligibility for normal hearing listeners in a range of background sounds when listening monaurally.</p>
+      </sec>
+    </sec>
+    <sec id="sec3-applsci-08-00059">
+      <title>3. Experiment I: Minimal SBR for Full Sentence-Level Intelligibility</title>
+      <p>This experiment was designed to measure the possible lowest SBR for full intelligibility <inline-formula>
+        <mml:math id="mm14" display="block">
+          <mml:semantics>
+            <mml:msub>
+              <mml:mi>SBR</mml:mi>
+              <mml:mrow>
+                <mml:mi>m</mml:mi>
+                <mml:mi>i</mml:mi>
+                <mml:mi>n</mml:mi>
+              </mml:mrow>
+            </mml:msub>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula> at sentence level for different background sounds. A further aim of this experiment was to quantify the relationship between the BiDWGP predictions and the measured <inline-formula>
+        <mml:math id="mm15" display="block">
+          <mml:semantics>
+            <mml:msub>
+              <mml:mi>SBR</mml:mi>
+              <mml:mrow>
+                <mml:mi>m</mml:mi>
+                <mml:mi>i</mml:mi>
+                <mml:mi>n</mml:mi>
+              </mml:mrow>
+            </mml:msub>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula>.</p>
+      <sec id="sec3dot1-applsci-08-00059">
+        <title>3.1. Stimuli</title>
+        <p>Speech materials were drawn from the SCRIBE corpus [<xref ref-type="bibr" rid="B36-applsci-08-00059">36</xref>]. This corpus consists of speech sentences (e.g., [quoted wording omitted]S a SPHERE’, with the keywords capitalised) uttered by eight (four male and four female) native British English talkers. As many studies (e.g., [<xref ref-type="bibr" rid="B37-applsci-08-00059">37</xref>,<xref ref-type="bibr" rid="B38-applsci-08-00059">38</xref>]) have shown great variation in speech intelligibility between different talkers, having speech from many talkers makes the experiment more ecologically valid. In order to control the size of the experiment, speech produced by two male (M5 and M8) and two female (F6 and F7) talkers were used based on a pilot test, in which keyword recognition rate of listeners was measured as the intelligibility in speech-shaped noise (SSN) at −6 and 0 dB SBR. The results suggested that the chosen talkers are representative of the most and the least intelligible cases of each gender in the corpus under the tested background conditions.</p>
+        <p>The background sounds covered a wide range of types—both stationary and fluctuating— including: SSN, which has the long-term average spectrum of the speech corpus; cafeteria babble noise (BAB); competing speech (CS) drawn from news broadcasting; a rock song (SNG, ‘Song for Someone’ by U2), and the same song with vocal track being removed (MSC, i.e., instrumental sounds only). Note that in order to reduce the effect of informational masking caused by the same gender [<xref ref-type="bibr" rid="B16-applsci-08-00059">16</xref>], CS from a person of the opposite gender to the target talker was used. For each speech-background stimulus pair, the background signal was randomly cropped from a 5-min long signal, and preceded and followed the speech by 300 ms. In total, this setup led to 20 conditions (5 background sounds × 4 talkers).</p>
+      </sec>
+      <sec id="sec3dot2-applsci-08-00059">
+        <title>3.2. Procedure and Listeners</title>
+        <p>The determination of <inline-formula>
+          <mml:math id="mm16" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> was a 1-up/1-down adaptive process in progression by following the procedure described in [<xref ref-type="bibr" rid="B39-applsci-08-00059">39</xref>]. The experiment was conducted using a MATLAB (v9.1 by MathWorks, Natick, MA, USA, 2016) graphical user interface (GUI). Each background condition consisted of 10 non-repetitive stimuli which were presented in a random order. Starting from a very low SBR (−21 dB), the listener was instructed to manually increase the background level until they could only just understand everything in the first sentence. Within the first trial, the listener could hear the sentence as many times as s/he needed to find the appropriate SBR. Once the initial SBR was set, the listener was required to type what was heard using a physical computer keyboard. Upon finishing the transcription of the sentence, the original correct answer was displayed with all the keywords capitalised. The listener self-checked the correctness of all the keywords; s/he was instructed to ignore any errors due to typos, homophones, contractions, punctuation or differences in tense and plurality. The programme then decreased or increased the SBR by 2 dB for the next sentence according to whether or not the listener obtained a score of 100% correct in the current sentence.</p>
+        <p>In the subsequent nine trials, the SBR could no longer be adjusted by the listener; instead it was adaptively controlled by the programme using the same 1-up/1-down criteria. Each sentence was played only once prior to the listener’s response. The final <inline-formula>
+          <mml:math id="mm17" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> for this condition was the average SBR across the final eight trials. The same procedure was repeated for all the 20 conditions, the order of which was also randomised. Through all the conditions, the listener did not hear any utterance twice.</p>
+        <p>The experiment took place in an semi-anechoic room with a background noise level of 3.8 dB(A). The stimuli were presented to listeners monaurally over a pair of Sennheiser (Wedemark, Germany) HD650 headphones after being pre-amplified by a Focusrite (High Wycombe, UK) Scarlett 2i4 USB audio interface. The SBR for each speech-masker pair was calculated across the entire signals. The presentation level of speech only over the headphones was calibrated using Brüel &amp; Kjær (B&amp;K, Nærum, Denmark) 4153 artificial ear with a B&amp;K 2610 measuring amplifier, and fixed at 69 dB(A). Thus, in the experiment the SBR was altered only by varying the level of the background sound.</p>
+        <p>A total of 14 native British English speakers (ages: 18–30 year, mean age: 24 year) participated in this experiment. All participants reported normal hearing, and were paid for their participation. The Research Ethics Panel at the College of Science and Technology, University of Salford, granted ethical approval for all the experiments conducted in this work.</p>
+      </sec>
+      <sec sec-type="results" id="sec3dot3-applsci-08-00059">
+        <title>3.3. Results</title>
+        <p>Of the 14 participants, two did not complete all the conditions due to slow progress; hence their data is excluded from the results presented below. Data of another participant was also discarded after an outlier analysis. Therefore, the mean <inline-formula>
+          <mml:math id="mm18" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> levels shown in <xref ref-type="fig" rid="applsci-08-00059-f003">Figure 3</xref> as open circles are based on the remaining 11 participants. The measured <inline-formula>
+          <mml:math id="mm19" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> levels fall into the range of <inline-formula>
+          <mml:math id="mm20" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>−</mml:mo>
+                <mml:mn>9.4</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> to 3.5 dB across all backgrounds and talkers. A two-way repeated measures ANOVA with within subject factors (5 background sounds × 4 talkers) revealed a significant effect of both background type [<inline-formula>
+          <mml:math id="mm21" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>F</mml:mi>
+                <mml:mrow>
+                  <mml:mo>(</mml:mo>
+                  <mml:mn>4</mml:mn>
+                  <mml:mo>,</mml:mo>
+                  <mml:mn>40</mml:mn>
+                  <mml:mo>)</mml:mo>
+                </mml:mrow>
+                <mml:mo>=</mml:mo>
+                <mml:mn>52.670</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:msup>
+                  <mml:mi>η</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.538</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>] and talker [<inline-formula>
+          <mml:math id="mm22" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>F</mml:mi>
+                <mml:mrow>
+                  <mml:mo>(</mml:mo>
+                  <mml:mn>3</mml:mn>
+                  <mml:mo>,</mml:mo>
+                  <mml:mn>30</mml:mn>
+                  <mml:mo>)</mml:mo>
+                </mml:mrow>
+                <mml:mo>=</mml:mo>
+                <mml:mn>67.694</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:msup>
+                  <mml:mi>η</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.594</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>], as well as a significant two-way interaction between background type and talker [<inline-formula>
+          <mml:math id="mm23" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>F</mml:mi>
+                <mml:mrow>
+                  <mml:mo>(</mml:mo>
+                  <mml:mn>12</mml:mn>
+                  <mml:mo>,</mml:mo>
+                  <mml:mn>120</mml:mn>
+                  <mml:mo>)</mml:mo>
+                </mml:mrow>
+                <mml:mo>=</mml:mo>
+                <mml:mn>2.665</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.01</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:msup>
+                  <mml:mi>η</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.130</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>]. This suggests that the minimum SBR which listeners require varies significantly across various background sounds and speech content produced by different talkers.</p>
+        <p>Post-hoc pairwise comparisons with Bonferroni correction further confirmed the visual impression that stationary backgrounds (SSN and BAB) lead to higher <inline-formula>
+          <mml:math id="mm24" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> than fluctuating background (CS) for speech produced by all talkers [all <inline-formula>
+          <mml:math id="mm25" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.05</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>], except for M8. This is consistent with the findings reported in the literature (e.g., [<xref ref-type="bibr" rid="B11-applsci-08-00059">11</xref>,<xref ref-type="bibr" rid="B13-applsci-08-00059">13</xref>]). Furthermore, by removing the vocal track from SNG, which to some extent functions as competing speech and potentially introduces both energetic and informational masking to intelligibility, <inline-formula>
+          <mml:math id="mm26" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> for all talkers in MSC substantially decreased compared to that in SNG [all <inline-formula>
+          <mml:math id="mm27" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.01</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>] with M8 being an exception. <inline-formula>
+          <mml:math id="mm28" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> for the speech of M8 did not vary as dramatically as for other talkers across different backgrounds presumably because of its low intrinsic intelligibility that had been observed in the pilot test, leading to the relatively high <inline-formula>
+          <mml:math id="mm29" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> at which the intelligibility to listeners usually converges. Comparing across the four talkers, it is evident that speech produced by M8 had a higher <inline-formula>
+          <mml:math id="mm30" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> than other talkers in SSN, CS and MSC backgrounds [all <inline-formula>
+          <mml:math id="mm31" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.05</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>].</p>
+      </sec>
+      <sec id="sec3dot4-applsci-08-00059">
+        <title>3.4. Model Predictions of <inline-formula>
+          <mml:math id="mm32" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi mathvariant="italic">SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula></title>
+        <p>A function that allows conversion from a desired BiDWGP to the mixing level SBR is required. The upper panel of <xref ref-type="fig" rid="applsci-08-00059-f004">Figure 4</xref> illustrates the BiDWGP scores as a function of SBR in various background sounds for talker F6. Each data point on the plotted lines (in steps of 3-dB SBR) was calculated as the mean of the BiDWGP scores for all samples used in the <inline-formula>
+          <mml:math id="mm33" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> psychoacoustic experiment. In order to formulate a function relating BiDWGP and SBR, a two-parameter sigmoid function in the form of <inline-formula>
+          <mml:math id="mm34" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>B</mml:mi>
+                <mml:mi>i</mml:mi>
+                <mml:mi>D</mml:mi>
+                <mml:mi>W</mml:mi>
+                <mml:mi>G</mml:mi>
+                <mml:mi>P</mml:mi>
+                <mml:mo>=</mml:mo>
+                <mml:mi>f</mml:mi>
+                <mml:mo>(</mml:mo>
+                <mml:mi>S</mml:mi>
+                <mml:mi>B</mml:mi>
+                <mml:mi>R</mml:mi>
+                <mml:mo>)</mml:mo>
+                <mml:mo>=</mml:mo>
+                <mml:mn>1</mml:mn>
+                <mml:mo>/</mml:mo>
+                <mml:mo>(</mml:mo>
+                <mml:mn>1</mml:mn>
+                <mml:mo>+</mml:mo>
+                <mml:mi>e</mml:mi>
+                <mml:mi>x</mml:mi>
+                <mml:mi>p</mml:mi>
+                <mml:mo>(</mml:mo>
+                <mml:mo>−</mml:mo>
+                <mml:mi>a</mml:mi>
+                <mml:mo>−</mml:mo>
+                <mml:mi>b</mml:mi>
+                <mml:mo>·</mml:mo>
+                <mml:mi>S</mml:mi>
+                <mml:mi>B</mml:mi>
+                <mml:mi>R</mml:mi>
+                <mml:mo>)</mml:mo>
+                <mml:mo>)</mml:mo>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> with variables <italic>a</italic> and <italic>b</italic> was constructed using the MATLAB <italic>glmfit</italic> function with a normal distribution and <italic>logic</italic> link function. The fitted functions are shown in the lower panel of <xref ref-type="fig" rid="applsci-08-00059-f004">Figure 4</xref>. Subsequently, given a desired BiDWGP score, the required SBR in the presence of each background sound can be calculated using the inverse of the function <italic>f</italic>. Due to the masking effect varying between background sounds, different SBR values for a given BiDWGP score are found. In the lower panel of <xref ref-type="fig" rid="applsci-08-00059-f004">Figure 4</xref> the SBRs required in order to achieve a BiDWGP score of 0.5 in different background sounds is shown (The reason for choosing a BiDWGP score of 0.5 is explained below). This procedure was also applied to the other talkers.</p>
+        <p>Drawing on the perceptual experiment that determined listeners’ <inline-formula>
+          <mml:math id="mm35" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>, it is possible to derive the BiDWGP score which corresponds to the predicted <inline-formula>
+          <mml:math id="mm36" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> in all tested conditions. This was performed by minimising the root-mean-square error (RMSE) between the measured and the predicted <inline-formula>
+          <mml:math id="mm37" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> over 12 conditions (3 background sounds × 4 talkers) from SSN, BAB and CS. In order to investigate the robustness of this process for unseen conditions, 8 conditions from SNG and MSC were excluded from the RMSE minimisation and were reserved for testing only.</p>
+        <p><xref ref-type="fig" rid="applsci-08-00059-f005">Figure 5</xref> shows RMSE as a function of BiDWGP scores. It suggests that SBRs leading to a BiDWGP of 0.5 provides the closest match to the measured <inline-formula>
+          <mml:math id="mm38" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>, with a RMSE of 2.6 dB across SSN, BAB and CS. When predicting the <inline-formula>
+          <mml:math id="mm39" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> for the previously unseen SNG and MSC cases using 0.5 BiDWGP, the RMSEs are 1.0 and 2.8 dB across all the talkers, respectively. The BiDWGP scores corresponding to <inline-formula>
+          <mml:math id="mm40" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> were also individually learnt for SNG and MSC. They are 0.48 (RMSE: 0.8 dB) and 0.52 (RMSE: 2.4 dB) for SNG and MSC, respectively—the RMSEs of the predictions using 0.5 BiDWGP are merely 0.2 and 0.4 dB higher for the two maskers. Consequently, the value of 0.5 was used for all background sounds to derive the <inline-formula>
+          <mml:math id="mm41" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>. The predicted <inline-formula>
+          <mml:math id="mm42" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> levels in all conditions are displayed against the measured values for all speakers and markers in <xref ref-type="fig" rid="applsci-08-00059-f003">Figure 3</xref>. With a strong linear relationship [<inline-formula>
+          <mml:math id="mm43" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.70</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>] and the least RMSE (2.4 dB) between the measured and the predicted values, the BiDWGP metric was considered capable of making reasonable <inline-formula>
+          <mml:math id="mm44" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> predictions in tested background sounds, especially as this was performed across both factors of background sound and talker.</p>
+        <p>Any OIM could be used in the place of BiDWGP here as the intelligibility predictor. However, the predictive power of the chosen OIM may affect the robustness of the system. As an illustration, the performance of another four OIMs was also investigated, including the SII and the STI—two standard intelligibility measures—and two more recent measures: NCM and STOI. The SII makes intelligibility predictions from the normalised frequency-dependent speech-to-noise ratios, which reflect the masked-audibility of each frequency in noise. The STI quantifies intelligibility by accounting for the reduction in the modulation depth of speech envelope using the modulation transfer function. Similar to the STI, NCM computes the distortions caused by the noise masker or reverberation by comparing the similarity between the envelopes of the noise-corrupted signal and the clean reference speech signal. Rather than long-term speech envelope, STOI operates on short-term envelope to quantify the distortions affecting intelligibility. It was originally proposed for estimating intelligibility of speech signals processed by enhancement algorithms. <xref ref-type="table" rid="applsci-08-00059-t001">Table 1</xref> summarises the objective scores which led to the minimal RMSE of the predictions across SSN, BAB and CS. The RMSEs and <inline-formula>
+          <mml:math id="mm45" display="block">
+            <mml:semantics>
+              <mml:msup>
+                <mml:mi>r</mml:mi>
+                <mml:mn>2</mml:mn>
+              </mml:msup>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> between the measured and predicted <inline-formula>
+          <mml:math id="mm46" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> in the second and the third rows were calculated from the predicted <inline-formula>
+          <mml:math id="mm47" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> values, using the objective score of each OIM across all 20 conditions (5 background sounds × 4 talkers).</p>
+      </sec>
+      <sec id="sec3dot5-applsci-08-00059">
+        <title>3.5. Interim Discussion</title>
+        <p>A listening experiment was conducted to measure listeners’ <inline-formula>
+          <mml:math id="mm48" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> for speech produced by four talkers in a set of background sounds. The results suggest that <inline-formula>
+          <mml:math id="mm49" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> may vary considerably from one background sound to other. The talker effect is also evident, resulting in different <inline-formula>
+          <mml:math id="mm50" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> levels even in the presence of the same background sound. All the evidence from this experiment supports the view that a constant SBR for speech-background mixing does not guarantee that target speech information can be understood over all background sounds and talkers. One possibility would be to make the SBR for the target speech very high. However, the potential problem of adopting a high SBR would be that a sound editor’s intentions (e.g., creating an atmosphere for an audio scene by adding background sounds) could no longer be fulfilled.</p>
+        <p><inline-formula>
+          <mml:math id="mm51" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> levels measured in this study were for monaural listening, simulating intelligibility reproduced by mono audio systems or stereo systems with the target speech played diotically. For multi-channel systems in which sound objects can be perceived spatially separated, the <inline-formula>
+          <mml:math id="mm52" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> may be expected to be lower than in monaural situations because human listeners are able to use different spatial cues such as interaural level and time differences to achieve better intelligibility [<xref ref-type="bibr" rid="B5-applsci-08-00059">5</xref>,<xref ref-type="bibr" rid="B6-applsci-08-00059">6</xref>,<xref ref-type="bibr" rid="B7-applsci-08-00059">7</xref>,<xref ref-type="bibr" rid="B8-applsci-08-00059">8</xref>,<xref ref-type="bibr" rid="B28-applsci-08-00059">28</xref>].</p>
+        <p>The predicted SBR level which led to a BiDWGP score of 0.5 was the closest to the measured <inline-formula>
+          <mml:math id="mm53" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> in each background sound. The performance of the BiDWGP metric in predicting <inline-formula>
+          <mml:math id="mm54" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> (<inline-formula>
+          <mml:math id="mm55" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.70</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>) is not as good as in predicting word recognition rates (<inline-formula>
+          <mml:math id="mm56" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>&gt;</mml:mo>
+                <mml:mn>0.81</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>) reported in the previous studies [<xref ref-type="bibr" rid="B9-applsci-08-00059">9</xref>,<xref ref-type="bibr" rid="B34-applsci-08-00059">34</xref>,<xref ref-type="bibr" rid="B35-applsci-08-00059">35</xref>]. Although several types of background sounds were also used in those tests for measuring word recognition rate, speech sentences were usually uttered by a single talker. By introducing both the background and talker effects in the current experiment, the BiDWGP metric seems to lose some predictive accuracy after the function fitting for BiDWGP-SBR mapping. Nevertheless, compared to predictions by other OIMs (<xref ref-type="table" rid="applsci-08-00059-t001">Table 1</xref>), BiDWGP led to the lowest RMSE and the highest <inline-formula>
+          <mml:math id="mm57" display="block">
+            <mml:semantics>
+              <mml:msup>
+                <mml:mi>r</mml:mi>
+                <mml:mn>2</mml:mn>
+              </mml:msup>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>. Thus, a RMSE of 2.4 dB over all tested conditions is considered acceptable as a first approximation for SBR adjustment.</p>
+        <p>For cases in which the proposed system is only used to examine whether an intended mixing level (<inline-formula>
+          <mml:math id="mm58" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>S</mml:mi>
+                <mml:mi>B</mml:mi>
+                <mml:mi>R</mml:mi>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> in <xref ref-type="fig" rid="applsci-08-00059-f001">Figure 1</xref>) can meet the minimal intelligibility requirement, the proposed method is able to automatically fulfil this purpose. This method could also determine the optimal mixing level for a given foreground-background pair. However, the optimal SBR is not just about speech intelligibility, it should also provide a comfortable balance between the foreground and background sounds. In the next section, an experiment to determine the preferred SBR is outlined.</p>
+      </sec>
+    </sec>
+    <sec id="sec4-applsci-08-00059">
+      <title>4. Experiment II: Listener-Preferred SBR for Speech-Background Mixing</title>
+      <p>Expt. I found the minimum SBR to correctly understand sentences. This is not necessarily the SBR that listeners prefer for everyday audio such as news broadcasting, radio drama and sport commentary. Therefore, Expt. II aimed to elicit listeners’ personal preference on the mixing level of diverse audio scenes, and to further compare it to the predicted SBR when a BiDWGP score of 0.5 is achieved.</p>
+      <sec id="sec4dot1-applsci-08-00059">
+        <title>4.1. Stimuli</title>
+        <p>Five audio scenes were created including football commentary, news broadcasting, public speech, radio drama, and radio poetry, all of which are quotidian audio content. <xref ref-type="table" rid="applsci-08-00059-t002">Table 2</xref> details the foreground speech and background sound of the chosen audio scenes. As stimuli for each scene, four excerpts were created, leading to a total of 20 excerpts in the experiment. Each excerpt lasted 15–24 s. In all excerpts, the intensity of the foreground speech was normalised to the same root-mean-square value; the background sound preceded and followed the foreground speech by one second.</p>
+      </sec>
+      <sec id="sec4dot2-applsci-08-00059">
+        <title>4.2. Procedure and Listeners</title>
+        <p>The playback and adjustment of foreground-background mixing level were controlled by a MATLAB GUI. The listener auditioned the scenes in the same room and using the same equipment as per Expt. I. While the foreground speech was presented diotically to the listener, the background sound was played stereophonically. The task for listeners was to choose an appropriate mixing level for the speech content and the background sound; the chosen mixing level for each scenario should result in the speech content being intelligible enough and the background sound providing good atmosphere to the scene. No reference scene was provided as a guide for either ‘well’ or ‘badly’ mixed content. The listener was allowed to adjust the master volume to a comfortable level at the beginning of the experiment. The mixing level was adjusted by only altering the background sound level using a vertical fader. Any changes to the mixing level took effect straight after the fader was adjusted while the audio was playing. The listener could listen to each excerpt as many times as necessary. A ‘Play’ and a ‘Stop’ button were provided for the listener in the programme to start and cease playing at anytime. The programme also informed the listener which sounds were the foreground and which were background sounds in the current scene. This ensured that the listener attended to the correct channel, especially in the ‘News broadcasting’ scene in which the background sound was also speech. Once a mixing level was chosen, pressing the ‘Next’ button started the next excerpt. The presentation order of the 20 excerpts was randomised for each listener.</p>
+        <p>Thirty native British English speakers (ages: 18–35 year, mean age: 25 year) with normal hearing participated in this experiment. Nine participants were undergraduates or graduates studying acoustics at the University of Salford, or sound professionals.</p>
+      </sec>
+      <sec sec-type="results" id="sec4dot3-applsci-08-00059">
+        <title>4.3. Results</title>
+        <p>For each listener, the SBR for each audio scene was averaged over the four excerpts. The mean SBR level chosen by listeners for each type of audio content is displayed in <xref ref-type="fig" rid="applsci-08-00059-f006">Figure 6</xref> as open circles with error bars indicating 95% confidence intervals of the means. Across the five audio scenes, the listener-preferred SBRs for mixing are between −6.1 to 15.6 dB, with that for the ‘News Broadcasting’ and ‘Radio drama’ scenes being the highest and lowest, respectively. One-way within-subject ANOVA confirmed that the listener-preferred SBR significantly varied between audio scenes [<inline-formula>
+          <mml:math id="mm59" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mrow>
+                  <mml:mi>F</mml:mi>
+                  <mml:mo>(</mml:mo>
+                  <mml:mn>4</mml:mn>
+                  <mml:mo>,</mml:mo>
+                  <mml:mn>116</mml:mn>
+                  <mml:mo>)</mml:mo>
+                  <mml:mo>=</mml:mo>
+                  <mml:mn>47</mml:mn>
+                  <mml:mo>.</mml:mo>
+                  <mml:mn>347</mml:mn>
+                </mml:mrow>
+                <mml:mo>,</mml:mo>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:msup>
+                  <mml:mi>η</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.620</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>]. Post-hoc pairwise comparisons with Bonferroni correction further suggested that while listeners chose the same SBRs for the ‘Football commentary’, ‘Public speech’ and ‘Radio poetry’ scenes [all <inline-formula>
+          <mml:math id="mm60" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&gt;</mml:mo>
+                <mml:mn>0.05</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>], the SBRs for ‘News broadcasting’ [<inline-formula>
+          <mml:math id="mm61" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>] and ‘Radio drama’ [<inline-formula>
+          <mml:math id="mm62" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>] scenes were higher and lower respectively than those in the other scenes.</p>
+        <p>In <xref ref-type="fig" rid="applsci-08-00059-f006">Figure 6</xref>, the model-predicted SBRs which led to a BiDWGP score of 0.5 are shown as ‘+’. A discrepancy between the listener-preferred and predicted <inline-formula>
+          <mml:math id="mm63" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> is evident: SBRs predicted as the minimum requirement for 100% speech intelligibility by the BiDWGP metric is clearly lower than those chosen by listeners, especially for ‘News broadcasting’, which differed from the model prediction by 23.1 dB. Interestingly, except for ‘News broadcasting’, the differences between the listener-preferred and predicted SBRs appear to be the same across background sounds. By minimising RMSE across the four scenes (i.e., ‘News broadcasting’ was excluded), it was found that applying a constant gain of 5.5 dB to the predicted <inline-formula>
+          <mml:math id="mm64" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> achieves a SBR level close to level preferred by listeners (RMSE of 0.9 dB). This is illustrated with ‘x’ markers in <xref ref-type="fig" rid="applsci-08-00059-f006">Figure 6</xref>.</p>
+      </sec>
+      <sec id="sec4dot4-applsci-08-00059">
+        <title>4.4. Interim Discussion</title>
+        <p>A group of listeners with normal hearing were instructed to choose their preferred SBR for mixing in five different audio scenes. Listeners’ preferred SBR depends on the accompanying background sounds. Compared to model-predicted <inline-formula>
+          <mml:math id="mm65" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>, which is the minimum SBR for listeners to be able to understand all speech information, the listener-preferred SBRs are consistently higher. This suggests that when making a judgement on the optimal SBR level at which to listen, listeners go beyond intelligibility to consider other factors such as listening effort and comfort. Current OIMs are not able to account for this because they focus on intelligibility. When the background sound is noise, music, other sound effect or their combinations, an extra gain of 5.5 dB added to the model-predicted <inline-formula>
+          <mml:math id="mm66" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> gets close to the preferred listening level.</p>
+        <p>For the ‘News broadcasting’ scene, in which speech by a male taker was artificially added as the background, a larger gain of 23 dB is required. Several participants tended to adjust the level of the background competing speech in the scene to as low as possible. According to the model prediction for this scene, intelligibility is no longer an issue when the SBR is above −7.5 dB (see <xref ref-type="fig" rid="applsci-08-00059-f006">Figure 6</xref>). One possibility is that listeners did not expect a news broadcast to contain prominent competing speech. Or maybe they considered the competing speech to offer little enhancement to a news broadcast.</p>
+        <p>Informational masking introduced by competing speech could also be important. Unlike energetic masking to intelligibility, which is the consequence of interactions of physical signals acting to the peripheral auditory system, informational masking obstructs auditory identification and discrimination at the late stage of auditory pathway, when a sound is perceived in the presence of other similar sound(s) [<xref ref-type="bibr" rid="B16-applsci-08-00059">16</xref>,<xref ref-type="bibr" rid="B17-applsci-08-00059">17</xref>,<xref ref-type="bibr" rid="B40-applsci-08-00059">40</xref>,<xref ref-type="bibr" rid="B41-applsci-08-00059">41</xref>,<xref ref-type="bibr" rid="B42-applsci-08-00059">42</xref>,<xref ref-type="bibr" rid="B43-applsci-08-00059">43</xref>,<xref ref-type="bibr" rid="B44-applsci-08-00059">44</xref>]. As the competing speech in the ‘News broadcasting’ scene is uttered in the same language as the foreground speech, a considerable amount of informational masking is induced. Consequently, this requires more effort from the listener to overcome informational masking than when listening in other backgrounds, which introduce little informational masking [<xref ref-type="bibr" rid="B45-applsci-08-00059">45</xref>]. In the meantime, the listener’s attention is also more likely to be distracted by the background competing speech. Frequent attention switching between different channels may increase the cognitive load of the listener [<xref ref-type="bibr" rid="B46-applsci-08-00059">46</xref>], potentially leading to escalated annoyance arising from the background sound.</p>
+        <p>For implementation, the optimal SBR suggested by this system for a given scene can be calculated as the summation of the model-predicted <inline-formula>
+          <mml:math id="mm67" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> in this background and the additional gain <inline-formula>
+          <mml:math id="mm68" display="block">
+            <mml:semantics>
+              <mml:mo>Δ</mml:mo>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>, which aims to compensate for other factors such as listening effort and comfort. Based on the scenes tested in this experiment, <inline-formula>
+          <mml:math id="mm69" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>Δ</mml:mo>
+                <mml:mo>=</mml:mo>
+                <mml:mn>5.5</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> dB can be applied to background sounds which are free of competing speech. However, when the background is competing speech, a larger gain is needed—it is found 23 dB for the competing speech by a male talker here. To automate the decision making, one solution could be to perform automatic sound classification (e.g., [<xref ref-type="bibr" rid="B47-applsci-08-00059">47</xref>,<xref ref-type="bibr" rid="B48-applsci-08-00059">48</xref>,<xref ref-type="bibr" rid="B49-applsci-08-00059">49</xref>]) to identify whether the background sound is speech. For cases where this information is known or can be predefined, the knowledge could be stored in the metadata. The system is then able to retrieve this information from the data flow to make a decision. However, if the background contains both speech and non-speech sounds, the intelligibility of the speech content belonging to the background may need to be estimated, in order to quantify its impact to the foreground speech. The more intelligible the background speech is, the greater the potential for informational masking [<xref ref-type="bibr" rid="B50-applsci-08-00059">50</xref>]. Further study is needed to quantify the relationship between the additional gain and the degree these factors affecting a listener’s preference at the cognitive level.</p>
+      </sec>
+    </sec>
+    <sec id="sec5-applsci-08-00059">
+      <title>5. Experiment III: Listening Experience Rating</title>
+      <p>As a final assessment of the optimal SBR levels derived from Expt. II, a subjective rating task was undertaken to evaluate listening experiences when the audio scenes were created with a variety of SBR levels. Instead of general audio quality, in this experiment the balance between <italic>intelligibility</italic> and <italic>sound effect</italic> is considered as the major aspect that affect a listener’s experience.</p>
+      <sec id="sec5dot1-applsci-08-00059">
+        <title>5.1. Stimuli</title>
+        <p>The same audio content as described in <xref ref-type="table" rid="applsci-08-00059-t002">Table 2</xref> was used. This was to use different listening cohorts to confirm the validity of the listener-preferred SBRs measured in Expt. II, since the system-suggested SBRs were derived from those values. This also allowed direct comparisons on listening experience provided by the listener-preferred SBRs and the optimal SBRs suggested by the system. For each of the five audio scenes three excerpts were drawn from Expt. II (<xref ref-type="sec" rid="sec4dot1-applsci-08-00059">Section 4.1</xref>), leading to 15 excerpts in total. Within each excerpt, the foreground speech and background sound were premixed at three constant SBR levels (<inline-formula>
+          <mml:math id="mm70" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>−</mml:mo>
+                <mml:mn>9</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>, 0 and 9 dB), and three scene-specific levels: <inline-formula>
+          <mml:math id="mm71" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> predicted by the BiDWGP metric (<inline-formula>
+          <mml:math id="mm72" display="block">
+            <mml:semantics>
+              <mml:msubsup>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+                <mml:mo>′</mml:mo>
+              </mml:msubsup>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>), the listener-preferred SBR (LP) measured in <xref ref-type="sec" rid="sec4dot3-applsci-08-00059">Section 4.3</xref>, and the suggested-optimal SBR (OPT), i.e., <inline-formula>
+          <mml:math id="mm73" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>(</mml:mo>
+                <mml:msubsup>
+                  <mml:mi>SBR</mml:mi>
+                  <mml:mrow>
+                    <mml:mi>m</mml:mi>
+                    <mml:mi>i</mml:mi>
+                    <mml:mi>n</mml:mi>
+                  </mml:mrow>
+                  <mml:mo>′</mml:mo>
+                </mml:msubsup>
+                <mml:mo>+</mml:mo>
+                <mml:mo>Δ</mml:mo>
+                <mml:mo>)</mml:mo>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> dB, where <inline-formula>
+          <mml:math id="mm74" display="block">
+            <mml:semantics>
+              <mml:mo>Δ</mml:mo>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> was 5.5 dB in all scenes except for ‘News broadcasting’ where <inline-formula>
+          <mml:math id="mm75" display="block">
+            <mml:semantics>
+              <mml:mo>Δ</mml:mo>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> was set to 23 dB, in order to match the higher listener-preferred level. In total, six SBR conditions were evaluated. <xref ref-type="table" rid="applsci-08-00059-t003">Table 3</xref> further details the SBRs yielded by the three scene-specific systems for each audio scene. The intensity of the foreground speech was equalised over all the audio clips; the background level was adjusted accordingly to meet the overall SBR requirements.</p>
+      </sec>
+      <sec id="sec5dot2-applsci-08-00059">
+        <title>5.2. Procedure and Listeners</title>
+        <p>After Expt. II, the audio excerpts were presented to listeners using the same setup as described in <xref ref-type="sec" rid="sec4dot2-applsci-08-00059">Section 4.2</xref>. The listening experience rating was conducted on a continuous quality scale ranging from 0 to 100 [<xref ref-type="bibr" rid="B51-applsci-08-00059">51</xref>]. The scale was divided equally into five notches indicating opinions of ‘Bad’, ‘Poor’, ‘Fair’, ‘Good’ and ‘Excellent’ from lower to higher scores. Listeners were instructed to focus on both intelligibility and sound effect. Thus, the judgement on the overall listening experience was expected to be made based on the contributions of the two aspects. The following information was presented to listeners in the beginning of the experiment, in order to make them understand the definition of [quoted wording omitted] in the context of the current experiment.</p>
+		<p>[Quoted wording omitted.]</p>
+        <p>The 15 excerpts were randomly presented to the listener via a MATLAB GUI. Each excerpt was presented on one screen. Within the screen, all six systems for that excerpt with different SBR levels were located side-by-side in a row. For each system, an individual vertical slider was used for rating the audio, with dedicated ‘Play’ and ‘Stop’ buttons. The positions of the systems in the row also varied stochastically from one excerpt to the next. Listeners listened to the audio over headphones; they were allowed to listen to each system as many times as necessary. Once the ratings were determined for all the six systems, the listener proceeded to the next excerpt until the end of the experiment.</p>
+        <p>The rating was performed by twenty-three native British English speakers (ages: 18–34 year, mean age: 24 year) with normal hearing. None of the participant took part in the previous two experiments.</p>
+      </sec>
+      <sec sec-type="results" id="sec5dot3-applsci-08-00059">
+        <title>5.3. Results</title>
+        <p>Panels 1–5 of <xref ref-type="fig" rid="applsci-08-00059-f007">Figure 7</xref> present the average subjective ratings for listening experience with the six SBR mixing levels in the five audio scenes. As anticipated, listeners tended to rate LP and OPT similarly in all five scenes; LP and OPT also led to the best listening experiences in almost every scene. <inline-formula>
+          <mml:math id="mm76" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>−</mml:mo>
+                <mml:mn>9</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>-dB and <inline-formula>
+          <mml:math id="mm77" display="block">
+            <mml:semantics>
+              <mml:msubsup>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+                <mml:mo>′</mml:mo>
+              </mml:msubsup>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> were mostly not rated favourably by listeners. Intriguingly, while listeners also rated 9-dB higher than 0-dB in the background sounds which are relatively steady (i.e., the ‘Football commentary’ and ‘Public speech’ scenes) or which introduces informational masking (the ‘News broadcasting’ scene), an opposite rating pattern was observed in the background sounds prone to fluctuation (the ‘Radio drama’ and ‘Radio poetry’ scenes). Across all the five scenes, as shown in the <italic>overall</italic> panel of <xref ref-type="fig" rid="applsci-08-00059-f007">Figure 7</xref> LP and OPT were the only two systems which were rated as leading to ‘Good’ listening experiences to listeners in terms of both speech intelligibility and background sound effect.</p>
+        <p>Significant main effects of scene [<inline-formula>
+          <mml:math id="mm78" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>F</mml:mi>
+                <mml:mrow>
+                  <mml:mo>(</mml:mo>
+                  <mml:mn>4</mml:mn>
+                  <mml:mo>,</mml:mo>
+                  <mml:mn>638</mml:mn>
+                  <mml:mo>)</mml:mo>
+                </mml:mrow>
+                <mml:mo>=</mml:mo>
+                <mml:mn>27.469</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:msup>
+                  <mml:mi>η</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.258</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>] and system [<inline-formula>
+          <mml:math id="mm79" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>F</mml:mi>
+                <mml:mrow>
+                  <mml:mo>(</mml:mo>
+                  <mml:mn>5</mml:mn>
+                  <mml:mo>,</mml:mo>
+                  <mml:mn>638</mml:mn>
+                  <mml:mo>)</mml:mo>
+                </mml:mrow>
+                <mml:mo>=</mml:mo>
+                <mml:mn>99.424</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:msup>
+                  <mml:mi>η</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.543</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>] were further revealed by two-way within-subject ANOVA. The bi-factor interaction was also significant [<inline-formula>
+          <mml:math id="mm80" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>F</mml:mi>
+                <mml:mrow>
+                  <mml:mo>(</mml:mo>
+                  <mml:mn>20</mml:mn>
+                  <mml:mo>,</mml:mo>
+                  <mml:mn>638</mml:mn>
+                  <mml:mo>)</mml:mo>
+                </mml:mrow>
+                <mml:mo>=</mml:mo>
+                <mml:mn>26.199</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+                <mml:mo>,</mml:mo>
+                <mml:msup>
+                  <mml:mi>η</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.354</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>], supporting the notion that audio content affects the preferred SBRs. <xref ref-type="table" rid="applsci-08-00059-t004">Table 4</xref> displays the results of post-hoc pairwise comparisons with Bonferroni correction. It confirms that LP and OPT were rated equally in all scenes [all <inline-formula>
+          <mml:math id="mm81" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&gt;</mml:mo>
+                <mml:mn>0.05</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>]. In both the ‘Football commentary’ and ’Public speech’ scenes, 9-dB provided similar listening experiences to listeners as OPT did [all <inline-formula>
+          <mml:math id="mm82" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&gt;</mml:mo>
+                <mml:mn>0.05</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>], despite a 7.2-dB and 6-dB difference between the two systems in the two scenes respectively. On the other hand, there was no significant difference in listening experience when the ’Radio drama’ and ‘Radio poetry’ scenes were produced using 0-dB or OPT (<inline-formula>
+          <mml:math id="mm83" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>−</mml:mo>
+                <mml:mn>6.9</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> and 1.3 dB in the two aforementioned scenes, respectively) [all <inline-formula>
+          <mml:math id="mm84" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&gt;</mml:mo>
+                <mml:mn>0.05</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>]. Nevertheless, scenes with OPT led to better listening experiences than with other mixing levels [all <inline-formula>
+          <mml:math id="mm85" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.01</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>], except for <inline-formula>
+          <mml:math id="mm86" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>−</mml:mo>
+                <mml:mn>9</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>-dB in ‘Radio drama’ scene [<inline-formula>
+          <mml:math id="mm87" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>=</mml:mo>
+                <mml:mn>0.89</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>]. When comparing LP to other systems (apart from OPT) in all the scenes, the results are consistent to OPT, except for ‘Football commentary’ where LP was rated same as 0-dB. Overall, listeners rated both LP and OPT as the best over all other four systems [all <inline-formula>
+          <mml:math id="mm88" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mi>p</mml:mi>
+                <mml:mo>&lt;</mml:mo>
+                <mml:mn>0.001</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>].</p>
+      </sec>
+      <sec id="sec5dot4-applsci-08-00059">
+        <title>5.4. Interim Discussion</title>
+        <p>In contrast to Expt. II, in which subjects specified the SBR that they felt was most appropriate, in this last experiment listeners were asked to rate their experience resulted from different SBR levels, including those favourable levels observed in the previous experiment. For the constant SBRs, listeners tended to rate 9-dB higher than 0-dB in relatively steady backgrounds (crowds in ‘Football commentary’ and babble noise in ‘Public speech’), in which energetic masking is strong [<xref ref-type="bibr" rid="B13-applsci-08-00059">13</xref>]. This could be because 0-dB is too close to the <inline-formula>
+          <mml:math id="mm89" display="block">
+            <mml:semantics>
+              <mml:msub>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+              </mml:msub>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>, which is the measured threshold for perceiving all the speech content. Understanding speech at this level requires more listening effort from the listeners [<xref ref-type="bibr" rid="B52-applsci-08-00059">52</xref>], leading to degraded listening experience. An opposite pattern was observed for 0-dB and 9-dB in the presence of fluctuating backgrounds (music or sound effects in ‘Radio drama’ and ‘Radio poetry’). Given the predicted <inline-formula>
+          <mml:math id="mm90" display="block">
+            <mml:semantics>
+              <mml:msubsup>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+                <mml:mo>′</mml:mo>
+              </mml:msubsup>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> of <inline-formula>
+          <mml:math id="mm91" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>−</mml:mo>
+                <mml:mn>12.4</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> dB for ‘Radio drama’ and <inline-formula>
+          <mml:math id="mm92" display="block">
+            <mml:semantics>
+              <mml:mrow>
+                <mml:mo>−</mml:mo>
+                <mml:mn>4.2</mml:mn>
+              </mml:mrow>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula> ‘Radio poetry’, this evidently is no longer due to the issues of intelligibility or listening effort. It is likely that listeners thought that 9-dB BSR led to considerably low background sounds, hence the lack of atmosphere for the scenes. In the two scenes, 9-dB was merely rated as the same as <inline-formula>
+          <mml:math id="mm93" display="block">
+            <mml:semantics>
+              <mml:msubsup>
+                <mml:mi>SBR</mml:mi>
+                <mml:mrow>
+                  <mml:mi>m</mml:mi>
+                  <mml:mi>i</mml:mi>
+                  <mml:mi>n</mml:mi>
+                </mml:mrow>
+                <mml:mo>′</mml:mo>
+              </mml:msubsup>
+            </mml:semantics>
+          </mml:math>
+        </inline-formula>. This is a clear demonstration of the importance of the balance between speech intelligibility and background sounds to listener listening experience. However, this explanation may not apply to ‘News broadcasting’—the competing speech in the background induces more negative effects (e.g., informational masking and attention switching) than other backgrounds tested here, which mostly only introduce pure energetic masking. This has already been discussed in <xref ref-type="sec" rid="sec4dot4-applsci-08-00059">Section 4.4</xref>.</p>
+        <p>One would naturally expect that the listening experience with the listener-preferred level should be rated higher than other levels. However, while LP and OPT indeed led to better listening experience in most of the scenes, listeners also thought that some other levels may provide similar experiences although there was a difference of up to 8.6 dB (e.g., between LP and 9-dB in the ‘Football commentary’ and ‘Public speech’ scene, and between LP and 0-dB in the ‘Radio drama’ scene). This may be a reflection of the diversity of listener’s opinion on the optimal SBR level for mixing—while some listeners enjoy louder background sounds that may create better atmosphere in the scene, others perhaps prefer a quieter background that results in better intelligibility with less listening effort used in understanding the target speech. Furthermore, such listener variability in preference suggests that using a reference system to compare candidates to, as in e.g., [<xref ref-type="bibr" rid="B19-applsci-08-00059">19</xref>], may be inappropriate, leading to biased opinions of listeners.</p>
+      </sec>
+    </sec>
+    <sec sec-type="conclusions" id="sec6-applsci-08-00059">
+      <title>6. Conclusions</title>
+      <p>By using an objective intelligibility metric (BiDWGP) as a perceptual guide, an approach is proposed to automate the selection of speech-to-background ratio in broadcast audio scenes. When a desired mixing level is predefined for a scene, this method is able to automatically validate whether a minimal intelligibility requirement is satisfied. It can also estimate the lowest mixing level (<inline-formula>
+        <mml:math id="mm94" display="block">
+          <mml:semantics>
+            <mml:msub>
+              <mml:mi>SBR</mml:mi>
+              <mml:mrow>
+                <mml:mi>m</mml:mi>
+                <mml:mi>i</mml:mi>
+                <mml:mi>n</mml:mi>
+              </mml:mrow>
+            </mml:msub>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula>) needed to meet the intelligibility requirement. In addition, an optimal SBR can be estimated by applying an extra gain to the estimated <inline-formula>
+        <mml:math id="mm95" display="block">
+          <mml:semantics>
+            <mml:msub>
+              <mml:mi>SBR</mml:mi>
+              <mml:mrow>
+                <mml:mi>m</mml:mi>
+                <mml:mi>i</mml:mi>
+                <mml:mi>n</mml:mi>
+              </mml:mrow>
+            </mml:msub>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula>, to get a mix that not only maintains speech intelligibility but also considers other aspects of listener preference such as auditory comfort.</p>
+      <p>Three perceptual listening experiments were conducted. In Expt. I, we investigated the target objective intelligibility score, which resulted from the minimum SBR level that listeners require to fully understand the speech content in a given background masker. When using each model prediction to estimate <inline-formula>
+        <mml:math id="mm96" display="block">
+          <mml:semantics>
+            <mml:msub>
+              <mml:mi>SBR</mml:mi>
+              <mml:mrow>
+                <mml:mi>m</mml:mi>
+                <mml:mi>i</mml:mi>
+                <mml:mi>n</mml:mi>
+              </mml:mrow>
+            </mml:msub>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula>, the chosen BiDWGP metric yields the smallest errors compared to four state-of-the-art OIMs.</p>
+      <p>In Expt. II, listener-preferred SBR levels for mixing in five different audio scenes were measured. This showed that a gain needs to be applied to the model-predicted <inline-formula>
+        <mml:math id="mm97" display="block">
+          <mml:semantics>
+            <mml:msub>
+              <mml:mi>SBR</mml:mi>
+              <mml:mrow>
+                <mml:mi>m</mml:mi>
+                <mml:mi>i</mml:mi>
+                <mml:mi>n</mml:mi>
+              </mml:mrow>
+            </mml:msub>
+          </mml:semantics>
+        </mml:math>
+      </inline-formula> to get the preferred SBR. In the presence of noise, music, other sound effects or their combinations a gain of 5.5 dB is needed. When the background introduces informational masking (e.g., competing speech) a significantly larger gain of 23 dB may be required to alleviate the listening effort and the frequency of attention switching. However, further study is required to quantify the relationship between the additional gain and the degree of those factors affecting a listener’s preference for competing speech.</p>
+      <p>Expt. III was conducted to finally evaluate listening experiences in the audio scenes created using different mixing levels, including three constant and three scene-specific SBRs. The subjects ratings suggest that the SBR based on BiDWGP prediction with an additional gain derived from the measured listener-preferred SBRs in Expt. II, can provide the same good balance between speech intelligibility and background sound effects as the measured do, for the audio scenes tested in this study. Despite the optimal SBRs being acquired from fitting to the measured values, the ratings from different listeners—who were not involved in the measurement of the listener-preferred SBRs—confirmed the validity of the system-suggested SBRs.</p>
+      <p>For automatic decision making, automatic sound tagging could be a solution to identify the background sound. The system can then apply appropriate additional gains to the scene. In critical situations, such as live broadcasts, voice-over-IP, and adaptive systems for the hearing-impaired listeners, such a system could maintain high levels of speech intelligibility and listening comfort, improving the listening experience. Further study may extend the proposed system by suggesting the optimal SBRs with respect to other factors, such as room acoustics and ambient noise in the listening environment, which may also degrade speech intelligibility.</p>
+    </sec>
+  </body>
+  <back><ref-list>
+      <title>References</title>
+      <ref id="B1-applsci-08-00059">
+        <label>1.</label>
+        <element-citation publication-type="web">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Cohen</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Sound Matters. BBC College of Production Web Site</article-title>
+          <comment>Available online: <ext-link xlink:href="http://www.bbc.co.uk/academy/production/article/art20130702112136134" ext-link-type="uri">http://www.bbc.co.uk/academy/production/article/art20130702112136134</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2015-09-09">(accessed on 9 September 2015)</date-in-citation>
+        </element-citation>
+      </ref>
+      <ref id="B2-applsci-08-00059">
+        <label>2.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>van Wijngaarden</surname>
+              <given-names>S.J.</given-names>
+            </name>
+            <name>
+              <surname>Steeneken</surname>
+              <given-names>H.J.M.</given-names>
+            </name>
+            <name>
+              <surname>Houtgast</surname>
+              <given-names>T.</given-names>
+            </name>
+          </person-group>
+          <article-title>Quantifying the intelligibility of speech in noise for non-native talkers</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2002</year>
+          <volume>112</volume>
+          <fpage>3004</fpage>
+          <lpage>3013</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.1512289</pub-id>
+          <pub-id pub-id-type="pmid">12509022</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B3-applsci-08-00059">
+        <label>3.</label>
+        <element-citation publication-type="web">
+          <article-title>Appropriate Sound Levels for TV—Music, Dialogue, etc</article-title>
+          <comment>Available online: <ext-link xlink:href="https://forums.creativecow.net/thread/8/982763" ext-link-type="uri">https://forums.creativecow.net/thread/8/982763</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2016-04-02">(accessed on 2 April 2016)</date-in-citation>
+        </element-citation>
+      </ref>
+      <ref id="B4-applsci-08-00059">
+        <label>4.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Armstrong</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Brown</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Crabb</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Hughes</surname>
+              <given-names>C.J.</given-names>
+            </name>
+            <name>
+              <surname>Jones</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Sandford</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <source>Understanding the Diverse Needs of Subtitle Users in a Rapidly Evolving Media Landscape</source>
+          <comment>BBC Research &amp; Development White Paper WHP 307</comment>
+          <publisher-name>BBC</publisher-name>
+          <publisher-loc>London, UK</publisher-loc>
+          <year>2015</year>
+        </element-citation>
+      </ref>
+      <ref id="B5-applsci-08-00059">
+        <label>5.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hirsh</surname>
+              <given-names>I.J.</given-names>
+            </name>
+          </person-group>
+          <article-title>The relation between localization and intelligibility</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>1950</year>
+          <volume>22</volume>
+          <fpage>196</fpage>
+          <pub-id pub-id-type="doi">10.1121/1.1906588</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B6-applsci-08-00059">
+        <label>6.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Dirks</surname>
+              <given-names>D.D.</given-names>
+            </name>
+            <name>
+              <surname>Wilson</surname>
+              <given-names>R.H.</given-names>
+            </name>
+          </person-group>
+          <article-title>The effect of spatially separated sound sources on speech intelligibility</article-title>
+          <source>J. Speech Hear. Res.</source>
+          <year>1969</year>
+          <volume>12</volume>
+          <fpage>5</fpage>
+          <lpage>38</lpage>
+          <pub-id pub-id-type="doi">10.1044/jshr.1201.05</pub-id>
+          <pub-id pub-id-type="pmid">5779912</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B7-applsci-08-00059">
+        <label>7.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>MacKeith</surname>
+              <given-names>N.W.</given-names>
+            </name>
+            <name>
+              <surname>Coles</surname>
+              <given-names>R.R.A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Binaural advantages in hearing of speech</article-title>
+          <source>J. Laryngol. Otol.</source>
+          <year>1971</year>
+          <volume>85</volume>
+          <fpage>213</fpage>
+          <lpage>232</lpage>
+          <pub-id pub-id-type="doi">10.1017/S0022215100073369</pub-id>
+          <pub-id pub-id-type="pmid">5550604</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B8-applsci-08-00059">
+        <label>8.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hawley</surname>
+              <given-names>M.L.</given-names>
+            </name>
+            <name>
+              <surname>Litovsky</surname>
+              <given-names>R.Y.</given-names>
+            </name>
+            <name>
+              <surname>Colburn</surname>
+              <given-names>H.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Speech intelligibility and localization in a multi-source environment</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>1999</year>
+          <volume>105</volume>
+          <fpage>3436</fpage>
+          <lpage>3448</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.424670</pub-id>
+          <pub-id pub-id-type="pmid">10380667</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B9-applsci-08-00059">
+        <label>9.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Cooke</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Fazenda</surname>
+              <given-names>B.M.</given-names>
+            </name>
+            <name>
+              <surname>Cox</surname>
+              <given-names>T.J.</given-names>
+            </name>
+          </person-group>
+          <article-title>A glimpse-based approach for predicting binaural intelligibility with single and multiple maskers in anechoic conditions</article-title>
+          <source>Proceedings of the Sixteenth Annual Conference of the International Speech Communication Association</source>
+          <conf-loc>Dresden, Germany</conf-loc>
+          <conf-date>6–10 September 2015</conf-date>
+          <fpage>2568</fpage>
+          <lpage>2572</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B10-applsci-08-00059">
+        <label>10.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>de Laat</surname>
+              <given-names>J.A.P.M.</given-names>
+            </name>
+            <name>
+              <surname>Plomp</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>The reception threshold of interrupted speech for hearing-impaired listeners</article-title>
+          <source>Hearing-Physiological Bases and Psychophysics</source>
+          <publisher-name>Springer</publisher-name>
+          <publisher-loc>Berlin/Heidelberg, Germany</publisher-loc>
+          <year>1983</year>
+          <fpage>359</fpage>
+          <lpage>363</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B11-applsci-08-00059">
+        <label>11.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Festen</surname>
+              <given-names>J.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Speech-perception threshold in a fluctuating background sound and its possible relation to temporal resolution</article-title>
+          <source>The Psychophysics of Speech Perception</source>
+          <publisher-name>Martinus Nijhoff</publisher-name>
+          <publisher-loc>Dordrecht, The Netherlands</publisher-loc>
+          <year>1987</year>
+          <fpage>461</fpage>
+          <lpage>466</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B12-applsci-08-00059">
+        <label>12.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Middelweerd</surname>
+              <given-names>M.J.</given-names>
+            </name>
+            <name>
+              <surname>Festen</surname>
+              <given-names>J.M.</given-names>
+            </name>
+            <name>
+              <surname>Plomp</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Difficulties with speech intelligibility in noise in spite of a normal pure-tone audiogram</article-title>
+          <source>Audiology</source>
+          <year>1990</year>
+          <volume>29</volume>
+          <fpage>1</fpage>
+          <lpage>7</lpage>
+          <pub-id pub-id-type="doi">10.3109/00206099009081640</pub-id>
+          <pub-id pub-id-type="pmid">2310349</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B13-applsci-08-00059">
+        <label>13.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Festen</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Plomp</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Effects of fluctuating noise and interfering speech on the speech-reception threshold for impaired and normal hearing</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>1990</year>
+          <volume>88</volume>
+          <fpage>1725</fpage>
+          <lpage>1736</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.400247</pub-id>
+          <pub-id pub-id-type="pmid">2262629</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B14-applsci-08-00059">
+        <label>14.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bronkhorst</surname>
+              <given-names>A.W.</given-names>
+            </name>
+            <name>
+              <surname>Plomp</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Effect of multiple speechlike maskers on binaural speech recognition in normal and impaired hearing</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>1992</year>
+          <volume>92</volume>
+          <fpage>3132</fpage>
+          <lpage>3139</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.404209</pub-id>
+          <pub-id pub-id-type="pmid">1474228</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B15-applsci-08-00059">
+        <label>15.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>ter Keurs</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Festen</surname>
+              <given-names>J.M.</given-names>
+            </name>
+            <name>
+              <surname>Plomp</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Limited resolution of spectral contrast and hearing loss for speech in noise</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>1993</year>
+          <volume>94</volume>
+          <fpage>1307</fpage>
+          <lpage>1314</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.408158</pub-id>
+          <pub-id pub-id-type="pmid">8408972</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B16-applsci-08-00059">
+        <label>16.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Brungart</surname>
+              <given-names>D.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Informational and energetic masking effects in the perception of two simultaneous talkers</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2001</year>
+          <volume>109</volume>
+          <fpage>1101</fpage>
+          <lpage>1109</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.1345696</pub-id>
+          <pub-id pub-id-type="pmid">11303924</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B17-applsci-08-00059">
+        <label>17.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Brungart</surname>
+              <given-names>D.S.</given-names>
+            </name>
+            <name>
+              <surname>Simpson</surname>
+              <given-names>B.D.</given-names>
+            </name>
+            <name>
+              <surname>Ericson</surname>
+              <given-names>M.A.</given-names>
+            </name>
+            <name>
+              <surname>Scott</surname>
+              <given-names>K.R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Informational and energetic masking effects in the perception of multiple simultaneous talkers</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2001</year>
+          <volume>110</volume>
+          <fpage>2527</fpage>
+          <lpage>2538</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.1408946</pub-id>
+          <pub-id pub-id-type="pmid">11757942</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B18-applsci-08-00059">
+        <label>18.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Shirley</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Oldfield</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Clean audio for TV broadcast: An object-based approach for hearing-impaired viewers</article-title>
+          <source>J. Audio Eng. Soc.</source>
+          <year>2015</year>
+          <volume>63</volume>
+          <fpage>245</fpage>
+          <lpage>256</lpage>
+          <pub-id pub-id-type="doi">10.17743/jaes.2015.0017</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B19-applsci-08-00059">
+        <label>19.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Paulus</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Herre</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Murtaza</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Terentiv</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Fuchs</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Disch</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Ridderbusch</surname>
+              <given-names>F.</given-names>
+            </name>
+          </person-group>
+          <article-title>MPEG-D spatial audio object coding for dialogue enhancement (SAOC-DE)</article-title>
+          <source>Proceedings of the Audio Engineering Society Convention 138</source>
+          <conf-loc>Warsaw, Poland</conf-loc>
+          <conf-date>7–10 May 2015</conf-date>
+        </element-citation>
+      </ref>
+      <ref id="B20-applsci-08-00059">
+        <label>20.</label>
+        <element-citation publication-type="book">
+          <source>ANSI S3.5-1997 Methods for the Calculation of the Speech Intelligibility Index</source>
+          <publisher-name>ANSI</publisher-name>
+          <publisher-loc>Washington, DC, USA</publisher-loc>
+          <year>1997</year>
+        </element-citation>
+      </ref>
+      <ref id="B21-applsci-08-00059">
+        <label>21.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <collab>IEC</collab>
+          </person-group>
+          <article-title>Part 16: Objective rating of speech intelligibility by speech transmission index</article-title>
+          <source>IEC 60268 Sound System Equipment</source>
+          <edition>4th ed.</edition>
+          <publisher-name>International Electrotechnical Commission</publisher-name>
+          <publisher-loc>Geneva, Switzerland</publisher-loc>
+          <year>2011</year>
+        </element-citation>
+      </ref>
+      <ref id="B22-applsci-08-00059">
+        <label>22.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Rhebergen</surname>
+              <given-names>K.S.</given-names>
+            </name>
+            <name>
+              <surname>Versfeld</surname>
+              <given-names>N.J.</given-names>
+            </name>
+          </person-group>
+          <article-title>A Speech Intelligibility Index-based approach to predict the speech reception threshold for sentences in fluctuating noise for normal-hearing listeners</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2005</year>
+          <volume>117</volume>
+          <fpage>2181</fpage>
+          <pub-id pub-id-type="doi">10.1121/1.1861713</pub-id>
+          <pub-id pub-id-type="pmid">15898659</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B23-applsci-08-00059">
+        <label>23.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Taal</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Hendriks</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Heusdens</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Jensen</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <article-title>A short-time objective intelligibility measure for time-frequency weighted noisy speech</article-title>
+          <source>Proceedings of the 2010 IEEE International Conference on Acoustics Speech and Signal Processing (ICASSP)</source>
+          <conf-loc>Dallas, TX, USA</conf-loc>
+          <conf-date>14–19 March 2010</conf-date>
+          <fpage>4214</fpage>
+          <lpage>4217</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B24-applsci-08-00059">
+        <label>24.</label>
+        <element-citation publication-type="thesis">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tang</surname>
+              <given-names>Y.</given-names>
+            </name>
+          </person-group>
+          <article-title>Speech Intelligibility Enhancement and Glimpse-Based Intelligibility Models for Known Noise Conditions</article-title>
+          <source>Ph.D. Thesis</source>
+          <publisher-name>Universidad del País Vasco</publisher-name>
+          <publisher-loc>Vitoria-Gasteiz, Spain</publisher-loc>
+          <year>2014</year>
+        </element-citation>
+      </ref>
+      <ref id="B25-applsci-08-00059">
+        <label>25.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Zurek</surname>
+              <given-names>P.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Binaural advantages and directional effects in speech intelligibility</article-title>
+          <source>Acoustical Factors Affecting Hearing Aid Performance</source>
+          <publisher-name>Allyn and Bacon</publisher-name>
+          <publisher-loc>Needham Heights, MA, USA</publisher-loc>
+          <year>1993</year>
+          <fpage>255</fpage>
+          <lpage>276</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B26-applsci-08-00059">
+        <label>26.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>van Wijngaarden</surname>
+              <given-names>S.J.</given-names>
+            </name>
+            <name>
+              <surname>Drullman</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Binaural intelligibility prediction based on the speech transmission index</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2008</year>
+          <volume>123</volume>
+          <fpage>4514</fpage>
+          <lpage>4523</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.2905245</pub-id>
+          <pub-id pub-id-type="pmid">18537400</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B27-applsci-08-00059">
+        <label>27.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Andersen</surname>
+              <given-names>A.H.</given-names>
+            </name>
+            <name>
+              <surname>de Haan</surname>
+              <given-names>J.M.</given-names>
+            </name>
+            <name>
+              <surname>Tan</surname>
+              <given-names>Z.H.</given-names>
+            </name>
+            <name>
+              <surname>Jensen</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <article-title>A binaural short time objective intelligibility measure for noisy and enhanced Speech</article-title>
+          <source>Proceedings of the Sixteenth Annual Conference of the International Speech Communication Association</source>
+          <conf-loc>Dresden, Germany</conf-loc>
+          <conf-date>6–10 September 2015</conf-date>
+          <fpage>2563</fpage>
+          <lpage>2567</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B28-applsci-08-00059">
+        <label>28.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Cooke</surname>
+              <given-names>M.P.</given-names>
+            </name>
+            <name>
+              <surname>Fazenda</surname>
+              <given-names>B.M.</given-names>
+            </name>
+            <name>
+              <surname>Cox</surname>
+              <given-names>T.J.</given-names>
+            </name>
+          </person-group>
+          <article-title>A metric for predicting binaural speech intelligibility in stationary noise and competing speech maskers</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2016</year>
+          <volume>140</volume>
+          <fpage>1858</fpage>
+          <lpage>1870</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.4962484</pub-id>
+          <pub-id pub-id-type="pmid">27914424</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B29-applsci-08-00059">
+        <label>29.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Sauert</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Vary</surname>
+              <given-names>P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Recursive closed-form optimization of spectral audio power allocation for near end listening enhancement</article-title>
+          <source>Proceedings of the ITG-Fachtagung Sprachkommunikation</source>
+          <conf-loc>Bochum, Germany</conf-loc>
+          <conf-date>6–8 October 2010</conf-date>
+        </element-citation>
+      </ref>
+      <ref id="B30-applsci-08-00059">
+        <label>30.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Cooke</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Optimised spectral weightings for noise-dependent speech intelligibility enhancement</article-title>
+          <source>Proceedings of the Thirteenth Annual Conference of the International Speech Communication Association</source>
+          <conf-loc>Portland, OR, USA</conf-loc>
+          <conf-date>9–13 September 2012</conf-date>
+          <fpage>955</fpage>
+          <lpage>958</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B31-applsci-08-00059">
+        <label>31.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Taal</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Hendriks</surname>
+              <given-names>R.C.</given-names>
+            </name>
+            <name>
+              <surname>Heusdens</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>Speech energy redistribution for intelligibility improvement in noise based on a perceptual distortion measure</article-title>
+          <source>Comput. Speech Lang.</source>
+          <year>2014</year>
+          <volume>28</volume>
+          <fpage>858</fpage>
+          <lpage>872</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.csl.2013.11.003</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B32-applsci-08-00059">
+        <label>32.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Müsch</surname>
+              <given-names>H.</given-names>
+            </name>
+          </person-group>
+          <article-title>Aging and sound perception: Desirable characteristics of entertainment audio for the elderly</article-title>
+          <source>Proceedings of the Audio Engineering Society Convention 125</source>
+          <conf-loc>San Francisco, CA, USA</conf-loc>
+          <conf-date>2–5 October 2008</conf-date>
+        </element-citation>
+      </ref>
+      <ref id="B33-applsci-08-00059">
+        <label>33.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ma</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Hu</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Loizou</surname>
+              <given-names>P.C.</given-names>
+            </name>
+          </person-group>
+          <article-title>Objective measures for predicting speech intelligibility in noisy conditions based on new band-importance functions</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2009</year>
+          <volume>125</volume>
+          <fpage>3387</fpage>
+          <lpage>3405</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.3097493</pub-id>
+          <pub-id pub-id-type="pmid">19425678</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B34-applsci-08-00059">
+        <label>34.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tang</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Cooke</surname>
+              <given-names>M.P.</given-names>
+            </name>
+            <name>
+              <surname>Valentini-Botinhao</surname>
+              <given-names>C.</given-names>
+            </name>
+          </person-group>
+          <article-title>Evaluating the predictions of objective intelligibility metrics for modified and synthetic speech</article-title>
+          <source>Comput. Speech Lang.</source>
+          <year>2016</year>
+          <volume>35</volume>
+          <fpage>73</fpage>
+          <lpage>92</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.csl.2015.06.002</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B35-applsci-08-00059">
+        <label>35.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Cooke</surname>
+              <given-names>M.P.</given-names>
+            </name>
+            <name>
+              <surname>Mayo</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Valentini-Botinhao</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Stylianou</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Sauert</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Tang</surname>
+              <given-names>Y.</given-names>
+            </name>
+          </person-group>
+          <article-title>Evaluating the intelligibility benefit of speech modifications in known noise conditions</article-title>
+          <source>Speech Commun.</source>
+          <year>2013</year>
+          <volume>55</volume>
+          <fpage>572</fpage>
+          <lpage>585</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.specom.2013.01.001</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B36-applsci-08-00059">
+        <label>36.</label>
+        <element-citation publication-type="web">
+          <person-group person-group-type="author">
+            <collab>University College London</collab>
+			<collab>Cambridge University</collab>
+			<collab>Edinburgh University</collab>
+			<collab>the Speech Research Unit and the National Physical Laboratory</collab>
+          </person-group>
+          <article-title>SCRIBE—Spoken Corpus of British English</article-title>
+          <comment>Available online: <ext-link xlink:href="http://www.phon.ucl.ac.uk/resource/scribe" ext-link-type="uri">http://www.phon.ucl.ac.uk/resource/scribe</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2009-10-19">(accessed on 19 October 2009)</date-in-citation>
+        </element-citation>
+      </ref>
+      <ref id="B37-applsci-08-00059">
+        <label>37.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bradlow</surname>
+              <given-names>A.R.</given-names>
+            </name>
+            <name>
+              <surname>Torretta</surname>
+              <given-names>G.M.</given-names>
+            </name>
+            <name>
+              <surname>Pisoni</surname>
+              <given-names>D.B.</given-names>
+            </name>
+          </person-group>
+          <article-title>Intelligibility of normal speech I: Global and fine-grained acoustic-phonetic talker characteristics</article-title>
+          <source>Speech Commun.</source>
+          <year>1996</year>
+          <volume>20</volume>
+          <fpage>255</fpage>
+          <lpage>272</lpage>
+          <pub-id pub-id-type="doi">10.1016/S0167-6393(96)00063-5</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B38-applsci-08-00059">
+        <label>38.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Markham</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Hazan</surname>
+              <given-names>V.</given-names>
+            </name>
+          </person-group>
+          <article-title>The effect of talker- and listener-related factors on intelligibility for a real-word, open-set perception test</article-title>
+          <source>J. Speech Lang. Hear. Res.</source>
+          <year>2004</year>
+          <volume>47</volume>
+          <fpage>725</fpage>
+          <lpage>737</lpage>
+          <pub-id pub-id-type="doi">10.1044/1092-4388(2004/055)</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B39-applsci-08-00059">
+        <label>39.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Culling</surname>
+              <given-names>J.F.</given-names>
+            </name>
+            <name>
+              <surname>Colburn</surname>
+              <given-names>H.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Binaural sluggishness in the perception of tone sequences and speech in noise</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2000</year>
+          <volume>107</volume>
+          <fpage>517</fpage>
+          <lpage>527</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.428320</pub-id>
+          <pub-id pub-id-type="pmid">10641660</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B40-applsci-08-00059">
+        <label>40.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Miller</surname>
+              <given-names>G.</given-names>
+            </name>
+          </person-group>
+          <article-title>The masking of speech</article-title>
+          <source>Psychol. Bull.</source>
+          <year>1947</year>
+          <volume>44</volume>
+          <fpage>105</fpage>
+          <lpage>129</lpage>
+          <pub-id pub-id-type="doi">10.1037/h0055960</pub-id>
+          <pub-id pub-id-type="pmid">20288932</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B41-applsci-08-00059">
+        <label>41.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Pollack</surname>
+              <given-names>I.</given-names>
+            </name>
+          </person-group>
+          <article-title>Auditory informational masking</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>1975</year>
+          <volume>57</volume>
+          <fpage>S5</fpage>
+          <pub-id pub-id-type="doi">10.1121/1.1995329</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B42-applsci-08-00059">
+        <label>42.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Neff</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Signal properties that reduce masking by simultaneous random-frequency maskers</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>1995</year>
+          <volume>96</volume>
+          <fpage>1909</fpage>
+          <lpage>1921</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.414458</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B43-applsci-08-00059">
+        <label>43.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kidd</surname>
+              <given-names>G.</given-names>
+              <suffix>Jr.</suffix>
+            </name>
+            <name>
+              <surname>Mason</surname>
+              <given-names>C.R.</given-names>
+            </name>
+            <name>
+              <surname>Richards</surname>
+              <given-names>V.M.</given-names>
+            </name>
+            <name>
+              <surname>Gallun</surname>
+              <given-names>F.J.</given-names>
+            </name>
+            <name>
+              <surname>Durlach</surname>
+              <given-names>N.I.</given-names>
+            </name>
+          </person-group>
+          <article-title>Informational masking</article-title>
+          <source>Auditory Perception of Sound Sources</source>
+          <publisher-name>Springer</publisher-name>
+          <publisher-loc>Berlin/Heidelberg, Germany</publisher-loc>
+          <year>2008</year>
+          <fpage>143</fpage>
+          <lpage>189</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B44-applsci-08-00059">
+        <label>44.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kidd</surname>
+              <given-names>G.</given-names>
+              <suffix>Jr.</suffix>
+            </name>
+            <name>
+              <surname>Colburn</surname>
+              <given-names>H.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Informational masking in speech recognition</article-title>
+          <source>The Auditory System at the Cocktail Party</source>
+          <publisher-name>Springer</publisher-name>
+          <publisher-loc>Berlin/Heidelberg, Germany</publisher-loc>
+          <year>2017</year>
+          <fpage>75</fpage>
+          <lpage>109</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B45-applsci-08-00059">
+        <label>45.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Koelewijn</surname>
+              <given-names>T.</given-names>
+            </name>
+            <name>
+              <surname>Zekveld</surname>
+              <given-names>A.A.</given-names>
+            </name>
+            <name>
+              <surname>Festen</surname>
+              <given-names>J.M.</given-names>
+            </name>
+            <name>
+              <surname>Kramer</surname>
+              <given-names>S.E.</given-names>
+            </name>
+          </person-group>
+          <article-title>Pupil dilation uncovers extra listening effort in the presence of an interfering speaker</article-title>
+          <source>Ear Hear.</source>
+          <year>2012</year>
+          <volume>33</volume>
+          <fpage>291</fpage>
+          <lpage>300</lpage>
+          <pub-id pub-id-type="doi">10.1097/AUD.0b013e3182310019</pub-id>
+          <pub-id pub-id-type="pmid">21921797</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B46-applsci-08-00059">
+        <label>46.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Fritz</surname>
+              <given-names>J.B.</given-names>
+            </name>
+            <name>
+              <surname>Elhilali</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>David</surname>
+              <given-names>S.V.</given-names>
+            </name>
+            <name>
+              <surname>Shamma</surname>
+              <given-names>S.A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Auditory attention—Focusing the searchlight on sound</article-title>
+          <source>Curr. Opin. Neurobiol.</source>
+          <year>2007</year>
+          <volume>17</volume>
+          <fpage>437</fpage>
+          <lpage>455</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.conb.2007.07.011</pub-id>
+          <pub-id pub-id-type="pmid">17714933</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B47-applsci-08-00059">
+        <label>47.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Büchler</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Allegro</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Launer</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Dillier</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Sound classification in hearing aids inspired by auditory scene analysis</article-title>
+          <source>EURASIP J. Adv. Signal Process.</source>
+          <year>2005</year>
+          <volume>2005</volume>
+          <fpage>387845</fpage>
+          <pub-id pub-id-type="doi">10.1155/ASP.2005.2991</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B48-applsci-08-00059">
+        <label>48.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Deng</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>O’Shaughnessy</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Voiced-unvoiced-silence speech sound classification based on unsupervised learning</article-title>
+          <source>Proceedings of the 2007 IEEE International Conference on Multimedia and Expo</source>
+          <conf-loc>Beijing, China</conf-loc>
+          <conf-date>2–5 July 2007</conf-date>
+          <fpage>546</fpage>
+          <lpage>548</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B49-applsci-08-00059">
+        <label>49.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Fleury</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Noury</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Vacher</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Glasson</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Seri</surname>
+              <given-names>J.F.</given-names>
+            </name>
+          </person-group>
+          <article-title>Sound and speech detection and classification in a Health Smart Home</article-title>
+          <source>Proceedings of the 30th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBS)</source>
+          <conf-loc>Vancouver, BC, Canada</conf-loc>
+          <conf-date>20–25 August 2008</conf-date>
+          <fpage>4644</fpage>
+          <lpage>4647</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B50-applsci-08-00059">
+        <label>50.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Freyman</surname>
+              <given-names>R.L.</given-names>
+            </name>
+            <name>
+              <surname>Balakrishnan</surname>
+              <given-names>U.</given-names>
+            </name>
+            <name>
+              <surname>Helfer</surname>
+              <given-names>K.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Effect of number of masking talkers and auditory priming on informational masking in speech recognition</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2004</year>
+          <volume>115</volume>
+          <fpage>2246</fpage>
+          <lpage>2256</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.1689343</pub-id>
+          <pub-id pub-id-type="pmid">15139635</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B51-applsci-08-00059">
+        <label>51.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <collab>International Telecommunication Union</collab>
+          </person-group>
+          <source>ITU-R BS.1534-3: Method for the Subjective Assessment of Intermediate Quality Level of Coding Systems</source>
+          <publisher-name>International Telecommunication Union</publisher-name>
+          <publisher-loc>Geneva, Switzerland</publisher-loc>
+          <year>2015</year>
+        </element-citation>
+      </ref>
+      <ref id="B52-applsci-08-00059">
+        <label>52.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Picou</surname>
+              <given-names>E.M.</given-names>
+            </name>
+            <name>
+              <surname>Gordon</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Ricketts</surname>
+              <given-names>T.A.</given-names>
+            </name>
+          </person-group>
+          <article-title>The effects of noise and reverberation on listening effort for adults with normal hearing</article-title>
+          <source>Ear Hear.</source>
+          <year>2016</year>
+          <volume>37</volume>
+          <fpage>1</fpage>
+          <lpage>13</lpage>
+          <pub-id pub-id-type="doi">10.1097/AUD.0000000000000222</pub-id>
+          <pub-id pub-id-type="pmid">26372266</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+    <sec><title>Aggregate result tables (selected)</title><table-wrap id="applsci-08-00059-t001" position="float">
+        <object-id pub-id-type="pii">applsci-08-00059-t001_Table 1</object-id>
+        <label>Table 1</label>
+        <caption>
+          <p>Objective index leading to the minimal RMSE (in dB), RMSE and <inline-formula>
+            <mml:math id="mm104" display="block">
+              <mml:semantics>
+                <mml:msup>
+                  <mml:mi>r</mml:mi>
+                  <mml:mn>2</mml:mn>
+                </mml:msup>
+              </mml:semantics>
+            </mml:math>
+          </inline-formula> between the measured and predicted <inline-formula>
+            <mml:math id="mm105" display="block">
+              <mml:semantics>
+                <mml:msub>
+                  <mml:mi>SBR</mml:mi>
+                  <mml:mrow>
+                    <mml:mi>m</mml:mi>
+                    <mml:mi>i</mml:mi>
+                    <mml:mi>n</mml:mi>
+                  </mml:mrow>
+                </mml:msub>
+              </mml:semantics>
+            </mml:math>
+          </inline-formula> of five OIMs.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin"> </th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">BiDWGP</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">SII</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">STI</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">NCM</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">STOI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="middle">index</td>
+              <td align="center" valign="middle">0.50</td>
+              <td align="center" valign="middle">0.24</td>
+              <td align="center" valign="middle">0.39</td>
+              <td align="center" valign="middle">0.46</td>
+              <td align="center" valign="middle">0.69</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">RMSE (dB)</td>
+              <td align="center" valign="middle">2.4</td>
+              <td align="center" valign="middle">4.1</td>
+              <td align="center" valign="middle">3.3</td>
+              <td align="center" valign="middle">4.8</td>
+              <td align="center" valign="middle">3.2</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin"><inline-formula>
+                  <mml:math id="mm106" display="block">
+                    <mml:semantics>
+                      <mml:msup>
+                        <mml:mi>r</mml:mi>
+                        <mml:mn>2</mml:mn>
+                      </mml:msup>
+                    </mml:semantics>
+                  </mml:math>
+                </inline-formula></td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.70</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.30</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.35</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.09</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">0.37</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <table-wrap id="applsci-08-00059-t003" position="float">
+        <object-id pub-id-type="pii">applsci-08-00059-t003_Table 3</object-id>
+        <label>Table 3</label>
+        <caption>
+          <p>SBR values (dB) of <inline-formula>
+            <mml:math id="mm107" display="block">
+              <mml:semantics>
+                <mml:msubsup>
+                  <mml:mi>SBR</mml:mi>
+                  <mml:mrow>
+                    <mml:mi>m</mml:mi>
+                    <mml:mi>i</mml:mi>
+                    <mml:mi>n</mml:mi>
+                  </mml:mrow>
+                  <mml:mo>′</mml:mo>
+                </mml:msubsup>
+              </mml:semantics>
+            </mml:math>
+          </inline-formula>, listener-preferred (LP) and optimal (OPT) in the audio scenes.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin"> </th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">SBR<inline-formula>
+                <mml:math id="mm108" display="block">
+                  <mml:semantics>
+                    <mml:mstyle mathvariant="bold">
+                      <mml:msubsup>
+                        <mml:mrow/>
+                        <mml:mi mathvariant="bold-italic">min</mml:mi>
+                        <mml:mo>′</mml:mo>
+                      </mml:msubsup>
+                    </mml:mstyle>
+                  </mml:semantics>
+                </mml:math>
+              </inline-formula></th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">LP</th>
+              <th align="center" valign="middle" style="border-top:solid thin;border-bottom:solid thin">OPT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="left" valign="middle">Football commentary</td>
+              <td align="center" valign="middle"><inline-formula>
+                  <mml:math id="mm109" display="block">
+                    <mml:semantics>
+                      <mml:mrow>
+                        <mml:mo>−</mml:mo>
+                        <mml:mn>3.7</mml:mn>
+                      </mml:mrow>
+                    </mml:semantics>
+                  </mml:math>
+                </inline-formula></td>
+              <td align="center" valign="middle">0.4</td>
+              <td align="center" valign="middle">1.8</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">News broadcasting</td>
+              <td align="center" valign="middle"><inline-formula>
+                  <mml:math id="mm110" display="block">
+                    <mml:semantics>
+                      <mml:mrow>
+                        <mml:mo>−</mml:mo>
+                        <mml:mn>7.5</mml:mn>
+                      </mml:mrow>
+                    </mml:semantics>
+                  </mml:math>
+                </inline-formula></td>
+              <td align="center" valign="middle">15.6</td>
+              <td align="center" valign="middle">15.5</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Public speech</td>
+              <td align="center" valign="middle"><inline-formula>
+                  <mml:math id="mm111" display="block">
+                    <mml:semantics>
+                      <mml:mrow>
+                        <mml:mo>−</mml:mo>
+                        <mml:mn>2.5</mml:mn>
+                      </mml:mrow>
+                    </mml:semantics>
+                  </mml:math>
+                </inline-formula></td>
+              <td align="center" valign="middle">3.7</td>
+              <td align="center" valign="middle">3.0</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">Radio drama</td>
+              <td align="center" valign="middle"><inline-formula>
+                  <mml:math id="mm112" display="block">
+                    <mml:semantics>
+                      <mml:mrow>
+                        <mml:mo>−</mml:mo>
+                        <mml:mn>12.4</mml:mn>
+                      </mml:mrow>
+                    </mml:semantics>
+                  </mml:math>
+                </inline-formula></td>
+              <td align="center" valign="middle"><inline-formula>
+                  <mml:math id="mm113" display="block">
+                    <mml:semantics>
+                      <mml:mrow>
+                        <mml:mo>−</mml:mo>
+                        <mml:mn>6.1</mml:mn>
+                      </mml:mrow>
+                    </mml:semantics>
+                  </mml:math>
+                </inline-formula></td>
+              <td align="center" valign="middle"><inline-formula>
+                  <mml:math id="mm114" display="block">
+                    <mml:semantics>
+                      <mml:mrow>
+                        <mml:mo>−</mml:mo>
+                        <mml:mn>6.9</mml:mn>
+                      </mml:mrow>
+                    </mml:semantics>
+                  </mml:math>
+                </inline-formula></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" style="border-bottom:solid thin">Radio poetry</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin"><inline-formula>
+                  <mml:math id="mm115" display="block">
+                    <mml:semantics>
+                      <mml:mrow>
+                        <mml:mo>−</mml:mo>
+                        <mml:mn>4.2</mml:mn>
+                      </mml:mrow>
+                    </mml:semantics>
+                  </mml:math>
+                </inline-formula></td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">1.1</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">1.3</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+       <table-wrap id="applsci-08-00059-t004" position="float">
+	   <label>Table 4</label>
+          <caption>
+            <p>Significance level of post-hoc pairwise comparison with Bonferroni correction between subjective ratings on SBRs shown in <xref ref-type="fig" rid="applsci-08-00059-f007">Figure 7</xref>. Codes ‘*’, ‘**’ and ‘***’ indicate <italic>p</italic> value <inline-formula>
+              <mml:math id="mm116" display="block">
+                <mml:semantics>
+                  <mml:mrow>
+                    <mml:mo>&lt;</mml:mo>
+                    <mml:mn>0.05</mml:mn>
+                  </mml:mrow>
+                </mml:semantics>
+              </mml:math>
+            </inline-formula>, <inline-formula>
+              <mml:math id="mm117" display="block">
+                <mml:semantics>
+                  <mml:mrow>
+                    <mml:mo>&lt;</mml:mo>
+                    <mml:mn>0.01</mml:mn>
+                  </mml:mrow>
+                </mml:semantics>
+              </mml:math>
+            </inline-formula> and <inline-formula>
+              <mml:math id="mm118" display="block">
+                <mml:semantics>
+                  <mml:mrow>
+                    <mml:mo>&lt;</mml:mo>
+                    <mml:mn>0.001</mml:mn>
+                  </mml:mrow>
+                </mml:semantics>
+              </mml:math>
+            </inline-formula>, respectively. <italic>p</italic> values are supplied for insignificant comparisons.</p>
+          </caption>
+      <table>
+   <tbody>
+        <tr>
+          <td colspan="6" align="center" valign="middle" style="border-top:hidden;border-bottom:solid 1.0pt">(1) Football commentary</td>
+          <td align="center" valign="middle" style="border-top:hidden"> </td>
+          <td colspan="6" align="center" valign="middle" style="border-top:hidden;border-bottom:solid 1.0pt">(2) News broadcasting</td>
+          <td align="center" valign="middle" style="border-top:hidden"> </td>
+          <td colspan="6" align="center" valign="middle" style="border-top:hidden;border-bottom:solid 1.0pt">(3) Public speech</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>0-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>9-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><inline-formula>
+                    <mml:math id="mm1240" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi mathvariant="bold">SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi mathvariant="bold-italic">m</mml:mi>
+                            <mml:mi mathvariant="bold-italic">i</mml:mi>
+                            <mml:mi mathvariant="bold-italic">n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo mathvariant="bold">′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>LP</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>OPT</bold></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>0-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>9-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><inline-formula>
+                    <mml:math id="mm1241" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi mathvariant="bold">SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi mathvariant="bold-italic">m</mml:mi>
+                            <mml:mi mathvariant="bold-italic">i</mml:mi>
+                            <mml:mi mathvariant="bold-italic">n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo mathvariant="bold">′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>LP</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>OPT</bold></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>0-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>9-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><inline-formula>
+                    <mml:math id="mm1242" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi mathvariant="bold">SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi mathvariant="bold-italic">m</mml:mi>
+                            <mml:mi mathvariant="bold-italic">i</mml:mi>
+                            <mml:mi mathvariant="bold-italic">n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo mathvariant="bold">′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>LP</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>OPT</bold></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">−9-dB</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">−9-dB</td>
+          <td align="center" valign="middle">**</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">−9-dB</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">0-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">0.85</td>
+          <td align="center" valign="middle">0.10</td>
+          <td align="center" valign="middle">0.30</td>
+          <td align="center" valign="middle">**</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">0-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">0.08</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">0-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">9-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">9-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">9-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle">1.00</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle"><inline-formula>
+                    <mml:math id="mm12450" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi>SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi>m</mml:mi>
+                            <mml:mi>i</mml:mi>
+                            <mml:mi>n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo>′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"><inline-formula>
+                    <mml:math id="mm12451" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi>SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi>m</mml:mi>
+                            <mml:mi>i</mml:mi>
+                            <mml:mi>n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo>′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"><inline-formula>
+                    <mml:math id="mm12452" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi>SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi>m</mml:mi>
+                            <mml:mi>i</mml:mi>
+                            <mml:mi>n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo>′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" style="border-bottom:solid 1.0pt">LP</td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt">1.00</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle" style="border-bottom:solid 1.0pt">LP</td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt">1.00</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle" style="border-bottom:solid 1.0pt">LP</td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid 1.0pt">1.00</td>
+        </tr>
+        <tr>
+          <td colspan="6" align="center" valign="middle" style="border-bottom:solid 1.0pt">(4) Radio drama</td>
+          <td align="center" valign="middle"> </td>
+          <td colspan="6" align="center" valign="middle" style="border-bottom:solid 1.0pt">(5) Radio poetry</td>
+          <td align="center" valign="middle"> </td>
+          <td colspan="6" align="center" valign="middle" style="border-bottom:solid 1.0pt"><italic>overall</italic></td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>0-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>9-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><inline-formula>
+                    <mml:math id="mm1243" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi mathvariant="bold">SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi mathvariant="bold-italic">m</mml:mi>
+                            <mml:mi mathvariant="bold-italic">i</mml:mi>
+                            <mml:mi mathvariant="bold-italic">n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo mathvariant="bold">′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>LP</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>OPT</bold></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>0-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>9-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><inline-formula>
+                    <mml:math id="mm1244" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi mathvariant="bold">SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi mathvariant="bold-italic">m</mml:mi>
+                            <mml:mi mathvariant="bold-italic">i</mml:mi>
+                            <mml:mi mathvariant="bold-italic">n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo mathvariant="bold">′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>LP</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>OPT</bold></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>0-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>9-dB</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><inline-formula>
+                    <mml:math id="mm12453" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi mathvariant="bold">SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi mathvariant="bold-italic">m</mml:mi>
+                            <mml:mi mathvariant="bold-italic">i</mml:mi>
+                            <mml:mi mathvariant="bold-italic">n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo mathvariant="bold">′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>LP</bold></td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"><bold>OPT</bold></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">−9-dB</td>
+          <td align="center" valign="middle">**</td>
+          <td align="center" valign="middle">0.12</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">0.12</td>
+          <td align="center" valign="middle">0.89</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">−9-dB</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">−9-dB</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">0-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle">0.26</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">0-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">**</td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle">0.26</td>
+          <td align="center" valign="middle">0.09</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">0-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle">9-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">1.00</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">**</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">9-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">0.41</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="left" valign="middle">9-dB</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle"><inline-formula>
+                    <mml:math id="mm12454" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi>SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi>m</mml:mi>
+                            <mml:mi>i</mml:mi>
+                            <mml:mi>n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo>′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"><inline-formula>
+                    <mml:math id="mm12455" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi>SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi>m</mml:mi>
+                            <mml:mi>i</mml:mi>
+                            <mml:mi>n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo>′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">**</td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"><inline-formula>
+                    <mml:math id="mm12456" display="block">
+                      <mml:semantics>
+                        <mml:msubsup>
+                          <mml:mi>SBR</mml:mi>
+                          <mml:mrow>
+                            <mml:mi>m</mml:mi>
+                            <mml:mi>i</mml:mi>
+                            <mml:mi>n</mml:mi>
+                          </mml:mrow>
+                          <mml:mo>′</mml:mo>
+                        </mml:msubsup>
+                      </mml:semantics>
+                    </mml:math>
+                  </inline-formula></td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle"> </td>
+          <td align="center" valign="middle">***</td>
+          <td align="center" valign="middle">***</td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle" style="border-bottom:solid thin">LP</td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin">1.00</td>
+          <td align="center" valign="middle" style="border-bottom:hidden"> </td>
+          <td align="left" valign="middle" style="border-bottom:solid thin">LP</td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin">1.00</td>
+          <td align="center" valign="middle" style="border-bottom:hidden"> </td>
+          <td align="left" valign="middle" style="border-bottom:solid thin">LP</td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+          <td align="center" valign="middle" style="border-bottom:solid thin">1.00</td>
+        </tr>
+      </tbody>
+     </table>
+    </table-wrap>
+  </sec></back></article>

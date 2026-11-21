@@ -1,0 +1,1866 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink"><!-- Adapted article text from publisher JATS: abstract, selected author sections, aggregate tables where retained, and references. Omits figures, linked packages, audio, stimuli materials and samples, individual data, contacts, and selected quotations. Not the original JATS or a complete illustrated article. --><front><article-meta><article-id pub-id-type="doi">10.3390/brainsci12101320</article-id>
+      <article-id pub-id-type="publisher-id">brainsci-12-01320</article-id>
+      <title-group>
+        <article-title>Familiarity of Background Music Modulates the Cortical Tracking of Target Speech at the “Cocktail Party”</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-2545-3693</contrib-id>
+          <name>
+            <surname>Brown</surname>
+            <given-names>Jane A.</given-names>
+          </name>
+          <xref rid="af1-brainsci-12-01320" ref-type="aff">1</xref>
+          <xref rid="af2-brainsci-12-01320" ref-type="aff">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-1821-3261</contrib-id>
+          <name>
+            <surname>Bidelman</surname>
+            <given-names>Gavin M.</given-names>
+          </name>
+          <xref rid="af1-brainsci-12-01320" ref-type="aff">1</xref>
+          <xref rid="af2-brainsci-12-01320" ref-type="aff">2</xref>
+          <xref rid="af3-brainsci-12-01320" ref-type="aff">3</xref>
+          <xref rid="af4-brainsci-12-01320" ref-type="aff">4</xref>
+          <xref rid="c1-brainsci-12-01320" ref-type="corresp">*</xref>
+        </contrib>
+      </contrib-group>
+      <contrib-group>
+        </contrib-group>
+      <pub-date pub-type="epub">
+        <day>29</day>
+        <month>09</month>
+        <year>2022</year>
+      </pub-date>
+      <pub-date pub-type="collection">
+        <month>10</month>
+        <year>2022</year>
+      </pub-date>
+      <volume>12</volume>
+      <issue>10</issue>
+      <elocation-id>1320</elocation-id>
+      <permissions>
+        <copyright-statement>© 2022 by the authors.</copyright-statement>
+        <copyright-year>2022</copyright-year>
+        <license license-type="open-access">
+          <license-p>Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (<ext-link ext-link-type="uri" xlink:href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</ext-link>).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>The “cocktail party” problem—how a listener perceives speech in noisy environments—is typically studied using speech (multi-talker babble) or noise maskers. However, realistic cocktail party scenarios often include background music (e.g., coffee shops, concerts). Studies investigating music’s effects on concurrent speech perception have predominantly used highly controlled synthetic music or shaped noise, which do not reflect naturalistic listening environments. Behaviorally, familiar background music and songs with vocals/lyrics inhibit concurrent speech recognition. Here, we investigated the neural bases of these effects. While recording multichannel EEG, participants listened to an audiobook while popular songs (or silence) played in the background at a 0 dB signal-to-noise ratio. Songs were either familiar or unfamiliar to listeners and featured either vocals or isolated instrumentals from the original audio recordings. Comprehension questions probed task engagement. We used temporal response functions (TRFs) to isolate cortical tracking to the target speech envelope and analyzed neural responses around 100 ms (i.e., auditory N1 wave). We found that speech comprehension was, expectedly, impaired during background music compared to silence. Target speech tracking was further hindered by the presence of vocals. When masked by familiar music, response latencies to speech were less susceptible to informational masking, suggesting concurrent neural tracking of speech was easier during music known to the listener. These differential effects of music familiarity were further exacerbated in listeners with less musical ability. Our neuroimaging results and their dependence on listening skills are consistent with early attentional-gain mechanisms where familiar music is easier to tune out (listeners already know the song’s expectancies) and thus can allocate fewer attentional resources to the background music to better monitor concurrent speech material.</p>
+      </abstract>
+      </article-meta></front><body>
+    <sec id="sec1-brainsci-12-01320" sec-type="intro">
+      <title>1. Introduction</title>
+      <p>Listeners are constantly faced with the challenge of listening to speech in noisy environments. This so-called “cocktail party” problem is often studied using noise or multi-talker babble maskers. However, many realistic cocktail party scenarios also involve music (e.g., coffee shops, concerts), which is not often considered in studies of auditory scene analysis. The effect of background music on concurrent speech/linguistic tasks is mixed and dependent on many factors, including type of music, participant characteristics, task structure (reviewed by [<xref ref-type="bibr" rid="B1-brainsci-12-01320">1</xref>]), and cognitive faculties. For example, music presented concurrently with a memorization task impairs performance, but only for listeners who prefer to study without background music [<xref ref-type="bibr" rid="B2-brainsci-12-01320">2</xref>]. Fast-tempo background music increases spatial processing speed and linguistic processing accuracy [<xref ref-type="bibr" rid="B3-brainsci-12-01320">3</xref>], but can also disrupt reading comprehension [<xref ref-type="bibr" rid="B4-brainsci-12-01320">4</xref>]. Music with vocals also more negatively affects concurrent tasks across various cognitive modalities [<xref ref-type="bibr" rid="B2-brainsci-12-01320">2</xref>,<xref ref-type="bibr" rid="B5-brainsci-12-01320">5</xref>,<xref ref-type="bibr" rid="B6-brainsci-12-01320">6</xref>,<xref ref-type="bibr" rid="B7-brainsci-12-01320">7</xref>,<xref ref-type="bibr" rid="B8-brainsci-12-01320">8</xref>,<xref ref-type="bibr" rid="B9-brainsci-12-01320">9</xref>,<xref ref-type="bibr" rid="B10-brainsci-12-01320">10</xref>]. Linguistic content in the masker introduces informational masking, which in turn interferes with cognitive resources needed to complete the task.</p>
+      <p>In typical (i.e., speech-on-speech) cocktail party tasks, the familiarity of a talker can be advantageous for speech recognition [<xref ref-type="bibr" rid="B11-brainsci-12-01320">11</xref>,<xref ref-type="bibr" rid="B12-brainsci-12-01320">12</xref>] when the familiar voice is either the target or the masker [<xref ref-type="bibr" rid="B13-brainsci-12-01320">13</xref>]. A familiar voice is retained implicitly [<xref ref-type="bibr" rid="B12-brainsci-12-01320">12</xref>], which allows for more efficient processing of novel words or sentences spoken in that voice [<xref ref-type="bibr" rid="B14-brainsci-12-01320">14</xref>]. However, the role of familiarity for music in perceptual–cognitive tasks is not well known. It is also worth noting that many studies define “familiarity” inconsistently (e.g., exposure training of naïve listeners versus songs that listeners already know), which limits comparisons between results. Still, familiar music maskers can improve various linguistic behavioral measures [<xref ref-type="bibr" rid="B15-brainsci-12-01320">15</xref>,<xref ref-type="bibr" rid="B16-brainsci-12-01320">16</xref>], but may be detrimental to foreign language learning [<xref ref-type="bibr" rid="B17-brainsci-12-01320">17</xref>]. Previous work from our lab [<xref ref-type="bibr" rid="B5-brainsci-12-01320">5</xref>] has shown a negative familiarity effect of background noise on concurrent speech recognition. In a music-on-speech cocktail party task, we found speech recognition performance was worse during familiar compared to unfamiliar music maskers, likely due to the increased cognitive load of the familiar music (i.e., those songs were more distracting). However, that prior work was solely behavioral and did not provide insight into the neural underpinnings of those perceptual–cognitive effects.</p>
+      <p>Besides indexical attributes of the signal, demographic properties of the <italic>listener</italic> also modulate cocktail party perception [<xref ref-type="bibr" rid="B18-brainsci-12-01320">18</xref>]. In particular, music expertise has been widely shown to alter auditory-cognitive brain structure and function, providing a “musician advantage” in various listening skills [<xref ref-type="bibr" rid="B19-brainsci-12-01320">19</xref>]. This is especially evident in speech-in-noise tasks where musicians show better degraded speech perception and more successful suppression of acoustic distractors [<xref ref-type="bibr" rid="B20-brainsci-12-01320">20</xref>,<xref ref-type="bibr" rid="B21-brainsci-12-01320">21</xref>,<xref ref-type="bibr" rid="B22-brainsci-12-01320">22</xref>,<xref ref-type="bibr" rid="B23-brainsci-12-01320">23</xref>,<xref ref-type="bibr" rid="B24-brainsci-12-01320">24</xref>]. Musicians’ improved speech-in-noise abilities might result from their superiority juggling multiple auditory streams [<xref ref-type="bibr" rid="B21-brainsci-12-01320">21</xref>,<xref ref-type="bibr" rid="B25-brainsci-12-01320">25</xref>] and lesser susceptibility to informational masking than their non-musician peers [<xref ref-type="bibr" rid="B24-brainsci-12-01320">24</xref>,<xref ref-type="bibr" rid="B26-brainsci-12-01320">26</xref>]. Musicians have more experience with auditory stream segregation (e.g., parsing a melody from harmonies, hearing one’s own melody in an orchestra), which in turn seems to enhance the parsing of degraded speech [<xref ref-type="bibr" rid="B27-brainsci-12-01320">27</xref>]. However, in contrast to speech-on-speech, musicians are more affected by background music than non-musicians [<xref ref-type="bibr" rid="B28-brainsci-12-01320">28</xref>]. Importantly, the “musician advantage” for speech-in-noise listening is not dependent on formal musical training. Mankel and Bidelman [<xref ref-type="bibr" rid="B29-brainsci-12-01320">29</xref>] demonstrated similar effects in highly musical people without formal musical training, indicating that superior cocktail party listening skills may be attributed more to general listening abilities rather than music experiences/training, per se.</p>
+      <p>Extending this prior work, the current study sought to further investigate the role of background music familiarity and presence of vocals on concurrent speech perception. In a variant of the cocktail party task, participants listened to an audiobook (speech) in the presence of popular music maskers that varied in their familiarity to the listener and content of the original audio recording (i.e., with or without vocals). Here, we refer to familiarity as acquired in repeated exposure in everyday life, including on the radio. Our design departs from previous studies investigating the effects of music-on-speech intelligibility which have predominantly used synthesized music or music-like stimuli [<xref ref-type="bibr" rid="B30-brainsci-12-01320">30</xref>,<xref ref-type="bibr" rid="B31-brainsci-12-01320">31</xref>] which, though easier to control, are not as ecologically valid as the popular music used here. Participants answered comprehension questions about the story to ensure task engagement with target speech material. We simultaneously recorded multichannel EEG and measured neural tracking to the speech envelopes using temporal response functions (TRFs) [<xref ref-type="bibr" rid="B32-brainsci-12-01320">32</xref>]. In accordance with our previous behavioral work [<xref ref-type="bibr" rid="B5-brainsci-12-01320">5</xref>], we hypothesized that the perception and neural tracking of speech would diminish (i.e., lower comprehension scores, TRFs with weaker amplitudes and longer latencies) when concurrent background music was familiar to listeners and when it contained vocals. These findings would suggest that speech perception suffers from a concurrent linguistic masker even from a different domain (i.e., music), as well as stronger attentional (mis)allocation to background music when it is familiar to the listener. </p>
+    </sec>
+    <sec id="sec2-brainsci-12-01320">
+      <title>2. Materials and Methods</title>
+      <sec id="sec2dot1-brainsci-12-01320" sec-type="subjects">
+        <title>2.1. Participants</title>
+        <p>The sample included <italic>n</italic> = 17 young adults ages 21–32 (<italic>M</italic> = 25, <italic>SD</italic> = 2.6 years, 4 male). This sample size is comparable with previous studies investigating continuous speech processing with TRFs [<xref ref-type="bibr" rid="B33-brainsci-12-01320">33</xref>,<xref ref-type="bibr" rid="B34-brainsci-12-01320">34</xref>,<xref ref-type="bibr" rid="B35-brainsci-12-01320">35</xref>]. 12 participants reported having musical training (<italic>M =</italic> 10.25 years, <italic>SD =</italic> 5.1). All participants showed audiometric thresholds better than 20 dB HL (octave frequencies, 250–8000 Hz) and reported English as their native language. Listeners were primarily right-handed (mean 75% laterality using the Edinburgh Handedness Inventory [<xref ref-type="bibr" rid="B36-brainsci-12-01320">36</xref>]). Each was paid for their time and gave written informed consent in compliance with a protocol approved by the IRB at the University of Memphis.</p>
+      </sec>
+      <sec id="sec2dot2-brainsci-12-01320">
+        <title>2.2. Stimuli and Task</title>
+        <p>[Audio stimulus descriptions with examples omitted.]</p>
+        <p>[Audio stimulus descriptions with examples omitted.]</p>
+        <p>For each participant, the 20 audiobook segments were presented sequentially, separated into four runs (totaling eight minutes of listening per condition). Each run contained five audiobook segments randomly presented with each song condition (familiar with vocals, familiar without vocals, unfamiliar with vocals, and unfamiliar without vocals) and in silence. In all, listeners heard each song condition four times. Participants were instructed to listen to the audiobook and ignore the background music. Each trial was two minutes, after which participants answered one comprehension question presented on a computer screen (20 questions total across the full experiment). After completing the task, participants rated each song on a scale from 1 (<italic>Not at all familiar</italic>) to 5 (<italic>Extremely familiar</italic>) to gauge prior familiarity with the music stimuli. </p>
+        <p>After completing the EEG task, participants completed the Profile of Music Perception Skills (PROMS) [<xref ref-type="bibr" rid="B38-brainsci-12-01320">38</xref>] to measure their musical listening skills. We have previously shown that high-PROMS-scoring individuals (“musical sleepers”) have enhanced speech processing akin to trained musicians despite having no formal musical training [<xref ref-type="bibr" rid="B29-brainsci-12-01320">29</xref>]. The PROMS contains eight subtests focusing on different musical domains (e.g., rhythm, melody, timbre, etc.). For each subtest, participants heard two tokens (e.g., two melodies) and indicated whether they were the same or different. The scores were on a 5-point Likert scale, where correctly identifying [quoted wording omitted] was given one point and [quoted wording omitted] was worth one-half point. The maximum possible test score was 80 (8 subtests, 10 items each).</p>
+      </sec>
+      <sec id="sec2dot3-brainsci-12-01320" sec-type="methods">
+        <title>2.3. EEG Recording Procedures</title>
+        <p>Participants were seated in an electrically shielded, sound-attenuated booth for the duration of the experiment. Continuous EEG recordings were obtained from 64 channels aligned in the 10-10 system [<xref ref-type="bibr" rid="B39-brainsci-12-01320">39</xref>] and digitized using a sample rate of 500 Hz (SynAmps RT amplifiers; Compumedics Neuroscan, Charlotte, NC, USA). Contact impedances were maintained &lt;10 kΩ. Music and speech stimuli were each presented diotically at 70 dB SPL through electromagnetically shielded ER-2 insert headphones (Etymotic Research, Elk Grove Village, IL, USA), resulting in a signal-to-noise ratio of 0 dB. Stimulus presentation was controlled with a custom MATLAB program (v. 2021a; MathWorks, Natick, MA, USA) and routed through a TDT RZ6 digital signal processor (Tucker-Davis Technologies, Alachua, FL, USA). EEGs were re-referenced to average mastoids and pre-processed in accordance with the recommendations provided by Crosse, et al. [<xref ref-type="bibr" rid="B40-brainsci-12-01320">40</xref>]. Data from 0 to 1000 milliseconds after the onset of each two min epoch were discarded to avoid transient brain responses in the subsequent analysis [<xref ref-type="bibr" rid="B40-brainsci-12-01320">40</xref>]. Epochs were then concatenated for each of the five conditions, resulting in eight minutes of continuous data per condition.</p>
+      </sec>
+      <sec id="sec2dot4-brainsci-12-01320">
+        <title>2.4. Behavioral Data Analysis</title>
+        <p>We logged the comprehension question response at the end of each presentation. Questions were scored as a binary “correct” or “incorrect” label.</p>
+      </sec>
+      <sec id="sec2dot5-brainsci-12-01320">
+        <title>2.5. Electrophysiological Data Analysis: Temporal Response Functions (TRFs)</title>
+        <p>We analyzed continuous neural tracking to the speech signal using the Temporal Response Function toolbox in MATLAB [<xref ref-type="bibr" rid="B32-brainsci-12-01320">32</xref>]. The TRF is a linear function representing the (deconvolved) impulse response to a continuous stimulus. To measure EEG tracking to the speech, we extracted the temporal envelope of the audiobook via the Hilbert transform. EEG data were down-sampled to 250 Hz, then filtered between 1 and 30 Hz to isolate cortical activity to the low-frequency speech envelope. EEG and stimulus signals were both z-score normalized. As with conventional event-related potentials (ERPs), TRFs were computed for each participant to account for inherent inter-subject variability in neural response tracking [<xref ref-type="bibr" rid="B40-brainsci-12-01320">40</xref>]. We used 6-fold cross-validation to derive TRFs per condition. Ridge regression [<xref ref-type="bibr" rid="B41-brainsci-12-01320">41</xref>] was used to identify the optimal λ smoothing parameter of the forward model for the speech-only condition. Model tuning was conducted using the speech-only condition to optimize the TRF to the clean (unmasked) speech. We used a fronto-central channel cluster (F1, Fz, F2, FC1, FCz, FC2, C1, Cz, C2) to further optimize the model fit to canonical topography of auditory ERPs. For each participant, the optimal λ was taken as the ridge parameter yielding the highest reconstruction of simulated neural response (i.e., correlation r-value between actual EEG and TRF-derived responses). We then used each participant’s optimal λ parameter to derive TRFs for all other conditions. This approach preserves response consistency within subjects while avoiding model overfitting [<xref ref-type="bibr" rid="B40-brainsci-12-01320">40</xref>]. The resulting TRF waveforms represent the EEG signal at each electrode changes in response to a unit change in the speech stimulus envelope. </p>
+        <p>We analyzed TRFs (i.e., RMS amplitude and latency) between 100–150 ms corresponding to the “N1” wave of the canonical auditory ERP (see <xref ref-type="fig" rid="brainsci-12-01320-f001">Figure 1</xref>). The N1 was selected as it reflects the early arrival of sound information in auditory cortex and is also modulated by attention [<xref ref-type="bibr" rid="B42-brainsci-12-01320">42</xref>,<xref ref-type="bibr" rid="B43-brainsci-12-01320">43</xref>,<xref ref-type="bibr" rid="B44-brainsci-12-01320">44</xref>]. Previous EEG studies have also demonstrated that noise has the largest effect on speech TRFs within this time window [<xref ref-type="bibr" rid="B45-brainsci-12-01320">45</xref>]. To further investigate possible hemisphere differences, we created two homologous channel clusters over front right (Fz, F2, F4, F6, F8, FC6, FT8) and front left (Fz, F1, F3, F5, F7, FC5, FT7) scalp regions.</p>
+      </sec>
+      <sec id="sec2dot6-brainsci-12-01320">
+        <title>2.6. Statistical Analyses</title>
+        <p>Statistics were run in R using the lme4 package [<xref ref-type="bibr" rid="B46-brainsci-12-01320">46</xref>]. For all analyses, we used mixed-effects models with fixed factors of familiarity (2 levels: familiar, unfamiliar) and song condition (2 levels; with vocals, without vocals). Subjects and trial served as random factors (where applicable). Because the behavioral response was a binary score (correct vs. incorrect), we analyzed those data using a generalized linear mixed-effects model ANOVA with binomial link function. Note that the Wald statistic is used to determine significant factor(s) effects for these models instead of conventional <italic>F</italic>-statistics (used in lme4 package; [<xref ref-type="bibr" rid="B46-brainsci-12-01320">46</xref>]). Peak amplitudes and latencies were normally distributed and thus analyzed using conventional linear mixed models and <italic>F</italic>-statistics. Multiple comparisons were corrected with Tukey adjustments. For all measures (score, latency, and amplitude), there were no hemisphere differences (all <italic>p</italic> values &gt; 0.17), so subsequent analyses used data pooled between the two electrode clusters.</p>
+      </sec>
+    </sec>
+    <sec id="sec3-brainsci-12-01320" sec-type="results">
+      <title>3. Results</title>
+      <sec id="sec3dot1-brainsci-12-01320">
+        <title>3.1. Behavioral Data</title>
+        <p>Participants showed stark differences in their familiarity ratings across music selections (<italic>t</italic>(16) = 19.13, <italic>p</italic> &lt; 0.001), validating our first stimulus manipulation. Speech comprehension scores were subject to a strong masking effect; comprehension was (expectedly) better for speech presented in silence compared to all other music-masked conditions (<italic>t</italic>(338) = 3.23, <italic>p</italic> = 0.001). An ANOVA based on the generalized binomial model showed no interaction between familiarity and song condition (χ<sup>2</sup>(1, <italic>N</italic> = 17) = 1.26, <italic>p</italic> = 0.26). There was no main effect of familiarity (χ<sup>2</sup>(1, <italic>N</italic> = 17) = 0.41, <italic>p</italic> = 0.52). There was, however, a significant effect of song condition (χ<sup>2</sup>(1, <italic>N</italic> = 17) = 5.42, <italic>p</italic> = 0.02), whereby behavioral performance was overall poorer during vocal vs. non-vocal music maskers (<xref ref-type="fig" rid="brainsci-12-01320-f002">Figure 2</xref>). These results confirm the effectiveness of music in masking target speech recognition as well as the added hinderance of music containing vocal (linguistic) information [<xref ref-type="bibr" rid="B5-brainsci-12-01320">5</xref>].</p>
+      </sec>
+      <sec id="sec3dot2-brainsci-12-01320">
+        <title>3.2. Electrophysiological Data</title>
+        <p>TRF latency and amplitude are shown across conditions in <xref ref-type="fig" rid="brainsci-12-01320-f003">Figure 3</xref>. Music-masked speech showed longer latencies than speech presented in silence (<italic>t</italic>(83) = 3.40, <italic>p</italic> = 0.001). An ANOVA conducted on TRF latencies revealed an interaction between familiarity and condition (<italic>F</italic>(1,48) = 6.18, <italic>p</italic> = 0.016, η<sup>2</sup> = 0.11). Post hoc tests showed this interaction was attributable to longer speech-evoked TRF latencies in music with vocals than instrumentals alone (<italic>t</italic>(48) = 2.54, <italic>p</italic> = 0.015), but only in unfamiliar music. This vocal vs. instrumental latency difference was not observed for familiar music (<italic>p</italic> = 0.32).</p>
+        <p>In contrast to latency measures, TRF amplitudes were not affected by masking and concurrent music (masking effect: <italic>t</italic>(83) = 0.11, <italic>p</italic> = 0.91). An ANOVA conducted on TRF RMS amplitudes, indicating the strength of speech tracking, showed a sole main effect of condition (<italic>F</italic>(1,48) = 5.13, <italic>p</italic> = 0.028, η<sup>2</sup> = 0.10); responses were larger in music with vocals as compared to instrumentals. There was no effect of familiarity (<italic>F</italic>(1,48) = 1.45, <italic>p</italic> = 0.23) nor a condition*familiarity interaction (<italic>F</italic>(1,48) = 1.28, <italic>p</italic> = 0.26).</p>
+      </sec>
+      <sec id="sec3dot3-brainsci-12-01320">
+        <title>3.3. Neural Speech Tracking as a Function of Listeners’ Musicality</title>
+        <p>We next asked whether speech-envelope tracking amidst music (as indexed via TRFs) varied as a function of listeners’ music-listening skills (as indexed by their PROMS scores). Previous studies demonstrate that individuals who lack formal music training but who nonetheless have superior auditory skills show advantages with speech identification and cocktail party processing [<xref ref-type="bibr" rid="B29-brainsci-12-01320">29</xref>,<xref ref-type="bibr" rid="B47-brainsci-12-01320">47</xref>]. As in Mankel and Bidelman [<xref ref-type="bibr" rid="B29-brainsci-12-01320">29</xref>], we divided our participants into two groups—“high PROMS” and “low PROMS”—using a median split of their PROMs musicality scores. The groups did not differ in age (<italic>t</italic>(15) = 1.28, <italic>p</italic> = 0.22), years of education (<italic>t</italic>(15) = 0.82, <italic>p</italic> = 0.43), or sex (Fisher’s exact test; <italic>p</italic> = 0.294). The high PROMS group had 11.4 (<italic>SD</italic> = 5.1) years of musical training as compared to the low PROMS group (<italic>M</italic> = 3.6, <italic>SD</italic> = 5.2 years; <italic>t</italic>(15) = 3.13, <italic>p</italic> = 0.01). To account for this difference in training, we ran our omnibus ANOVA models with the three factors of interest (familiarity, vocals condition, and PROMS level) and years of training as a covariate. In addition to dichotomizing the musicality variable [<xref ref-type="bibr" rid="B48-brainsci-12-01320">48</xref>], we also ran models treating PROMS score as a continuous variable.</p>
+        <sec id="sec3dot3dot1-brainsci-12-01320">
+          <title>3.3.1. Behavioral Data</title>
+          <p>We first tested for differences between PROMS scores and familiarity ratings to assess whether high vs. low musicality listeners were more/less familiar with the stimuli used in our experiment. There was no group difference for either the familiar (<italic>t</italic>(15) = 1.63, <italic>p</italic> = 0.125) or unfamiliar (<italic>t</italic>(15) = 1.24, <italic>p</italic> = 0.236) stimuli, indicating listeners were similarly (un)familiar with our song selections. </p>
+          <p>Analysis of speech comprehension during the EEG task revealed a significant condition x group interaction (χ<sup>2</sup>(1) = 4.12, <italic>p</italic> = 0.042), as well as a marginal familiarity x condition x group interaction (χ<sup>2</sup>(1) = 3.63, <italic>p</italic> = 0.056) (<xref ref-type="fig" rid="brainsci-12-01320-f004">Figure 4</xref>). Group differences were also partially driven by years of musical training (χ<sup>2</sup>(1) = 11.15, <italic>p</italic> = 0.001). To help interpret these complex interactions, we conducted separate 2-way ANOVAs by group to assess the impact of music familiarity and condition on speech recognition in low vs. high PROMS listeners. High PROMS listeners’ comprehension was invariant to condition and familiarity effects (all <italic>p</italic> values &gt; 0.065). However, the low PROMS group showed a familiarity x condition interaction (χ<sup>2</sup>(1) = 3.63, <italic>p</italic> = 0.042). Low musicality listeners showed poorer comprehension in music with vocals than without vocals but only during unfamiliar music (<italic>z</italic> = 2.44, <italic>p</italic> = 0.01). This vocal effect was not present for familiar music (<italic>z</italic> = 2.20, <italic>p</italic> = 0.69). When musicality was treated as continuous variable, there were no significant effects of any variable of interest on comprehension score (all <italic>p</italic> values &gt; 0.311).</p>
+        </sec>
+        <sec id="sec3dot3dot2-brainsci-12-01320">
+          <title>3.3.2. Electrophysiological Results</title>
+          <p>TRF latencies showed a significant interaction between familiarity and condition (<italic>F</italic>(1,45) = 6.00, <italic>p</italic> = 0.018, η<sup>2</sup> = 0.12), where latencies for vocals were longer than instrumentals for only the unfamiliar music. There was no effect of musicality (<italic>F</italic>(1,15) = 1.85, <italic>p</italic> = 0.194). However, when treating musicality as a continuous variable, there was a familiarity x musicality interaction (<italic>F</italic>(1,45) = 10.17, <italic>p</italic> = 0.003, η<sup>2</sup> = 0.18). TRF latencies were longer for unfamiliar music (<italic>t</italic>(45) = 2.60, <italic>p</italic> = 0.013) for the less musical listeners (i.e., lower PROMS scores) but were longer for familiar songs in higher PROMS scoring individuals (<italic>t</italic>(45) = 2.63, <italic>p</italic> = 0.012).</p>
+          <p>For TRF amplitudes, the omnibus ANOVA revealed an overall effect of condition (<italic>F</italic>(1,45) = 4.88, <italic>p</italic> = 0.032), where all listeners showed larger amplitudes for music with vocals (<xref ref-type="fig" rid="brainsci-12-01320-f005">Figure 5</xref>B). There were no effects of familiarity or PROMS group (all <italic>p</italic> values &gt; 0.1). There was also not an effect of musical training (<italic>F</italic>(1,15) = 0.03, <italic>p</italic> = 0.88), indicating again that the condition effect is not driven by experience. Treating musicality as a continuous variable showed no significant effects for any of the variables of interest (all <italic>p</italic> values &gt; 0.067).</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec4-brainsci-12-01320" sec-type="discussion">
+      <title>4. Discussion</title>
+      <p>As an innovative extension of the cocktail party problem, we compared speech comprehension and neural tracking of target speech amidst various music backdrops. We also manipulated the familiarity and vocals (i.e., song with lyrics or only instrumentals) of the music to evaluate how content and listeners’ familiarity of concurrent music backgrounds affect concurrent speech perception and its neural processing. Perception and neural encoding of speech was worse during music with vocals than solely instrumentals. However, the impact of vocals on speech coding varied based on the familiarity of the background music. These findings indicate the monitoring of speech concurrent with music containing vocals might be more challenging for unfamiliar tunes. Our data suggest it is more difficult (i.e., harder for the brain to suppress the music masker) during certain types (unfamiliar, vocal) of music backdrops, likely through increased susceptibility to linguistic interference and/or misallocation of attention between speech and music streams. Moreover, these effects were exacerbated when accounting for musicality, suggesting listeners’ inherent auditory skills also impact their cocktail party speech processing. In accordance with our previous behavioral study [<xref ref-type="bibr" rid="B5-brainsci-12-01320">5</xref>], we found speech comprehension was further impaired in music containing vocals than in instrumental music. We attribute this decline to the informational masking introduced by the linguistic content of the vocals [<xref ref-type="bibr" rid="B49-brainsci-12-01320">49</xref>,<xref ref-type="bibr" rid="B50-brainsci-12-01320">50</xref>,<xref ref-type="bibr" rid="B51-brainsci-12-01320">51</xref>]. </p>
+      <p>At the neural level, TRFs showed that brain tracking of speech was modulated by both familiarity and song condition. Overall, the presence of music prolonged TRF latencies to speech, which is consistent with well-known masking effects observed in previous auditory EEG studies [<xref ref-type="bibr" rid="B45-brainsci-12-01320">45</xref>,<xref ref-type="bibr" rid="B52-brainsci-12-01320">52</xref>]. More critically, we found that condition and familiarity had an interactive effect on speech-evoked TRFs; neural latencies were strongly modulated by vocals relative to instrumental music, but only for unfamiliar music. Responses were also larger during concurrent vocal compared to instrumental music. Intuitively, larger evoked responses are typically associated with a stronger representation or encoding of the speech signal (i.e., “bigger is better”) [<xref ref-type="bibr" rid="B53-brainsci-12-01320">53</xref>]. However, we found here that songs with vocals showed <italic>worse</italic> comprehension and longer neural latencies in conjunction with larger N1 responses. Indeed, TRF latencies were negatively correlated with speech recognition performance. It is well-established that larger N1 amplitudes are a marker of increased attention [<xref ref-type="bibr" rid="B42-brainsci-12-01320">42</xref>], analogous to the M100 peak in TRFs derived from neuromagnetic recordings [<xref ref-type="bibr" rid="B54-brainsci-12-01320">54</xref>]. Thus, the larger N1 responses to target speech we find in these difficult music conditions may reflect attentional load due to the increased listening demand of parsing speech from concurrent (especially unfamiliar) music. Larger N1 may also reflect increased listening effort [<xref ref-type="bibr" rid="B55-brainsci-12-01320">55</xref>]. Indeed, overexaggerated N1 to speech is also indicative of increased listening effort during speech processing, as observed in older adults with cognitive impairments [<xref ref-type="bibr" rid="B56-brainsci-12-01320">56</xref>]. The stronger effects on speech processing we observe during unfamiliar vocal music might therefore reflect the influences of selective attention [<xref ref-type="bibr" rid="B42-brainsci-12-01320">42</xref>], with increased effort needed to maintain that attention in more difficult listening conditions. This may also be comparable to a recent study that found a larger N400 during reading comprehension masked by music, reflecting increased semantic processing effort [<xref ref-type="bibr" rid="B57-brainsci-12-01320">57</xref>]. Still, the latency of neural effects observed here (~100 milliseconds) suggests that music challenges speech perception much earlier in the processing hierarchy.</p>
+      <p>Interestingly, we show that speech tracking at the “cocktail party” varies depending on the inherent musical skills of the listener. We found that low PROMS listeners were more impacted by unfamiliar music than the high PROMS group. Several studies have showed that more familiar music facilitates concurrent linguistic tasks by increasing arousal [<xref ref-type="bibr" rid="B58-brainsci-12-01320">58</xref>] and generating expectancies [<xref ref-type="bibr" rid="B16-brainsci-12-01320">16</xref>,<xref ref-type="bibr" rid="B52-brainsci-12-01320">52</xref>]. Musical ability is associated not only with speech-in-noise processing advantages [<xref ref-type="bibr" rid="B24-brainsci-12-01320">24</xref>,<xref ref-type="bibr" rid="B29-brainsci-12-01320">29</xref>,<xref ref-type="bibr" rid="B59-brainsci-12-01320">59</xref>], but also parsing complex auditory scenes [<xref ref-type="bibr" rid="B25-brainsci-12-01320">25</xref>,<xref ref-type="bibr" rid="B60-brainsci-12-01320">60</xref>]. Indeed, there is some evidence that trained musicians also more successfully deploy attention in auditory and even non-auditory perceptual tasks [<xref ref-type="bibr" rid="B24-brainsci-12-01320">24</xref>,<xref ref-type="bibr" rid="B61-brainsci-12-01320">61</xref>,<xref ref-type="bibr" rid="B62-brainsci-12-01320">62</xref>], including those related to cocktail party listening [<xref ref-type="bibr" rid="B21-brainsci-12-01320">21</xref>]. Moreover, non-musicians are more susceptible to informational and linguistic masking [<xref ref-type="bibr" rid="B21-brainsci-12-01320">21</xref>,<xref ref-type="bibr" rid="B26-brainsci-12-01320">26</xref>]—though see [<xref ref-type="bibr" rid="B63-brainsci-12-01320">63</xref>]. Here, low PROMS listeners may have been more distracted by the unfamiliar background music as a more challenging listening condition, which then becomes exacerbated by the presence of vocals. In this sense, less musical listeners (i.e., those with poorer auditory perceptual skills) might experience increased informational masking compared to their more musical peers. Our findings thus support notions that musical ability impacts cocktail party speech listening and one’s susceptibility to informational masking [<xref ref-type="bibr" rid="B21-brainsci-12-01320">21</xref>,<xref ref-type="bibr" rid="B26-brainsci-12-01320">26</xref>,<xref ref-type="bibr" rid="B64-brainsci-12-01320">64</xref>] but extend prior work by demonstrating such effects are not necessarily attributable to musical experience, per se, but instead depend on inherent listening abilities.</p>
+      <p>Our results can be explained by certain attentional load theories [<xref ref-type="bibr" rid="B65-brainsci-12-01320">65</xref>], which posit that selective attention is comprised of a passive perception mechanism and cognitive control mechanism. In a more demanding listening situation, more cognitive resources are recruited, meaning that there is less cognitive capacity to suppress distractors. In this study, listening to the target speech in more distracting music maskers (i.e., unfamiliar/vocal songs) was a difficult task, creating a larger cognitive load. This results in a diminished capacity to suppress the music masker, which makes it more difficult to attend to the target speech. The directional differences between the musicality groups also implies that cognitive load is variable and dependent on listening expertise. Under this interpretation, speech perception in unfamiliar music may have created a larger cognitive load for less musical listeners than for the high PROMS group, resulting in longer N1 latencies and worse comprehension scores.</p>
+      <p>In our previous study [<xref ref-type="bibr" rid="B5-brainsci-12-01320">5</xref>], we found that comprehension was <italic>worse</italic> in unfamiliar music, which is the opposite of our current results. Though the two studies used the same music maskers, the task here was more complex, assessing speech comprehension rather than target word recognition (as in Brown and Bidelman, 2022). Additionally, the task in this study was completed post-stimulus while the previous word-recognition task required increased online processing (i.e., monitoring key words in sentences). These task differences may contribute to the contradictory findings on familiarity effects. Indeed, the specific nature of the task can yield differential effects of music on concurrent speech processing, sometimes with opposite directions of effects [<xref ref-type="bibr" rid="B5-brainsci-12-01320">5</xref>,<xref ref-type="bibr" rid="B15-brainsci-12-01320">15</xref>,<xref ref-type="bibr" rid="B16-brainsci-12-01320">16</xref>,<xref ref-type="bibr" rid="B17-brainsci-12-01320">17</xref>,<xref ref-type="bibr" rid="B59-brainsci-12-01320">59</xref>].</p>
+      <p>It is of note that most prior studies used years of formal music training (self-reported) as a metric for defining musicians and non-musicians, while we solely used aptitude scores. Though high- and low-PROMS groups were separable based on their years of music training, musicality group differences remained significant while controlling for training, meaning that the effects found in this study likely result from some combination of experience and natural auditory skills. Our data are consistent with emerging notions that listeners’ inherent, rather than acquired, musicality affect their speech-in-noise processing abilities [<xref ref-type="bibr" rid="B29-brainsci-12-01320">29</xref>,<xref ref-type="bibr" rid="B47-brainsci-12-01320">47</xref>].</p>
+      <p>In this experiment, we used pop songs as music maskers in order to preserve the ecological validity of the study. The trade-off of doing so is that the stimuli are less controlled than lab-synthesized sounds, and the two songs used here have inherently different acoustic qualities. Previous studies show that features such as tempo and loudness affect concurrent reading comprehension [<xref ref-type="bibr" rid="B4-brainsci-12-01320">4</xref>], and the stimuli used in this study were matched in tempo (beats per minute) and intensity (RMS). Furthermore, both songs were of the same genre and featured a female vocalist. Importantly, the behavioral and neural effects found here differ as a function of listeners’ musicality. Such differential effects across listeners suggest that acoustic differences cannot be the sole driver of our neural effects and consequently must be rooted in psychological rather than physical attributes of the stimulus.</p>
+    </sec>
+    <sec id="sec5-brainsci-12-01320" sec-type="conclusions">
+      <title>5. Conclusions</title>
+      <p>In summary, our combined behavioral and neuroimaging results demonstrate that speech tracking is negatively affected both by familiarity and the presence of vocals in concurrent music. Furthermore, we show that these effects are modulated by musical ability, whereby less-musical listeners are more susceptible to these different background music characteristics. By using naturalistic, continuous stimuli, we simulated a realistic listening scenario, thus further adding to our understanding of the cocktail party phenomenon. Our findings also qualify prior studies by suggesting that in addition to general arousal, familiarity and internal structure of music (e.g., presence or absence of vocals) might affect concurrent cognitive-linguistic processing.</p>
+    </sec>
+  </body>
+  <back><ref-list>
+      <title>References</title>
+      <ref id="B1-brainsci-12-01320">
+        <label>1.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kämpfe</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Sedlmeier</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Renkewitz</surname>
+              <given-names>F.</given-names>
+            </name>
+          </person-group>
+          <article-title>The impact of background music on adult listeners: A meta-analysis</article-title>
+          <source>Psychol. Music</source>
+          <year>2011</year>
+          <volume>39</volume>
+          <fpage>424</fpage>
+          <lpage>448</lpage>
+          <pub-id pub-id-type="doi">10.1177/0305735610376261</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B2-brainsci-12-01320">
+        <label>2.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Crawford</surname>
+              <given-names>H.J.</given-names>
+            </name>
+            <name>
+              <surname>Strapp</surname>
+              <given-names>C.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Effects of vocal and instrumental music on visuospatial and verbal performance as moderated by studying preference and personality</article-title>
+          <source>Personal. Individ. Differ.</source>
+          <year>1994</year>
+          <volume>16</volume>
+          <fpage>237</fpage>
+          <lpage>245</lpage>
+          <pub-id pub-id-type="doi">10.1016/0191-8869(94)90162-7</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B3-brainsci-12-01320">
+        <label>3.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Angel</surname>
+              <given-names>L.A.</given-names>
+            </name>
+            <name>
+              <surname>Polzella</surname>
+              <given-names>D.J.</given-names>
+            </name>
+            <name>
+              <surname>Elvers</surname>
+              <given-names>G.C.</given-names>
+            </name>
+          </person-group>
+          <article-title>Background music and cognitive performance</article-title>
+          <source>Percept. Mot. Ski.</source>
+          <year>2010</year>
+          <volume>110</volume>
+          <fpage>1059</fpage>
+          <lpage>1064</lpage>
+          <pub-id pub-id-type="doi">10.2466/pms.110.C.1059-1064</pub-id>
+          <pub-id pub-id-type="pmid">20865993</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B4-brainsci-12-01320">
+        <label>4.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Thompson</surname>
+              <given-names>W.F.</given-names>
+            </name>
+            <name>
+              <surname>Schellenberg</surname>
+              <given-names>E.G.</given-names>
+            </name>
+            <name>
+              <surname>Letnic</surname>
+              <given-names>A.K.</given-names>
+            </name>
+          </person-group>
+          <article-title>Fast and loud background music disrupts reading comprehension</article-title>
+          <source>Psychol. Music</source>
+          <year>2011</year>
+          <volume>40</volume>
+          <fpage>700</fpage>
+          <lpage>708</lpage>
+          <pub-id pub-id-type="doi">10.1177/0305735611400173</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B5-brainsci-12-01320">
+        <label>5.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Brown</surname>
+              <given-names>J.A.</given-names>
+            </name>
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Song properties and familiarity affect speech recognition in musical noise</article-title>
+          <source>Psychomusicol. Music Mind Brain</source>
+          <year>2022</year>
+          <volume>32</volume>
+          <fpage>1</fpage>
+          <lpage>6</lpage>
+          <pub-id pub-id-type="doi">10.1037/pmu0000284</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B6-brainsci-12-01320">
+        <label>6.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Darrow</surname>
+              <given-names>A.A.</given-names>
+            </name>
+            <name>
+              <surname>Johnson</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Agnew</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Fuller</surname>
+              <given-names>E.R.</given-names>
+            </name>
+            <name>
+              <surname>Uchisaka</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Effect of preferred music as a distraction on music majors’ and nonmusic majors’ selective attention</article-title>
+          <source>Bull. Counc. Res. Music Educ.</source>
+          <year>2006</year>
+          <volume>170</volume>
+          <fpage>21</fpage>
+          <lpage>31</lpage>
+          <pub-id pub-id-type="doi">10.2307/40319346</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B7-brainsci-12-01320">
+        <label>7.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Martin</surname>
+              <given-names>R.C.</given-names>
+            </name>
+            <name>
+              <surname>Wogalter</surname>
+              <given-names>M.S.</given-names>
+            </name>
+            <name>
+              <surname>Forlano</surname>
+              <given-names>J.G.</given-names>
+            </name>
+          </person-group>
+          <article-title>Reading comprehension in the presence of unattended speech and music</article-title>
+          <source>J. Mem. Lang.</source>
+          <year>1988</year>
+          <volume>27</volume>
+          <fpage>382</fpage>
+          <lpage>398</lpage>
+          <pub-id pub-id-type="doi">10.1016/0749-596X(88)90063-0</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B8-brainsci-12-01320">
+        <label>8.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Perham</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Currie</surname>
+              <given-names>H.</given-names>
+            </name>
+          </person-group>
+          <article-title>Does listening to preferred music improve reading comprehension performance?</article-title>
+          <source>Appl. Cogn. Psychol.</source>
+          <year>2014</year>
+          <volume>28</volume>
+          <fpage>279</fpage>
+          <lpage>284</lpage>
+          <pub-id pub-id-type="doi">10.1002/acp.2994</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B9-brainsci-12-01320">
+        <label>9.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lee</surname>
+              <given-names>E.K.</given-names>
+            </name>
+            <name>
+              <surname>Lee</surname>
+              <given-names>S.E.</given-names>
+            </name>
+            <name>
+              <surname>Kwon</surname>
+              <given-names>Y.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>The effect of lyrical and non-lyrical background music on different types of language processing—An ERP study</article-title>
+          <source>Korean J. Cogn. Sci.</source>
+          <year>2020</year>
+          <volume>31</volume>
+          <fpage>155</fpage>
+          <lpage>178</lpage>
+          <pub-id pub-id-type="doi">10.19066/cogsci.2020.31.4.003</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B10-brainsci-12-01320">
+        <label>10.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Vasilev</surname>
+              <given-names>M.R.</given-names>
+            </name>
+            <name>
+              <surname>Kirkby</surname>
+              <given-names>J.A.</given-names>
+            </name>
+            <name>
+              <surname>Angele</surname>
+              <given-names>B.</given-names>
+            </name>
+          </person-group>
+          <article-title>Auditory Distraction During Reading: A Bayesian Meta-Analysis of a Continuing Controversy</article-title>
+          <source>Perspect. Psychol. Sci.</source>
+          <year>2018</year>
+          <volume>13</volume>
+          <fpage>567</fpage>
+          <lpage>597</lpage>
+          <pub-id pub-id-type="doi">10.1177/1745691617747398</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B11-brainsci-12-01320">
+        <label>11.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Souza</surname>
+              <given-names>P.</given-names>
+            </name>
+            <name>
+              <surname>Gehani</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Wright</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>McCloy</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>The advantage of knowing the talker</article-title>
+          <source>J. Am. Acad. Audiol.</source>
+          <year>2013</year>
+          <volume>24</volume>
+          <fpage>689</fpage>
+          <lpage>700</lpage>
+          <pub-id pub-id-type="doi">10.3766/jaaa.24.8.6</pub-id>
+          <pub-id pub-id-type="pmid">24131605</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B12-brainsci-12-01320">
+        <label>12.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yonan</surname>
+              <given-names>C.A.</given-names>
+            </name>
+            <name>
+              <surname>Sommers</surname>
+              <given-names>M.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>The Effects of Talker Familiarity on Spoken Word Identification in Younger and Older Listeners</article-title>
+          <source>Psychol. Aging</source>
+          <year>2000</year>
+          <volume>15</volume>
+          <fpage>88</fpage>
+          <lpage>99</lpage>
+          <pub-id pub-id-type="doi">10.1037/0882-7974.15.1.88</pub-id>
+          <pub-id pub-id-type="pmid">10755292</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B13-brainsci-12-01320">
+        <label>13.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Johnsrude</surname>
+              <given-names>I.S.</given-names>
+            </name>
+            <name>
+              <surname>Mackey</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Hakyemez</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Alexander</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Trang</surname>
+              <given-names>H.P.</given-names>
+            </name>
+            <name>
+              <surname>Carlyon</surname>
+              <given-names>R.P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Swinging at a cocktail party: Voice familiarity aids speech perception in the presence of a competing voice</article-title>
+          <source>Psychol. Sci.</source>
+          <year>2013</year>
+          <volume>24</volume>
+          <fpage>1995</fpage>
+          <lpage>2004</lpage>
+          <pub-id pub-id-type="doi">10.1177/0956797613482467</pub-id>
+          <pub-id pub-id-type="pmid">23985575</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B14-brainsci-12-01320">
+        <label>14.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Pisoni</surname>
+              <given-names>D.B.</given-names>
+            </name>
+          </person-group>
+          <article-title>Long-term memory in speech perception: Some new findings on talker variability, speaking rate and perceptual learning</article-title>
+          <source>Speech Commun.</source>
+          <year>1993</year>
+          <volume>13</volume>
+          <fpage>109</fpage>
+          <lpage>125</lpage>
+          <pub-id pub-id-type="doi">10.1016/0167-6393(93)90063-Q</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B15-brainsci-12-01320">
+        <label>15.</label>
+        <element-citation publication-type="confproc">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Feng</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Music listening and song familiarity modulate mind wandering and behavioral success during lexical processing</article-title>
+          <source>Proceedings of the Annual Meeting of the Cognitive Science Society (CogSci 2015)</source>
+          <conf-loc>Pasadena, CA, USA</conf-loc>
+          <conf-date>22–25 July 2015</conf-date>
+        </element-citation>
+      </ref>
+      <ref id="B16-brainsci-12-01320">
+        <label>16.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Russo</surname>
+              <given-names>F.A.</given-names>
+            </name>
+            <name>
+              <surname>Pichora-Fuller</surname>
+              <given-names>M.K.</given-names>
+            </name>
+          </person-group>
+          <article-title>Tune in or tune out: Age-related differences in listening to speech in music</article-title>
+          <source>Ear Hear.</source>
+          <year>2008</year>
+          <volume>29</volume>
+          <fpage>746</fpage>
+          <lpage>760</lpage>
+          <pub-id pub-id-type="doi">10.1097/AUD.0b013e31817bdd1f</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B17-brainsci-12-01320">
+        <label>17.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>De Groot</surname>
+              <given-names>A.M.B.</given-names>
+            </name>
+            <name>
+              <surname>Smedinga</surname>
+              <given-names>H.E.</given-names>
+            </name>
+          </person-group>
+          <article-title>Let the music play!: A short-term but no long-term detrimental effect of vocal background music with familiar language lyrics on foreign language vocabulary learning</article-title>
+          <source>Stud. Second Lang. Acquis.</source>
+          <year>2014</year>
+          <volume>36</volume>
+          <fpage>681</fpage>
+          <lpage>707</lpage>
+          <pub-id pub-id-type="doi">10.1017/S0272263114000059</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B18-brainsci-12-01320">
+        <label>18.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+            <name>
+              <surname>Dexter</surname>
+              <given-names>L.</given-names>
+            </name>
+          </person-group>
+          <article-title>Bilinguals at the “cocktail party”: Dissociable neural activity in auditory-linguistic brain regions reveals neurobiological basis for nonnative listeners’ speech-in-noise recognition deficits</article-title>
+          <source>Brain Lang.</source>
+          <year>2015</year>
+          <volume>143</volume>
+          <fpage>32</fpage>
+          <lpage>41</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.bandl.2015.02.002</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B19-brainsci-12-01320">
+        <label>19.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Strait</surname>
+              <given-names>D.L.</given-names>
+            </name>
+            <name>
+              <surname>Kraus</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Can you hear me now? Musical training shapes functional brain networks for selective auditory attention and hearing speech in noise</article-title>
+          <source>Front. Psychol.</source>
+          <year>2011</year>
+          <volume>2</volume>
+          <fpage>113</fpage>
+          <pub-id pub-id-type="doi">10.3389/fpsyg.2011.00113</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B20-brainsci-12-01320">
+        <label>20.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+            <name>
+              <surname>Krishnan</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Effects of reverberation on brainstem representation of speech in musicians and non-musicians</article-title>
+          <source>Brain Res.</source>
+          <year>2010</year>
+          <volume>1355</volume>
+          <fpage>112</fpage>
+          <lpage>125</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.brainres.2010.07.100</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B21-brainsci-12-01320">
+        <label>21.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+            <name>
+              <surname>Yoo</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Musicians Show Improved Speech Segregation in Competitive, Multi-Talker Cocktail Party Scenarios</article-title>
+          <source>Front. Psychol.</source>
+          <year>2020</year>
+          <volume>11</volume>
+          <fpage>1927</fpage>
+          <pub-id pub-id-type="doi">10.3389/fpsyg.2020.01927</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B22-brainsci-12-01320">
+        <label>22.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Coffey</surname>
+              <given-names>E.B.J.</given-names>
+            </name>
+            <name>
+              <surname>Mogilever</surname>
+              <given-names>N.B.</given-names>
+            </name>
+            <name>
+              <surname>Zatorre</surname>
+              <given-names>R.J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Speech-in-noise perception in musicians: A review</article-title>
+          <source>Hear. Res.</source>
+          <year>2017</year>
+          <volume>352</volume>
+          <fpage>49</fpage>
+          <lpage>69</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.heares.2017.02.006</pub-id>
+          <pub-id pub-id-type="pmid">28213134</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B23-brainsci-12-01320">
+        <label>23.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Parbery-Clark</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Skoe</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Kraus</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Musical experience limits the degradative effects of background noise on the neural processing of sound</article-title>
+          <source>J. Neurosci.</source>
+          <year>2009</year>
+          <volume>29</volume>
+          <fpage>14100</fpage>
+          <lpage>14107</lpage>
+          <pub-id pub-id-type="doi">10.1523/JNEUROSCI.3256-09.2009</pub-id>
+          <pub-id pub-id-type="pmid">19906958</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B24-brainsci-12-01320">
+        <label>24.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yoo</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Linguistic, perceptual, and cognitive factors underlying musicians’ benefits in noise-degraded speech perception</article-title>
+          <source>Hear. Res.</source>
+          <year>2019</year>
+          <volume>377</volume>
+          <fpage>189</fpage>
+          <lpage>195</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.heares.2019.03.021</pub-id>
+          <pub-id pub-id-type="pmid">30978607</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B25-brainsci-12-01320">
+        <label>25.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Zendel</surname>
+              <given-names>B.R.</given-names>
+            </name>
+            <name>
+              <surname>Alain</surname>
+              <given-names>C.</given-names>
+            </name>
+          </person-group>
+          <article-title>Concurrent sound segregation is enhanced in musicians</article-title>
+          <source>J. Cogn. Neurosci.</source>
+          <year>2009</year>
+          <volume>21</volume>
+          <fpage>1488</fpage>
+          <lpage>1498</lpage>
+          <pub-id pub-id-type="doi">10.1162/jocn.2009.21140</pub-id>
+          <pub-id pub-id-type="pmid">18823227</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B26-brainsci-12-01320">
+        <label>26.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Oxenham</surname>
+              <given-names>A.J.</given-names>
+            </name>
+            <name>
+              <surname>Fligor</surname>
+              <given-names>B.J.</given-names>
+            </name>
+            <name>
+              <surname>Mason</surname>
+              <given-names>C.R.</given-names>
+            </name>
+            <name>
+              <surname>Kidd</surname>
+              <given-names>G.</given-names>
+              <suffix>Jr.</suffix>
+            </name>
+          </person-group>
+          <article-title>Informational masking and musical training</article-title>
+          <source>J. Acoust. Soc. Am.</source>
+          <year>2003</year>
+          <volume>114</volume>
+          <fpage>1543</fpage>
+          <lpage>1549</lpage>
+          <pub-id pub-id-type="doi">10.1121/1.1598197</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B27-brainsci-12-01320">
+        <label>27.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Parbery-Clark</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Skoe</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Lam</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Kraus</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Musician enhancement for speech-in-noise</article-title>
+          <source>Ear Hear.</source>
+          <year>2009</year>
+          <volume>30</volume>
+          <fpage>653</fpage>
+          <lpage>661</lpage>
+          <pub-id pub-id-type="doi">10.1097/AUD.0b013e3181b412e9</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B28-brainsci-12-01320">
+        <label>28.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Patston</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Tippett</surname>
+              <given-names>L.</given-names>
+            </name>
+          </person-group>
+          <article-title>The Effect of Background Music on Cognitive Performance in Musicians and Nonmusicians</article-title>
+          <source>Music Backgr. Music Cogn.</source>
+          <year>2011</year>
+          <volume>29</volume>
+          <fpage>173</fpage>
+          <lpage>184</lpage>
+          <pub-id pub-id-type="doi">10.1525/mp.2011.29.2.173</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B29-brainsci-12-01320">
+        <label>29.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mankel</surname>
+              <given-names>K.</given-names>
+            </name>
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Inherent auditory skills rather than formal music training shape the neural encoding of speech</article-title>
+          <source>Proc. Natl. Acad. Sci. USA</source>
+          <year>2018</year>
+          <volume>115</volume>
+          <fpage>13129</fpage>
+          <lpage>13134</lpage>
+          <pub-id pub-id-type="doi">10.1073/pnas.1811793115</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B30-brainsci-12-01320">
+        <label>30.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ekström</surname>
+              <given-names>S.R.</given-names>
+            </name>
+            <name>
+              <surname>Borg</surname>
+              <given-names>E.</given-names>
+            </name>
+          </person-group>
+          <article-title>Hearing speech in music</article-title>
+          <source>Noise Health</source>
+          <year>2011</year>
+          <volume>13</volume>
+          <fpage>277</fpage>
+          <lpage>285</lpage>
+          <pub-id pub-id-type="doi">10.4103/1463-1741.82960</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B31-brainsci-12-01320">
+        <label>31.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Eskridge</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Galvin</surname>
+              <given-names>J.</given-names>
+              <suffix>III</suffix>
+            </name>
+            <name>
+              <surname>Aronoff</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>T.</given-names>
+            </name>
+            <name>
+              <surname>Fu</surname>
+              <given-names>Q.J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Speech Perception with Music MAskers by Cochlear Implant Users and Normal Hearing Listeners</article-title>
+          <source>J. Speech Lang. Hear. Res.</source>
+          <year>2012</year>
+          <volume>55</volume>
+          <fpage>800</fpage>
+          <lpage>810</lpage>
+          <pub-id pub-id-type="doi">10.1044/1092-4388(2011/11-0124)</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B32-brainsci-12-01320">
+        <label>32.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Crosse</surname>
+              <given-names>M.J.</given-names>
+            </name>
+            <name>
+              <surname>Di Liberto</surname>
+              <given-names>G.M.</given-names>
+            </name>
+            <name>
+              <surname>Bednar</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Lalor</surname>
+              <given-names>E.C.</given-names>
+            </name>
+          </person-group>
+          <article-title>The multivariate temporal response function (mTRF) toolbox: A MATLAB toolbox for relating neural signals to continuous stimuli</article-title>
+          <source>Front. Hum. Neurosci.</source>
+          <year>2016</year>
+          <volume>10</volume>
+          <fpage>604</fpage>
+          <pub-id pub-id-type="doi">10.3389/fnhum.2016.00604</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B33-brainsci-12-01320">
+        <label>33.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Forte</surname>
+              <given-names>A.E.</given-names>
+            </name>
+            <name>
+              <surname>Etard</surname>
+              <given-names>O.</given-names>
+            </name>
+            <name>
+              <surname>Reichenbach</surname>
+              <given-names>T.</given-names>
+            </name>
+          </person-group>
+          <article-title>The human auditory brainstem response to running speech reveals a subcortical mechanism for selective attention</article-title>
+          <source>eLife</source>
+          <year>2017</year>
+          <volume>6</volume>
+          <fpage>e27203</fpage>
+          <pub-id pub-id-type="doi">10.7554/eLife.27203</pub-id>
+          <pub-id pub-id-type="pmid">28992445</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B34-brainsci-12-01320">
+        <label>34.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lalor</surname>
+              <given-names>E.C.</given-names>
+            </name>
+            <name>
+              <surname>Power</surname>
+              <given-names>A.J.</given-names>
+            </name>
+            <name>
+              <surname>Reilly</surname>
+              <given-names>R.B.</given-names>
+            </name>
+            <name>
+              <surname>Foxe</surname>
+              <given-names>J.J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Resolving precise temporal processing properties of the auditory system using continuous stimuli</article-title>
+          <source>J. Neurophysiol.</source>
+          <year>2009</year>
+          <volume>102</volume>
+          <fpage>349</fpage>
+          <lpage>359</lpage>
+          <pub-id pub-id-type="doi">10.1152/jn.90896.2008</pub-id>
+          <pub-id pub-id-type="pmid">19439675</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B35-brainsci-12-01320">
+        <label>35.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ding</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Chatterjee</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Simon</surname>
+              <given-names>J.Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Robust cortical entrainment to the speech envelope relies on the spectro-temporal fine structure</article-title>
+          <source>Neuroimage</source>
+          <year>2014</year>
+          <volume>88</volume>
+          <fpage>41</fpage>
+          <lpage>46</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.neuroimage.2013.10.054</pub-id>
+          <pub-id pub-id-type="pmid">24188816</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B36-brainsci-12-01320">
+        <label>36.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Oldfield</surname>
+              <given-names>R.</given-names>
+            </name>
+          </person-group>
+          <article-title>The Assessment and Analysis of Handedness: The Edinburgh Inventory</article-title>
+          <source>Neuropsychologia</source>
+          <year>1971</year>
+          <volume>9</volume>
+          <fpage>97</fpage>
+          <lpage>113</lpage>
+          <pub-id pub-id-type="doi">10.1016/0028-3932(71)90067-4</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B37-brainsci-12-01320">
+        <label>37.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ding</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Simon</surname>
+              <given-names>J.Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Neural coding of continuous speech in auditory cortex during monaural and dichotic listening</article-title>
+          <source>J. Neurophysiol.</source>
+          <year>2012</year>
+          <volume>107</volume>
+          <fpage>78</fpage>
+          <lpage>89</lpage>
+          <pub-id pub-id-type="doi">10.1152/jn.00297.2011</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B38-brainsci-12-01320">
+        <label>38.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Law</surname>
+              <given-names>L.N.</given-names>
+            </name>
+            <name>
+              <surname>Zentner</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Assessing musical abilities objectively: Construction and validation of the profile of music perception skills</article-title>
+          <source>PLoS ONE</source>
+          <year>2012</year>
+          <volume>7</volume>
+          <elocation-id>e52508</elocation-id>
+          <pub-id pub-id-type="doi">10.1371/journal.pone.0052508</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B39-brainsci-12-01320">
+        <label>39.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Oostenveld</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Praamstra</surname>
+              <given-names>P.</given-names>
+            </name>
+          </person-group>
+          <article-title>The five percent electrode system for high-resolution EEG and ERP measurements</article-title>
+          <source>Clin. Neurophysiol.</source>
+          <year>2001</year>
+          <volume>112</volume>
+          <fpage>713</fpage>
+          <lpage>719</lpage>
+          <pub-id pub-id-type="doi">10.1016/S1388-2457(00)00527-7</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B40-brainsci-12-01320">
+        <label>40.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Crosse</surname>
+              <given-names>M.J.</given-names>
+            </name>
+            <name>
+              <surname>Zuk</surname>
+              <given-names>N.J.</given-names>
+            </name>
+            <name>
+              <surname>Liberto</surname>
+              <given-names>G.M.D.</given-names>
+            </name>
+            <name>
+              <surname>Nidiffer</surname>
+              <given-names>A.R.</given-names>
+            </name>
+            <name>
+              <surname>Molholm</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Lalor</surname>
+              <given-names>E.C.</given-names>
+            </name>
+          </person-group>
+          <article-title>Linear Modeling of Neurophysiological Responses to Naturalistic Stimuli: Methodological Considerations for Applied Research</article-title>
+          <source>Front. Neurosci.</source>
+          <year>2021</year>
+          <volume>15</volume>
+          <fpage>705621</fpage>
+          <pub-id pub-id-type="doi">10.3389/fnins.2021.705621</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B41-brainsci-12-01320">
+        <label>41.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kulasingham</surname>
+              <given-names>J.P.</given-names>
+            </name>
+            <name>
+              <surname>Simon</surname>
+              <given-names>J.Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Algorithms for Estimating Time-Locked Neural Response Components in Cortical Processing of Continuous Speech</article-title>
+          <source>IEEE Trans. Biomed. Eng.</source>
+          <year>2022</year>
+          <fpage>1</fpage>
+          <lpage>9</lpage>
+          <pub-id pub-id-type="doi">10.1109/TBME.2022.3185005</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B42-brainsci-12-01320">
+        <label>42.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hillyard</surname>
+              <given-names>S.A.</given-names>
+            </name>
+            <name>
+              <surname>Hink</surname>
+              <given-names>R.F.</given-names>
+            </name>
+            <name>
+              <surname>Schwent</surname>
+              <given-names>V.L.</given-names>
+            </name>
+            <name>
+              <surname>Picton</surname>
+              <given-names>T.W.</given-names>
+            </name>
+          </person-group>
+          <article-title>Electrical signs of selective attention in the human brain</article-title>
+          <source>Science</source>
+          <year>1973</year>
+          <volume>182</volume>
+          <fpage>177</fpage>
+          <lpage>180</lpage>
+          <pub-id pub-id-type="doi">10.1126/science.182.4108.177</pub-id>
+          <pub-id pub-id-type="pmid">4730062</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B43-brainsci-12-01320">
+        <label>43.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Näätänen</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Picton</surname>
+              <given-names>T.</given-names>
+            </name>
+          </person-group>
+          <article-title>The N1 wave of the human electric and magnetic response to sound: A review and an analysis of the component structure</article-title>
+          <source>Psychophysiology</source>
+          <year>1987</year>
+          <volume>24</volume>
+          <fpage>375</fpage>
+          <lpage>425</lpage>
+          <pub-id pub-id-type="doi">10.1111/j.1469-8986.1987.tb00311.x</pub-id>
+          <pub-id pub-id-type="pmid">3615753</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B44-brainsci-12-01320">
+        <label>44.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Picton</surname>
+              <given-names>T.W.</given-names>
+            </name>
+            <name>
+              <surname>Woods</surname>
+              <given-names>D.L.</given-names>
+            </name>
+            <name>
+              <surname>Proulx</surname>
+              <given-names>G.B.</given-names>
+            </name>
+          </person-group>
+          <article-title>Human auditory sustained potentials. I. The nature of the response</article-title>
+          <source>Electroencephalogr. Clin. Neurophysiol.</source>
+          <year>1978</year>
+          <volume>45</volume>
+          <fpage>186</fpage>
+          <lpage>197</lpage>
+          <pub-id pub-id-type="doi">10.1016/0013-4694(78)90003-2</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B45-brainsci-12-01320">
+        <label>45.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Muncke</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Kuruvila</surname>
+              <given-names>I.</given-names>
+            </name>
+            <name>
+              <surname>Hoppe</surname>
+              <given-names>U.</given-names>
+            </name>
+          </person-group>
+          <article-title>Prediction of Speech Intelligibility by Means of EEG Responses to Sentences in Noise</article-title>
+          <source>Front. Neurosci.</source>
+          <year>2022</year>
+          <volume>16</volume>
+          <fpage>876421</fpage>
+          <pub-id pub-id-type="doi">10.3389/fnins.2022.876421</pub-id>
+          <pub-id pub-id-type="pmid">35720724</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B46-brainsci-12-01320">
+        <label>46.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bates</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Mächler</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Bolker</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Walker</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Fitting Linear Mixed-Effects Models Using lme4</article-title>
+          <source>J. Stat. Softw.</source>
+          <year>2015</year>
+          <volume>67</volume>
+          <fpage>1</fpage>
+          <lpage>48</lpage>
+          <pub-id pub-id-type="doi">10.18637/jss.v067.i01</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B47-brainsci-12-01320">
+        <label>47.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mankel</surname>
+              <given-names>K.</given-names>
+            </name>
+            <name>
+              <surname>Barber</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Auditory categorical processing for speech is modulated by inherent musical listening skills</article-title>
+          <source>NeuroReport</source>
+          <year>2020</year>
+          <volume>31</volume>
+          <fpage>162</fpage>
+          <lpage>166</lpage>
+          <pub-id pub-id-type="doi">10.1097/WNR.0000000000001369</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B48-brainsci-12-01320">
+        <label>48.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>MacCallum</surname>
+              <given-names>R.C.</given-names>
+            </name>
+            <name>
+              <surname>Zhang</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Preacher</surname>
+              <given-names>K.J.</given-names>
+            </name>
+            <name>
+              <surname>Rucker</surname>
+              <given-names>D.</given-names>
+            </name>
+          </person-group>
+          <article-title>On the practice of dichotomization of quantitative variables</article-title>
+          <source>Psychol. Methods</source>
+          <year>2002</year>
+          <volume>7</volume>
+          <fpage>19</fpage>
+          <lpage>40</lpage>
+          <pub-id pub-id-type="doi">10.1037/1082-989X.7.1.19</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B49-brainsci-12-01320">
+        <label>49.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Brouwer</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Akkermans</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Hendriks</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>van Uden</surname>
+              <given-names>H.</given-names>
+            </name>
+            <name>
+              <surname>Wilms</surname>
+              <given-names>V.</given-names>
+            </name>
+          </person-group>
+          <article-title>“Lass frooby noo!” the interference of song lyrics and meaning on speech intelligibility</article-title>
+          <source>J. Exp. Psychol. Appl.</source>
+          <year>2022</year>
+          <volume>28</volume>
+          <fpage>576</fpage>
+          <lpage>588</lpage>
+          <pub-id pub-id-type="doi">10.1037/xap0000368</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B50-brainsci-12-01320">
+        <label>50.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kidd</surname>
+              <given-names>G.</given-names>
+            </name>
+            <name>
+              <surname>Colburn</surname>
+              <given-names>H.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Informational Masking in Speech Recognition</article-title>
+          <source>The Auditory System at the Cocktail Party</source>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Middlebrooks</surname>
+              <given-names>J.C.</given-names>
+            </name>
+            <name>
+              <surname>Simon</surname>
+              <given-names>J.Z.</given-names>
+            </name>
+            <name>
+              <surname>Popper</surname>
+              <given-names>A.N.</given-names>
+            </name>
+            <name>
+              <surname>Fay</surname>
+              <given-names>R.R.</given-names>
+            </name>
+          </person-group>
+          <publisher-name>Springer International Publishing</publisher-name>
+          <publisher-loc>Cham, Switzerland</publisher-loc>
+          <year>2017</year>
+          <fpage>75</fpage>
+          <lpage>109</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B51-brainsci-12-01320">
+        <label>51.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Scharenborg</surname>
+              <given-names>O.</given-names>
+            </name>
+            <name>
+              <surname>Larson</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Investigating the Effect of Music and Lyrics on Spoken-Word Recognition</article-title>
+          <source>arXiv</source>
+          <year>2018</year>
+          <pub-id pub-id-type="arxiv">1803.05058</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B52-brainsci-12-01320">
+        <label>52.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lavie</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Hirst</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>De Fockert</surname>
+              <given-names>J.W.</given-names>
+            </name>
+            <name>
+              <surname>Viding</surname>
+              <given-names>E.</given-names>
+            </name>
+          </person-group>
+          <article-title>Load theory of selective attention and cognitive control</article-title>
+          <source>J. Exp. Psychol. Gen.</source>
+          <year>2004</year>
+          <volume>133</volume>
+          <fpage>339</fpage>
+          <lpage>354</lpage>
+          <pub-id pub-id-type="doi">10.1037/0096-3445.133.3.339</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B53-brainsci-12-01320">
+        <label>53.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Dong</surname>
+              <given-names>Y.</given-names>
+            </name>
+            <name>
+              <surname>Zheng</surname>
+              <given-names>H.-Y.</given-names>
+            </name>
+            <name>
+              <surname>Wu</surname>
+              <given-names>S.X.-Y.</given-names>
+            </name>
+            <name>
+              <surname>Huang</surname>
+              <given-names>F.-Y.</given-names>
+            </name>
+            <name>
+              <surname>Peng</surname>
+              <given-names>S.-N.</given-names>
+            </name>
+            <name>
+              <surname>Sun</surname>
+              <given-names>S.Y.-K.</given-names>
+            </name>
+            <name>
+              <surname>Zeng</surname>
+              <given-names>H.</given-names>
+            </name>
+          </person-group>
+          <article-title>The effect of Chinese pop background music on Chinese poetry reading comprehension</article-title>
+          <source>Psychol. Music</source>
+          <year>2022</year>
+          <volume>50</volume>
+          <fpage>1</fpage>
+          <lpage>22</lpage>
+          <pub-id pub-id-type="doi">10.1177/03057356211062940</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B54-brainsci-12-01320">
+        <label>54.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+            <name>
+              <surname>Howell</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Functional changes in inter- and intra-hemispheric auditory cortical processing underlying degraded speech perception</article-title>
+          <source>Neuroimage</source>
+          <year>2016</year>
+          <volume>124</volume>
+          <fpage>581</fpage>
+          <lpage>590</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.neuroimage.2015.09.020</pub-id>
+          <pub-id pub-id-type="pmid">26386346</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B55-brainsci-12-01320">
+        <label>55.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Key</surname>
+              <given-names>A.P.F.</given-names>
+            </name>
+            <name>
+              <surname>Dove</surname>
+              <given-names>G.O.</given-names>
+            </name>
+            <name>
+              <surname>Maguire</surname>
+              <given-names>M.J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Linking brainwaves to the brain: An ERP primer</article-title>
+          <source>Dev. Neuropsychol.</source>
+          <year>2005</year>
+          <volume>27</volume>
+          <fpage>183</fpage>
+          <lpage>215</lpage>
+          <pub-id pub-id-type="doi">10.1207/s15326942dn2702_1</pub-id>
+          <pub-id pub-id-type="pmid">15753046</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B56-brainsci-12-01320">
+        <label>56.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ding</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Simon</surname>
+              <given-names>J.Z.</given-names>
+            </name>
+          </person-group>
+          <article-title>Emergence of neural encoding of auditory objects while listening to competing speakers</article-title>
+          <source>Proc. Natl. Acad. Sci. USA</source>
+          <year>2012</year>
+          <volume>109</volume>
+          <fpage>11854</fpage>
+          <lpage>11859</lpage>
+          <pub-id pub-id-type="doi">10.1073/pnas.1205381109</pub-id>
+          <pub-id pub-id-type="pmid">22753470</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B57-brainsci-12-01320">
+        <label>57.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Strauss</surname>
+              <given-names>D.J.</given-names>
+            </name>
+            <name>
+              <surname>Corona-Strauss</surname>
+              <given-names>F.I.</given-names>
+            </name>
+            <name>
+              <surname>Trenado</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Bernarding</surname>
+              <given-names>C.</given-names>
+            </name>
+            <name>
+              <surname>Reith</surname>
+              <given-names>W.</given-names>
+            </name>
+            <name>
+              <surname>Latzel</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Froehlich</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Electrophysiological correlates of listening effort: Neurodynamical modeling and measurement</article-title>
+          <source>Cogn. Neurodyn.</source>
+          <year>2010</year>
+          <volume>4</volume>
+          <fpage>119</fpage>
+          <lpage>131</lpage>
+          <pub-id pub-id-type="doi">10.1007/s11571-010-9111-3</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B58-brainsci-12-01320">
+        <label>58.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bidelman</surname>
+              <given-names>G.M.</given-names>
+            </name>
+            <name>
+              <surname>Lowther</surname>
+              <given-names>J.E.</given-names>
+            </name>
+            <name>
+              <surname>Tak</surname>
+              <given-names>S.H.</given-names>
+            </name>
+            <name>
+              <surname>Alain</surname>
+              <given-names>C.</given-names>
+            </name>
+          </person-group>
+          <article-title>Mild cognitive impairment is characterized by deficient hierarchical speech coding between auditory brainstem and cortex</article-title>
+          <source>J. Neurosci.</source>
+          <year>2017</year>
+          <volume>37</volume>
+          <fpage>3610</fpage>
+          <lpage>3620</lpage>
+          <pub-id pub-id-type="doi">10.1523/JNEUROSCI.3700-16.2017</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B59-brainsci-12-01320">
+        <label>59.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hennessy</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Mack</surname>
+              <given-names>W.J.</given-names>
+            </name>
+            <name>
+              <surname>Habibi</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Speech-in-noise perception in musicians and non-musicians: A multi-level meta-analysis</article-title>
+          <source>Hear. Res.</source>
+          <year>2022</year>
+          <volume>416</volume>
+          <fpage>108442</fpage>
+          <pub-id pub-id-type="doi">10.1016/j.heares.2022.108442</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B60-brainsci-12-01320">
+        <label>60.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Du</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Jiang</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>Z.</given-names>
+            </name>
+            <name>
+              <surname>Man</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Jiang</surname>
+              <given-names>C.</given-names>
+            </name>
+          </person-group>
+          <article-title>The effects of background music on neural responses during reading comprehension</article-title>
+          <source>Sci. Rep.</source>
+          <year>2020</year>
+          <volume>10</volume>
+          <fpage>18651</fpage>
+          <pub-id pub-id-type="doi">10.1038/s41598-020-75623-3</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B61-brainsci-12-01320">
+        <label>61.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Román-Caballero</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Martín-Arévalo</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>Lupiáñez</surname>
+              <given-names>J.</given-names>
+            </name>
+          </person-group>
+          <article-title>Attentional networks functioning and vigilance in expert musicians and non-musicians</article-title>
+          <source>Psychol. Res.</source>
+          <year>2021</year>
+          <volume>85</volume>
+          <fpage>1121</fpage>
+          <lpage>1135</lpage>
+          <pub-id pub-id-type="doi">10.1007/s00426-020-01323-2</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B62-brainsci-12-01320">
+        <label>62.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bialystok</surname>
+              <given-names>E.</given-names>
+            </name>
+            <name>
+              <surname>DePape</surname>
+              <given-names>A.M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Musical expertise, bilingualism, and executive functioning</article-title>
+          <source>J. Exp. Psychol. Hum. Percept. Perform.</source>
+          <year>2009</year>
+          <volume>35</volume>
+          <fpage>565</fpage>
+          <lpage>574</lpage>
+          <pub-id pub-id-type="doi">10.1037/a0012735</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B63-brainsci-12-01320">
+        <label>63.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Weiss</surname>
+              <given-names>M.W.</given-names>
+            </name>
+            <name>
+              <surname>Trehub</surname>
+              <given-names>S.E.</given-names>
+            </name>
+            <name>
+              <surname>Schellenberg</surname>
+              <given-names>E.G.</given-names>
+            </name>
+            <name>
+              <surname>Habashi</surname>
+              <given-names>P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Pupils Dilate for Vocal or Familiar Music</article-title>
+          <source>J. Exp. Psychol. Hum. Percept. Perform.</source>
+          <year>2016</year>
+          <volume>42</volume>
+          <fpage>1061</fpage>
+          <lpage>1065</lpage>
+          <pub-id pub-id-type="doi">10.1037/xhp0000226</pub-id>
+          <pub-id pub-id-type="pmid">27123682</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B64-brainsci-12-01320">
+        <label>64.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Swaminathan</surname>
+              <given-names>J.</given-names>
+            </name>
+            <name>
+              <surname>Mason</surname>
+              <given-names>C.R.</given-names>
+            </name>
+            <name>
+              <surname>Streeter</surname>
+              <given-names>T.M.</given-names>
+            </name>
+            <name>
+              <surname>Best</surname>
+              <given-names>V.</given-names>
+            </name>
+            <name>
+              <surname>Kidd</surname>
+              <given-names>G.</given-names>
+              <suffix>Jr.</suffix>
+            </name>
+            <name>
+              <surname>Patel</surname>
+              <given-names>A.D.</given-names>
+            </name>
+          </person-group>
+          <article-title>Musical training, individual differences and the cocktail party problem</article-title>
+          <source>Sci. Rep.</source>
+          <year>2015</year>
+          <volume>5</volume>
+          <fpage>11628</fpage>
+          <pub-id pub-id-type="doi">10.1038/srep11628</pub-id>
+          <pub-id pub-id-type="pmid">26112910</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B65-brainsci-12-01320">
+        <label>65.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bendixen</surname>
+              <given-names>A.</given-names>
+            </name>
+          </person-group>
+          <article-title>Predictability effects in auditory scene analysis: A review</article-title>
+          <source>Front. Neurosci.</source>
+          <year>2014</year>
+          <volume>8</volume>
+          <fpage>60</fpage>
+          <pub-id pub-id-type="doi">10.3389/fnins.2014.00060</pub-id>
+          <pub-id pub-id-type="pmid">24744695</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+    </back></article>

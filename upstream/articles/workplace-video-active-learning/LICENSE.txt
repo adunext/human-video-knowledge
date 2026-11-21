@@ -1,0 +1,11 @@
+Enhancing workplace digital learning by use of the science of learning
+Authors: Kana Okano, Jakub R. Kaczmarzyk, John D. E. Gabrieli
+DOI: 10.1371/journal.pone.0206250
+Rights: © 2018 Okano et al
+License: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/
+Canonical article: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0206250
+Exact acquisition endpoint: https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0206250&type=manuscript
+Exact upstream SHA-256: 603511c7ce8e8b581c5b744b2f606f74e8000117d06091304ee542023fade945
+
+Changes and scope: Adapted text-only article extraction from the official PLOS publisher XML. Retains the abstract, selected author narrative and references. Removes tables, figures, training-video transcript references and example questions as marked, contacts, graphics, linked data/supplements and all stimulus assets. Does not archive the original XML or illustrated article.
+No video, audio, screenshots, subtitle/dialogue files, participant data, or replication materials are included.

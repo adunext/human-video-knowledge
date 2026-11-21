@@ -1,0 +1,891 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink"><!-- Adapted article text from publisher JATS: abstract, selected author sections, aggregate tables where retained, and references. Omits figures, linked packages, audio, stimuli materials and samples, individual data, contacts, and selected quotations. Not the original JATS or a complete illustrated article. --><front><article-meta><article-id pub-id-type="doi">10.3390/ijerph20010123</article-id>
+      <article-id pub-id-type="publisher-id">ijerph-20-00123</article-id>
+      <title-group>
+        <article-title>Towards a Characterization of Background Music Audibility in Broadcasted TV</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0003-3591-9378</contrib-id>
+          <name>
+            <surname>Batlle-Roca</surname>
+            <given-names>Roser</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">Conceptualization</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Data curation" vocab-term-identifier="https://credit.niso.org/contributor-roles/data-curation/">Data curation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Formal analysis" vocab-term-identifier="https://credit.niso.org/contributor-roles/formal-analysis/">Formal analysis</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">Methodology</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Resources" vocab-term-identifier="https://credit.niso.org/contributor-roles/resources/">Resources</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Software" vocab-term-identifier="https://credit.niso.org/contributor-roles/software/">Software</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Validation" vocab-term-identifier="https://credit.niso.org/contributor-roles/validation/">Validation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing – original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">Writing – original draft</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing – review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing – review &amp; editing</role>
+          <xref rid="af1-ijerph-20-00123" ref-type="aff">1</xref>
+          <xref rid="c1-ijerph-20-00123" ref-type="corresp">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0003-2799-7675</contrib-id>
+          <name>
+            <surname>Herrera-Boyer</surname>
+            <given-names>Perfecto</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">Conceptualization</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Formal analysis" vocab-term-identifier="https://credit.niso.org/contributor-roles/formal-analysis/">Formal analysis</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">Investigation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">Methodology</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Validation" vocab-term-identifier="https://credit.niso.org/contributor-roles/validation/">Validation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing – original draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">Writing – original draft</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing – review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing – review &amp; editing</role>
+          <xref rid="af1-ijerph-20-00123" ref-type="aff">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0001-6140-3389</contrib-id>
+          <name>
+            <surname>Meléndez-Catalán</surname>
+            <given-names>Blai</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Data curation" vocab-term-identifier="https://credit.niso.org/contributor-roles/data-curation/">Data curation</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">Methodology</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing – review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing – review &amp; editing</role>
+          <xref rid="af2-ijerph-20-00123" ref-type="aff">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Molina</surname>
+            <given-names>Emilio</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">Funding acquisition</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Supervision" vocab-term-identifier="https://credit.niso.org/contributor-roles/supervision/">Supervision</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing – review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing – review &amp; editing</role>
+          <xref rid="af2-ijerph-20-00123" ref-type="aff">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0003-1395-2345</contrib-id>
+          <name>
+            <surname>Serra</surname>
+            <given-names>Xavier</given-names>
+          </name>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">Funding acquisition</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Project administration" vocab-term-identifier="https://credit.niso.org/contributor-roles/project-administration/">Project administration</role>
+          <role vocab="credit" vocab-identifier="https://credit.niso.org/" vocab-term="Writing – review &amp; editing" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-review-editing/">Writing – review &amp; editing</role>
+          <xref rid="af1-ijerph-20-00123" ref-type="aff">1</xref>
+        </contrib>
+      </contrib-group>
+      <contrib-group>
+        </contrib-group>
+      <pub-date pub-type="epub">
+        <day>22</day>
+        <month>12</month>
+        <year>2022</year>
+      </pub-date>
+      <pub-date pub-type="collection">
+        <month>01</month>
+        <year>2023</year>
+      </pub-date>
+      <volume>20</volume>
+      <issue>1</issue>
+      <elocation-id>123</elocation-id>
+      <permissions>
+        <copyright-statement>© 2022 by the authors.</copyright-statement>
+        <copyright-year>2022</copyright-year>
+        <license license-type="open-access">
+          <license-p>Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (<ext-link ext-link-type="uri" xlink:href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</ext-link>).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>In audiovisual contexts, different conventions determine the level at which background music is mixed into the final program, and sometimes, the mix renders the music to be practically or totally inaudible. From a perceptual point of view, the audibility of music is subject to auditory masking by other aural stimuli such as voice or additional sounds (e.g., applause, laughter, horns), and is also influenced by the visual content that accompanies the soundtrack, and by attentional and motivational factors. This situation is relevant to the music industry because, according to some copyright regulations, the non-audible background music must not generate any distribution rights, and the marginally audible background music must generate half of the standard value of audible music. In this study, we conduct two psychoacoustic experiments to identify several factors that influence background music perception, and their contribution to its variable audibility. Our experiments are based on auditory detection and chronometric tasks involving keyboard interactions with original TV content. From the collected data, we estimated a sound-to-music ratio range to define the audibility threshold limits of the <italic>barely audible</italic> class. In addition, results show that perception is affected by loudness level, listening condition, music sensitivity, and type of television content.</p>
+      </abstract>
+      </article-meta></front><body>
+    <sec sec-type="intro" id="sec1-ijerph-20-00123">
+      <title>1. Introduction</title>
+      <p>Music broadcasted in audiovisual productions provides a large stream of income for the music industry through author copyrights. The distribution rules of royalties vary by country and consider several conditions, such as time slots and the importance of music in production.</p>
+      <p>In 2017, WIPO (World Intellectual Property Organization) determined that non-audible or inaudible background music should not generate distribution rights, and <italic>barely audible</italic> background music should generate 50% of the standard value generated by audible music [<xref ref-type="bibr" rid="B1-ijerph-20-00123">1</xref>]. Therefore, the assessment of background music audibility in broadcasted TV is under scrutiny since copyright remuneration is compromised on the audibility level. Indeed, collective management organisations, e.g., SGAE (General Society of Authors and Publishers of Spain), still need to detect when these circumstances are present in broadcasted programs.</p>
+      <sec id="sec1dot1-ijerph-20-00123">
+        <title>1.1. Problem Identification</title>
+        <p>The music industry faces the problem of proposing a definition for the three audibility categories: <italic>audible</italic>, <italic>barely audible</italic> and <italic>inaudible</italic> background music, and requires automatic systems that are able to classify the perceived audibility of background music in audiovisual productions.</p>
+        <p>From the perspective of the audience, the received signal is a mixture emitted by TV broadcasters. That signal contains both musical and non-musical sources simultaneously, despite the music flows being separated from the other sounds at the moment of the production (<xref ref-type="fig" rid="ijerph-20-00123-f001">Figure 1</xref>). Hence, it is difficult to measure the perceived loudness level of each signal source independently without applying source separation, or considering technical characteristics such as masking and frequency selectivity that strongly influence what the end user hears.</p>
+        <p>Moreover, one might think that the definitions of the categories <italic>audible</italic>, <italic>barely audible</italic> and <italic>inaudible</italic> background music only depend on their relative loudness thresholds. That is, determining which loudness level or loudness range of the music must be classified into each category. If music could be separated from the rest of the audio content and a simple sound-to-music ratio (SMR) could be obtained through loudness estimation of each track, we could classify the clips according to their corresponding audibility level, after establishing a loudness threshold between these categories.</p>
+        <p>However, other influential elements, such as environmental noise, listening conditions, and even the musical sensitivity of the listeners, might increase or decrease this required threshold of loudness. Hence, we face a complex auditory scene analysis problem with many variable elements that can influence music perception.</p>
+      </sec>
+      <sec id="sec1dot2-ijerph-20-00123">
+        <title>1.2. Background Concepts and State-of-the-Art</title>
+        <p>Understanding background music perception is complex and affected by several characteristics, which must be considered in this study. Therefore, we must be careful in defining which of these elements influence music perception and how these may condition the audibility level of music in audiovisual content. Thus, this subsection’s objective is to lay out the principal elements of perception that are taken into account here, along with similar investigations that support our hypotheses and the experiments’ approaches addressed in <xref ref-type="sec" rid="sec2-ijerph-20-00123">Section 2</xref>.</p>
+        <p>In broadcasted TV programs, it is common to face auditory masking, as there are many circumstances where there are multiple sounds simultaneously transmitted, e.g., a presenter introducing a contest while there is music in the background and the public is applauding, which might overwhelm the audience with multiple sounds. To distinguish them, they rely on frequency selectivity, which refers to the ability to separate frequency components of a complex sound [<xref ref-type="bibr" rid="B2-ijerph-20-00123">2</xref>]. Nonetheless, this does not assure they are perceiving all the sounds in the mixture, as one might mask the others.</p>
+        <p>In addition, loudness is the perceived magnitude of a sound and cannot be directly measured since it is a subjective quantity [<xref ref-type="bibr" rid="B2-ijerph-20-00123">2</xref>]. Thus, the loudness perception of a signal is subjective, and each subject’s perception can vary due to individual features such as attention and awareness (with attention referring to voluntarily focusing the mind on some stimulus or feature of it (e.g., music pitch, following a melody), whereas awareness refers to being conscious that something, such as background music, is happening or is present).</p>
+        <p>Regardless, thanks to the auditory scene analysis [<xref ref-type="bibr" rid="B3-ijerph-20-00123">3</xref>], the human auditory system can <italic>stream</italic> or tell apart different sonic objects even when they are concurrently stimulating our hearing sense (e.g., the speech of a TV conductor, laughs from a live audience in the TV set, some background music in the program, and the telephone ringing at home) [<xref ref-type="bibr" rid="B4-ijerph-20-00123">4</xref>]. According to our current knowledge, the complex sonic stimulation is usually simplified into foreground and background (and sometimes an extra additional stream can be extracted too) by means of automatic or semi-automatic heuristics based on hypotheses about structural properties of concurrent sounds (i.e., harmonicity, synchronicity, spatial placement, etc.) and how they evolve over time (i.e., if they covariate or not, if they have different spectral content, etc.). Once streams are created, attentional processes might produce further refinements on one of them, or might even suppress the processing of part of the available information.</p>
+        <p>Moreover, a known phenomenon is the so-called [quoted wording omitted] [<xref ref-type="bibr" rid="B5-ijerph-20-00123">5</xref>], consisting of misperceiving unexpected stimuli, due to a lack of attention or sensorial resources. In the auditory domain, we find the idea of <italic>inattentional deafness</italic>. As exposed by Koreimann [<xref ref-type="bibr" rid="B5-ijerph-20-00123">5</xref>], inattentional deafness in music is defined as the inability to consciously perceive characteristics of the music piece, for example, unawareness of a given instrument when attention is directed towards a different one, or to decide on rhythmic features. Their investigation sustains the existence of inattentional deafness in music and that the human auditory system is more influenced by attentional distraction than it was previously thought. Additionally, Molloy et al. [<xref ref-type="bibr" rid="B6-ijerph-20-00123">6</xref>] describes inattentional deafness as the failure to perceive auditory stimuli under high visual load. Indeed, several studies carried out by Lavie and colleagues ([<xref ref-type="bibr" rid="B6-ijerph-20-00123">6</xref>,<xref ref-type="bibr" rid="B7-ijerph-20-00123">7</xref>,<xref ref-type="bibr" rid="B8-ijerph-20-00123">8</xref>,<xref ref-type="bibr" rid="B9-ijerph-20-00123">9</xref>]) demonstrate the influence of visual stimuli on inattentional deafness through different behavioural experiments.</p>
+        <p>Hence, for our exposed scenario (loudness perception of background music in broadcasted TV programs), these investigations justify the need to study different perceptual characteristics, such as motivated attention and perceptual unawareness, and the influence of the visual stimuli on our definition of the <italic>barely audible</italic> loudness thresholds. However, this last element (i.e., visual stimuli) is herein omitted since it is beyond the scope of the study and not of priority in our research agenda.</p>
+        <p>Another element to consider in this investigation is ecological validity. In empirical evaluations, ecological validity is understood as the amount of realism an experiment setup has, compared to the person’s real context [<xref ref-type="bibr" rid="B10-ijerph-20-00123">10</xref>]. It relies on the similarities between the testing conditions and the real scenario where the studied element occurs. Consequently, when conducting auditory and behavioural experiments, it is important to preserve the ecological validity of the case study to be able to extrapolate and generalise the obtained results.</p>
+        <p>During this investigation, we considered the most pragmatic context of our case study: watching broadcasted TV content while seated on a sofa viewed on a television. Nonetheless, we consider other listening scenarios that are also frequent when engaging in audiovisual stimulation at home: loudspeakers and headphones, as people also frequently watch TV programs from computers, tablets, or mobile phones.</p>
+      </sec>
+      <sec id="sec1dot3-ijerph-20-00123">
+        <title>1.3. Related Work</title>
+        <p>Background music audibility estimation is not a widely addressed topic, but during the development of this study, SGAE (which is the most important music rights management society in Spain) conducted a similar investigation with a research team from Universitat Politècnica de València (UPV). Their work has been reported in the 152nd Audio Engineering Society Convention held in May 2022 [<xref ref-type="bibr" rid="B11-ijerph-20-00123">11</xref>]. In this article, López and Ramallo expose the same industrial problem as us: studying the audibility of background music in television programs considering three levels of audibility (<italic>audible</italic>, <italic>barely audible</italic> and <italic>inaudible</italic>). They consider several elements that may influence the perception of background music and conclude that the feasible solution is to build a deterministic system that converges to the average estimate of listeners’ audibility.</p>
+        <p>To evaluate the audibility level of background music, they created a manual annotation of 88 artificial 10-second clips of video, composed of the voice of two popular Spanish news hosts (one male, one female) and added songs of different music genres. Participants had to determine <italic>barely audible</italic> volume for each combination through an attenuator (sliding fader). The authors establish the threshold between <italic>barely audible</italic> and <italic>inaudible</italic> around −30 dB and propose a linear regression to adjust the perceived loudness level. They conclude that, when working with original broadcasted content where voice and music are mixed, it is required to use source separation techniques to estimate music loudness level. Unfortunately, from our own experience and from what has been reported in state-of-the-art ([<xref ref-type="bibr" rid="B12-ijerph-20-00123">12</xref>,<xref ref-type="bibr" rid="B13-ijerph-20-00123">13</xref>]), these techniques are still far from providing excellent results that can be applied in this sensitive scenario.</p>
+        <p>Additionally, considering all the previously discussed factors involved in a typical TV-watching situation, we think that the problem is still far from being solved with such a deterministic approach, and our aim is to further investigate towards a more nuanced and multi-component predictive model. Therefore, the goal of this investigation is to assess background music audibility in audiovisual productions by defining an approximate loudness level threshold for the three established auditory categories and to study the influence of listening conditions on background music perception, taking into account non-music signals (i.e., speech, applauses, etc.), environment noise, auditory scene-setting and subject-related characteristics. In this study, we report on two psychoacoustic experiments, based on auditory detection and chronometric tasks involving computer keyboard interactions, with real TV content. We identify that perception is influenced by loudness level, auditory condition, environment characteristics, ambience noise, music sensitivity and type of television content; and, establish two loudness thresholds that separate the three different audibility categories: <italic>audible</italic>, <italic>barely audible</italic> and <italic>inaudible</italic>.</p>
+      </sec>
+    </sec>
+    <sec id="sec2-ijerph-20-00123">
+      <title>2. Materials and Methods</title>
+      <p>To understand the exposed complex auditory scene analysis problem and evaluate the characteristics that influence background music perception, we planned, designed and carried out two psychoacoustic listening experiments: (1) <italic>Did you hear the music?</italic> and (2) <italic>Perceiving the music</italic>. In each experiment, certain factors are studied: sound frequency selectivity and SMR variation, in the first; and, listening conditions impact (headphones, loudspeaker, TV), in the second. Participants were submitted to different aural conditions from different audiovisual segments and had to assess their auditory perception through simple tasks involving computer keyboard-based answers.</p>
+      <p>The experiments were conducted onsite, always in the same room, and directly supervised by an investigator. To recreate a kind-of “living room”, the room included a TV and a sofa from which the participants attended the experiment. For the second experiment, a table and chair were set to complete the headphones and loudspeakers’ listening conditions. The average ambient noise in the room was 35.8 dBA, which agrees with the participants’ experience during the experiments, as most of them considered the noise environment weak or inaudible. Stimuli for both experiments are 10-second clips of video from five Spanish TV channels (TV1, TV2, LaSexta, Cuatro and Antena 3), recorded between 28th June 2021 at 13:15 and 7th July 2021 at 10:15. These stimuli were extracted from BMAT’s database and cannot be openly shared as they are subject to confidentiality regulations.</p>
+      <p>The software tool that we used to build and control all these experiments is lab.js (<named-content>[External resource link omitted.]</named-content> (accessed on 31 October 2022)), which offers the possibility to both write code using a high-level JavaScript library and to build experiments using an online graphical interface. Experiments were run online using the Pavlovia platform (<named-content>[External resource link omitted.]</named-content> (accessed on 31 October 2022)).</p>
+      <p>Furthermore, the Institutional Committee for Ethical Review of Projects (CIREP) at Universitat Pompeu Fabra reviewed and approved the experimental approach as it complies with the ethical principles in research involving humans and personal data protection regulations (guided by Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)).</p>
+      <sec sec-type="subjects" id="sec2dot1-ijerph-20-00123">
+        <title>2.1. Participants</title>
+        <p>Following CIREP guidelines, we looked for participants between the ages of 18 and 65, who were Spanish speakers and did not report serious hearing problems. We consider a valid Spanish speaker anyone with a C1 level, that is, anyone who can express themselves fluently in the oral and written domain and can understand what they hear and read, even if they are not familiar with a topic. They were recruited through email announcements, social media communications and printed posters distributed around the University campus. An economical compensation of 10 USD per experiment participation was offered, which was paid through the Testable platform (<named-content>[External resource link omitted.]</named-content> (accessed on 31 October 2022)).</p>
+        <p>Before starting the listening test, a short questionnaire asked a series of demographic questions. Apart from registering their age, gender, nationality and language level, participants had to define their music sensitivity level by selecting one of the following categories:<list list-type="bullet"><list-item><p>Non-musician—I don’t know how to read or play music/I rarely spend time listening to music.</p></list-item><list-item><p>Music enthusiasts—I don’t know how to read or play music, but I am a music enthusiast. Hence, I listen to music often and I go to live music concerts.</p></list-item><list-item><p>Amateur musician—I know how to read and play music (I play, at least, one musical instrument) and I enjoy listening to music, as well as going to live music concerts. However, I did not pursue professional studies.</p></list-item><list-item><p>Intermediate musician—I play, at least, one instrument and I have some music studies background. Although, I do not earn enough money to consider myself a professional musician.</p></list-item><list-item><p>Professional musician—I consider myself a professional musician, I can live from music-related activities and/or I have pursued or am pursuing professional music studies and I am able to play different instruments.</p></list-item></list></p>
+        <p>Until this point, we have presented the methodology common to both experiments. In the upcoming subsections, we describe specific details of materials and methods applied in each experiment separately.</p>
+      </sec>
+      <sec id="sec2dot2-ijerph-20-00123">
+        <title>2.2. Experiment 1</title>
+        <p>Experiment 1 <italic>Did you hear the music?</italic> wants to estimate the threshold limits of the category <italic>barely audible</italic>. That is, to obtain a specific loudness dB level where humans differentiate music from inaudible to <italic>barely audible</italic>, and from <italic>barely audible</italic> to audible.</p>
+        <p>We hypothesise that every participant has an upper and a lower threshold of the <italic>barely audible</italic> category, and we can extrapolate an average general threshold level from that. Additionally, the individual threshold may be influenced by our controlled variable “music sensitivity”.</p>
+        <p>For this experiment, with the help of the source separation system demucs [<xref ref-type="bibr" rid="B13-ijerph-20-00123">13</xref>], we separate the background music (music signal) from the specific content of the clips (e.g., voice, claps) (non-music signal). As the achieved separation with demucs is not always perfect, only clips where music and speech+sounds are well separated are selected. Then, we keep non-music signals as in the mixture and apply a linear increase (from −50 dB to −15 dB) or decrease (from −15 dB to −50 dB) in volume progression to the music signals. The experiment has two sections: ascending and descending, which are introduced randomly to each subject.</p>
+        <p>The separated stimuli (sound-music) were normalised at −14 LUFS/1dB Peak, and the volume progressions were applied afterwards. A volume calibration procedure was included at the beginning of the experiment to ensure good audibility throughout it. The calibration consisted in listening to a reference sound, which was normalised at a lower level (−40 LUFS/1dB Peak), extracted from an original TV scene, and had to adjust the device volume to hear it very low. Participants received the instruction: [quoted wording omitted].</p>
+        <p>Participants were presented with a chronometric task, where they were asked to press the keyboard spacebar as soon as they started to hear music (in the ascending section) or when they stopped hearing it (in the descending section). If participants did not press the spacebar at any time it was assumed as a null response. Each section contains 24 clips of 10-second videos, of which four appeared twice in one block, and four others were repeated in both blocks with opposed progression. We can estimate the SMR at which background music becomes audible or inaudible according to the moment the key was pressed and the volume progression (35 dB range), for each clip. Thus, the SMR level is not controlled by the participant but by us. We expect to estimate a feasible <italic>barely audible</italic> threshold range from this experiment.</p>
+        <sec id="sec2dot2dot1-ijerph-20-00123">
+          <title>2.2.1. Cleaning Data</title>
+          <p>Several criteria were pre-defined to indicate potentially bad-quality data and the need to discard any suspicious data:<list list-type="bullet"><list-item><p>High percentages of nulls (not answered threshold) in any of the sections of the experiment;</p></list-item><list-item><p>An inverse threshold range (that is, obtaining a higher threshold for the descending section than for the ascending section), as we consider it not to be the logically expected majority trend.</p></list-item></list></p>
+          <p>After screening the available data, additional cutoff criteria were added. Since, we considered some music detections could happen right at the end of the clip, we set the threshold detection at volume progression limit (i.e., −15 dB and −50 dB), plus one extra second of reaction time (+3.5 dB):<list list-type="bullet"><list-item><p>Subjects’ responses define a too-high threshold in the ascending section (Ath &gt; −11.5 dB).</p></list-item><list-item><p>Subjects’ responses define a too-low threshold in the descending section (Dth &lt; −53.5 dB).</p></list-item></list></p>
+        </sec>
+        <sec sec-type="subjects" id="sec2dot2dot2-ijerph-20-00123">
+          <title>2.2.2. Participants</title>
+          <p>This experiment had 42 participants, of which 38 (male = 17, female = 21) were considered valid participants. Participants were Spanish native speakers between 18 and 50 years old (mean = 24.32, median = 21.5), who mainly set the TV volume at 24 (approximately 58 dBA) and spent about 13 min completing the task. This time does not include the introduction to the experiment nor the payment explanation at the end of the experiment, which added about 10 min. Thus, in general, participants’ spent around 25 min at the experiment site.</p>
+          <p>Moreover, the participants were positioned so that their ears were situated at an average distance of 2.06 m from the TV. Furthermore, 42.1% of the participants considered themselves to be music enthusiasts, 23.7% of them music amateurs and 34.2% were music professionals.</p>
+        </sec>
+      </sec>
+      <sec id="sec2dot3-ijerph-20-00123">
+        <title>2.3. Experiment 2</title>
+        <p>Experiment (2) <italic>Perceiving the music</italic> wants to quantify the effects of listening conditions or devices (headphones, a TV and computer speakers/loudspeakers) on the perception and awareness of background music and, consequently, on the variability of the <italic>barely audible</italic> threshold.</p>
+        <p>We hypothesise that headphones yield an easier detection of perceived background music than the other conditions. Therefore, the <italic>barely audible</italic> threshold will be lower, and its range will be narrower in this condition. All the participants used the same devices (headphones, TV and loudspeakers) and experienced all three conditions (same task). Hence, this is a within-subjects experiment.</p>
+        <p>For this experiment, the stimuli were normalised at −14 LUFS/1 dB Peak and a volume calibration procedure was included at the beginning of each listening condition. The volume calibration instructions were the same as in Experiment 1.</p>
+        <p>The proposed task consists of a detection and forced-choice task, where a 10-second clip of video appears, and participants must press the spacebar as soon as they detect music in the clip. Thus, reaction time helps us draw threshold levels for each category and listening condition. In other words, when a participant perceives music right at the beginning, we can derive it is audible; if it takes more time, it is <italic>barely audible</italic>; and if there is no reaction, the music can be considered inaudible.</p>
+        <p>However, the same stimuli cannot be shown in each listening condition as we would expose participants to the same content three times and induce learning. Consequently, we have three stimuli groups (A-B-C), of 24 clips each, which appear randomly, one for each condition (which are randomly distributed). That is, there are nine testing conditions (three auditory conditions per three stimuli groups).</p>
+        <p>At the end of the experiment, we include a subjective questionnaire about the hearing conditions (with only three possible answers—the listening conditions):<list list-type="bullet"><list-item><p>In which listening condition did you hear better?</p></list-item><list-item><p>In which listening condition did you feel more comfortable with the task?</p></list-item></list></p>
+        <sec sec-type="subjects" id="sec2dot3dot1-ijerph-20-00123">
+          <title>2.3.1. Participants</title>
+          <p>In this experiment, we had 60 participants. However, five participants were discarded due to erratic behaviour and underrepresentation. Thus, we will observe the results of 55 participants (male = 25, female = 30), of which all of them, but 2, were Native-Spanish speakers between 18 and 50 years old (mean = 23.2, median = 21.0).</p>
+          <p>Almost half of the participants (45.5%) considered themselves music enthusiasts, 18.2% music amateurs, 18.2% intermediate musicians and 18.2% music professionals. Moreover, participants’ ears were situated at an average distance of 2.06 m from the TV and 68 cm from the computer speaker. Furthermore, at each condition, after the volume calibration, participants slightly adjusted it to a subjectively comfortable level (the range of variation was of 15 dB between listening conditions) (<xref ref-type="table" rid="ijerph-20-00123-t001">Table 1</xref>).</p>
+          <p>Participants needed around 16 min to complete the experiment and spent 5 min on average in each listening condition. This time does not include the introduction to the experiment nor the payment explanation at the end of the experiment, which added about 10 min. Thus, in general, participants’ spent around 30 min at the experiment site.</p>
+          <p>Considering their perceptions during the experiment, on the one side, most participants recognised completing the task better with headphones (72.7%). Instead, 10.9% of the participants agreed it was with loudspeakers and another 10.9% with the TV. Nonetheless, 5.5% of participants could not decide on the best condition.</p>
+          <p>On the other side, we asked about the perceived synchronicity between their keyboard response and the moment when the music was heard or disappeared. Most of them indicated they did not know when they answered (34.5%) while the others mostly responded that they pressed the spacebar after (32.7%) or at the exact moment (29.1%) they recognised the music.</p>
+        </sec>
+        <sec id="sec2dot3dot2-ijerph-20-00123">
+          <title>2.3.2. Criteria Audibility Classification</title>
+          <p>The classification of clips per category was done depending on the reaction time (RT) when pressing the spacebar. After an observation of classification variability to establish the threshold between the <italic>audible</italic> and <italic>barely audible</italic> categories, it was decided that if a participant detected music within the 2 first seconds of the clip, it should be classified as <italic>audible</italic>. Instead, if they needed more time to detect background music, it is classified as <italic>barely audible</italic>, and if they did not press the bar at all it is classified as inaudible.</p>
+          <p>Clicks after the 11th second are considered misclassifications and the clips are assigned to the inaudible category.</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec sec-type="results" id="sec3-ijerph-20-00123">
+      <title>3. Results</title>
+      <sec id="sec3dot1-ijerph-20-00123">
+        <title>3.1. Experiment 1</title>
+        <p>Experiment 1 aimed to estimate the thresholds of the <italic>barely audible</italic> category employing exposure to a progressively ascending or descending volume in the background music. The experiment was divided into two blocks: one for the ascending music level condition and the other for the descending music level. From the first, we should estimate the upper level of the category and, from the second, the lower level.</p>
+        <sec id="sec3dot1dot1-ijerph-20-00123">
+          <title>3.1.1. Average Threshold Level per Block</title>
+          <p>To calculate the average threshold level of each block, we took all the SMR classifications and obtained the average threshold level. For the ascending block, the mean was at −23.29 dB, and the descending block was at −36.76 dB.</p>
+          <p>It is rational to obtain such separate averages as each block corresponds to two different tasks: detecting background music without previous information (ascending) and having previous information (descending).</p>
+          <p>A one-way ANOVA (<xref ref-type="table" rid="ijerph-20-00123-t0A1">Table A1</xref>) was performed to compare the effect of the average threshold level obtained in each block. Our analysis revealed that there was a statistically significant difference (F(1479, 101) = [1.645], <italic>p</italic> = 0.001), meaning that a higher volume is required to detect music when not having any previous information, and a lower volume when there is previous information. This discrepancy is what helps us define the <italic>barely audible</italic> category threshold limits.</p>
+        </sec>
+        <sec id="sec3dot1dot2-ijerph-20-00123">
+          <title>3.1.2. <italic>Barely Audible</italic> Category Threshold Estimation</title>
+          <p>To estimate the <italic>barely audible</italic> threshold range, we pursued the idea of observing the overall threshold distributions on each block (<xref ref-type="fig" rid="ijerph-20-00123-f002">Figure 2</xref>), and set the upper and lower limits from the 75% percentile. With this approach, we obtained an upper limit at −18.79 dB, from the ascending block, and a lower limit at −42.06 dB, from the descending. However, we found this threshold range to be too wide and impractical to determine the <italic>barely audible</italic> class.</p>
+          <p>Consequently, we decided to adopt a more conservative approach and base the limits on the median, to reflect the distribution of SMRs. Therefore, we obtained a rounded threshold of −22.7 dB to −36.4 dB (range = 13.7 dB, centre = −29.6 dB).</p>
+        </sec>
+        <sec id="sec3dot1dot3-ijerph-20-00123">
+          <title>3.1.3. Influence of Music Sensitivity and Type of Video Content</title>
+          <p>To determine if there exists an influence of subjects’ music sensitivity on background music detection, we performed a two-way ANOVA analysis on the obtained threshold level per block and music sensitivity level. For more consistency, we grouped participants into two categories: non-professionals (music enthusiasts and amateur musicians) and professionals (intermediate musicians and professional musicians). In <xref ref-type="app" rid="app1-ijerph-20-00123">Appendix A</xref>, <xref ref-type="table" rid="ijerph-20-00123-t0A2">Table A2</xref> reflects there is a significant difference between music sensitivity level and experiment block (F(1, 1) = [1732.516], <italic>p</italic> = 0.000). Therefore, there is a clear influence of the music professionality of the participants on the detected thresholds. The more exposed to the music one is, the lower the background music detection threshold is found (<xref ref-type="fig" rid="ijerph-20-00123-f003">Figure 3</xref>).</p>
+          <p>Furthermore, the presented stimuli were classified into the following type of video categories: advertisement (9), cooking show (1), documentary (5), news (4), reality show (1), talk show (6), sports (2), culture (1), weather (1) and TV contest (10). For news videos or the ones with someone talking constantly, a third of the participants expressed it was harder for them to detect the music because they were distracted by the voice or it was complicated to distinguish the music from the voice. <xref ref-type="table" rid="ijerph-20-00123-t002">Table 2</xref> displays the average thresholds obtained for each category, considering the experiment block. We performed a two-way ANOVA analysis to evaluate the effect of each category on the determined threshold level, per block. The test revealed that there is a statistically significant interaction between the type of content (F(1, 9) = [17.775], <italic>p</italic> = 0.000).</p>
+        </sec>
+      </sec>
+      <sec id="sec3dot2-ijerph-20-00123">
+        <title>3.2. Experiment 2</title>
+        <p>Experiment 2 intended to investigate the potential influences of different listening conditions: headphones, loudspeakers and TV. Therefore, the same task was performed in each condition: pressing the spacebar as soon as the music was perceived.</p>
+        <sec id="sec3dot2dot1-ijerph-20-00123">
+          <title>3.2.1. Listening Condition Influence</title>
+          <p>To prove there is an effect of listening conditions on the speed of the keyboard response (and hence on the audibility of the music), we performed a one-way ANOVA analysis (<xref ref-type="table" rid="ijerph-20-00123-t0A3">Table A3</xref>). As we expected, there is a significant difference between the listening conditions (F(2, 2413) = [14.399], <italic>p</italic> = 0.000). Nonetheless, Tukey’s HSD test for multiple comparisons (<xref ref-type="table" rid="ijerph-20-00123-t0A4">Table A4</xref>) found that the mean value of listening conditions was not significantly different between the TV and loudspeakers conditions (<italic>p</italic> = 0.219, 95% C.I. = [−99.656, 586.619]). Another relevant finding is that the smallest reaction time is obtained with headphones whereas the highest corresponds to TV (<xref ref-type="fig" rid="ijerph-20-00123-f004">Figure 4</xref>). According to the distance between the TV and the subjects, the time required for the sound wave to travel from the source to the human ear (max. 6 ms) is not large enough to justify the overall discrepancy.</p>
+          <p>Moreover, taking into account that the order of the conditions were randomly presented to each participant, we conducted another two-way ANOVA analysis of the listening sequences in perspective of the auditory conditions (as there is a significant difference between them). No significant differences were found (F(2, 5) = [1.109], <italic>p</italic> = 0.351), which guarantees that we can work with all the data together.</p>
+        </sec>
+        <sec id="sec3dot2dot2-ijerph-20-00123">
+          <title>3.2.2. Reaction Time and Audibility Categorization</title>
+          <p>To estimate the classification of clips into a determined audibility category, we set the threshold between the <italic>audible</italic> and <italic>barely audible</italic> classes at 2 s of reaction time. Regarding the <italic>inaudible</italic> class, we established, (and instructed the participants accordingly) that no interaction with the keyboard meant no music perception. In <xref ref-type="fig" rid="ijerph-20-00123-f005">Figure 5</xref>, we can observe that with headphones participants have a faster median RT. Instead, both loudspeakers and TV conditions show a higher RT. We can acknowledge this difference for the <italic>barely audible</italic> classification: close to 4 s in headphones and close to 5 s for the other two.</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec sec-type="discussion" id="sec4-ijerph-20-00123">
+      <title>4. Discussion</title>
+      <p>The principal goal of this investigation was to explore and attempt to define the <italic>barely audible</italic> music class in the context of broadcasted TV. That is, to bring light to the grey area between perceptual audible and inaudible background music. Considering that loudness is a subjective sensation and cannot be measured directly but must be done through estimations, we proposed two psychoacoustic experiments to capture the essence of “what is <italic>barely audible</italic>”. The introduced experiments validate that music perception is influenced by multiple characteristics, three of them (SMR, musical training, and listening conditions) have been analyzed herein.</p>
+      <p>From the first experiment, we estimated that the <italic>barely audible</italic> category could be delimited by SMR values between −22.7 dB and −36.4 dB. Thus, it can be established that if a SMR is higher than −22.7 dB, background music will generally be considered <italic>audible</italic>, and if it is lower than −36.4 dB, it will be <italic>inaudible</italic>.</p>
+      <p>Nonetheless, perception does not depend solely on loudness level, and therefore we explored different elements that could alter it. We detected an influence of music sensitivity towards the awareness of background music, as music professionals presented a lower detection threshold (−23.9 dB to −37.7 dB) in comparison to non-professionals (−22.0 dB to −35.6 dB). Thus, the proposed threshold can be considered an optimistic estimation (and that for the whole population will be slightly higher).</p>
+      <p>During our analysis, we observed music perception is influenced by the type of audiovisual material the audience is processing. Therefore, it would be interesting to have a wider and balanced representation of different program categories to extract robust conclusions about perceptual differences due to the type of content, a consideration that was not properly planned for when preparing these experiments.</p>
+      <p>Moreover, from Experiment 2, we derive a clear effect on listening conditions, especially when not using headphones (lowest inaudible classification threshold). Most participants expressed that it was easier to detect music with headphones, which could be due to their better frequency response (compared to the transducers used in the other conditions, and also to the lack of room reverberation).</p>
+      <p>In summary, we have tackled the infrequently studied problem of the blurry and labile limit between audibility and inaudibility. Our contributions improve, complement, and expand the methodology and findings reported in the scarce existing literature on it [<xref ref-type="bibr" rid="B11-ijerph-20-00123">11</xref>]. Here, we have estimated a range of SMR values that could define the thresholds for a <italic>barely audible</italic> category. Our findings provide convergent validity to those reported in that paper (−30 dB), but bear more ecological validity as we have used real-world TV clips, tested different listening conditions (which cause the thresholds to shift), and have demonstrated the important effect of listening sensitivity or musical training of the subjects on such thresholds. Finally, we have proposed and effectively used alternative techniques to experimentally address the problem.</p>
+    </sec>
+    <sec sec-type="conclusions" id="sec5-ijerph-20-00123">
+      <title>5. Conclusions</title>
+      <p>This investigation provides a starting point for untangling background music perception in broadcasted TV, focused on establishing orientative thresholds between the three audibility categories set by WIPO: <italic>audible</italic>, <italic>barely audible</italic> and <italic>inaudible</italic>. Our approach takes into account the ecological validity of the experimental tasks used to understand this complex auditory scene analysis problem and centres on exploring data-driven definitions of a threshold level for an a priori ill-defined <italic>barely audible</italic> class, in addition to determining some of the influential elements on the three audibility categories.</p>
+      <p>We reported two psychoacoustic experiments, based on exploring the factors influencing the perception of background music: signal loudness level and listening conditions (headphones, loudspeakers, and TV set). From the obtained results, we proposed a threshold range for the <italic>barely audible</italic> category considering the level differences between the non-musical sound and the music, and proved that it is subject to the influence of the listening conditions. Therefore, the proposed limit from the first experiment is only valid for the TV condition. Moreover, we observed an effect of the music sensitivity level when perceiving background music, as the more one is exposed to music, the lower the threshold that one can detect the music. We hope this research draws attention to the need to further study background music audibility estimation regarding broadcasted TV.</p>
+    </sec>
+  </body>
+  <back><ref-list>
+      <title>References</title>
+      <ref id="B1-ijerph-20-00123">
+        <label>1.</label>
+        <element-citation publication-type="web">
+          <person-group person-group-type="author">
+            <collab>SGAE</collab>
+          </person-group>
+          <article-title>SGAE Statement on the WIPO Arbitration Award Ending the Conflict of Night Time Slots on Television</article-title>
+          <year>2017</year>
+          <comment>Available online: <ext-link xlink:href="http://www.sgae.es/en-EN/SitePages/EstaPasandoDetalleActualidad.aspx?i=2190&amp;s=5" ext-link-type="uri">http://www.sgae.es/en-EN/SitePages/EstaPasandoDetalleActualidad.aspx?i=2190&amp;s=5</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2021-08-21">(accessed on 21 August 2021)</date-in-citation>
+        </element-citation>
+      </ref>
+      <ref id="B2-ijerph-20-00123">
+        <label>2.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Plack</surname>
+              <given-names>C.J.</given-names>
+            </name>
+          </person-group>
+          <source>The Sense of Hearing</source>
+          <publisher-name>Routledge</publisher-name>
+          <publisher-loc>London, UK</publisher-loc>
+          <year>2013</year>
+        </element-citation>
+      </ref>
+      <ref id="B3-ijerph-20-00123">
+        <label>3.</label>
+        <element-citation publication-type="web">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bregman</surname>
+              <given-names>A.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Auditory Scene Analysis: The Perceptual Organization of Sound</article-title>
+          <year>1990</year>
+          <comment>Available online: <ext-link xlink:href="https://direct.mit.edu/books/book/3887/Auditory-Scene-AnalysisThe-Perceptual-Organization" ext-link-type="uri">https://direct.mit.edu/books/book/3887/Auditory-Scene-AnalysisThe-Perceptual-Organization</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2022-10-31">(accessed on 31 October 2022)</date-in-citation>
+        </element-citation>
+      </ref>
+      <ref id="B4-ijerph-20-00123">
+        <label>4.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Sussman</surname>
+              <given-names>E.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Auditory scene analysis: An attention perspective</article-title>
+          <source>J. Speech Lang. Hear. Res.</source>
+          <year>2017</year>
+          <volume>60</volume>
+          <fpage>2989</fpage>
+          <lpage>3000</lpage>
+          <pub-id pub-id-type="doi">10.1044/2017_JSLHR-H-17-0041</pub-id>
+          <pub-id pub-id-type="pmid">29049599</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B5-ijerph-20-00123">
+        <label>5.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Koreimann</surname>
+              <given-names>S.</given-names>
+            </name>
+            <name>
+              <surname>Gula</surname>
+              <given-names>B.</given-names>
+            </name>
+            <name>
+              <surname>Vitouch</surname>
+              <given-names>O.</given-names>
+            </name>
+          </person-group>
+          <article-title>Inattentional deafness in music</article-title>
+          <source>Psychol. Res.</source>
+          <year>2014</year>
+          <volume>78</volume>
+          <fpage>304</fpage>
+          <lpage>312</lpage>
+          <pub-id pub-id-type="doi">10.1007/s00426-014-0552-x</pub-id>
+          <pub-id pub-id-type="pmid">24652341</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B6-ijerph-20-00123">
+        <label>6.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Molloy</surname>
+              <given-names>K.</given-names>
+            </name>
+            <name>
+              <surname>Griffiths</surname>
+              <given-names>T.D.</given-names>
+            </name>
+            <name>
+              <surname>Chait</surname>
+              <given-names>M.</given-names>
+            </name>
+            <name>
+              <surname>Lavie</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Inattentional deafness: Visual load leads to time-specific suppression of auditory evoked responses</article-title>
+          <source>J. Neurosci.</source>
+          <year>2015</year>
+          <volume>35</volume>
+          <fpage>16046</fpage>
+          <lpage>16054</lpage>
+          <pub-id pub-id-type="doi">10.1523/JNEUROSCI.2931-15.2015</pub-id>
+          <pub-id pub-id-type="pmid">26658858</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B7-ijerph-20-00123">
+        <label>7.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lavie</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Distracted and confused?: Selective attention under load</article-title>
+          <source>Trends Cogn. Sci.</source>
+          <year>2005</year>
+          <volume>9</volume>
+          <fpage>75</fpage>
+          <lpage>82</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.tics.2004.12.004</pub-id>
+          <pub-id pub-id-type="pmid">15668100</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B8-ijerph-20-00123">
+        <label>8.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Macdonald</surname>
+              <given-names>J.S.</given-names>
+            </name>
+            <name>
+              <surname>Lavie</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Visual perceptual load induces inattentional deafness</article-title>
+          <source>Atten. Percept. Psychophys.</source>
+          <year>2011</year>
+          <volume>73</volume>
+          <fpage>1780</fpage>
+          <lpage>1789</lpage>
+          <pub-id pub-id-type="doi">10.3758/s13414-011-0144-4</pub-id>
+          <pub-id pub-id-type="pmid">21611856</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B9-ijerph-20-00123">
+        <label>9.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Raveh</surname>
+              <given-names>D.</given-names>
+            </name>
+            <name>
+              <surname>Lavie</surname>
+              <given-names>N.</given-names>
+            </name>
+          </person-group>
+          <article-title>Load-induced inattentional deafness</article-title>
+          <source>Atten. Percept. Psychophys.</source>
+          <year>2015</year>
+          <volume>77</volume>
+          <fpage>483</fpage>
+          <lpage>492</lpage>
+          <pub-id pub-id-type="doi">10.3758/s13414-014-0776-2</pub-id>
+          <pub-id pub-id-type="pmid">25287617</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B10-ijerph-20-00123">
+        <label>10.</label>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hartson</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Pyla</surname>
+              <given-names>P.S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Rigorous Empirical Evaluation: Preparation</article-title>
+          <source>The UX Book</source>
+          <year>2012</year>
+          <fpage>503</fpage>
+          <lpage>536</lpage>
+          <comment>Available online: <ext-link xlink:href="https://www.sciencedirect.com/science/article/pii/B9780123852410000142?via%3Dihub" ext-link-type="uri">https://www.sciencedirect.com/science/article/pii/B9780123852410000142?via%3Dihub</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2022-10-31">(accessed on 31 October 2022)</date-in-citation>
+        </element-citation>
+      </ref>
+      <ref id="B11-ijerph-20-00123">
+        <label>11.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>López</surname>
+              <given-names>J.J.</given-names>
+            </name>
+            <name>
+              <surname>Ramallo</surname>
+              <given-names>S.</given-names>
+            </name>
+          </person-group>
+          <article-title>Study of the audibility of background music in TV programs: Towards a normative proposal</article-title>
+          <source>J. Audio Eng. Soc.</source>
+          <year>2022</year>
+          <comment>Available online: <ext-link xlink:href="http://www.aes.org/e-lib/browse.cfm?elib=21722" ext-link-type="uri">http://www.aes.org/e-lib/browse.cfm?elib=21722</ext-link></comment>
+          <date-in-citation content-type="access-date" iso-8601-date="2022-10-31">(accessed on 31 October 2022)</date-in-citation>
+        </element-citation>
+      </ref>
+      <ref id="B12-ijerph-20-00123">
+        <label>12.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hennequin</surname>
+              <given-names>R.</given-names>
+            </name>
+            <name>
+              <surname>Khlif</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Voituret</surname>
+              <given-names>F.</given-names>
+            </name>
+            <name>
+              <surname>Moussallam</surname>
+              <given-names>M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Spleeter: A Fast and State-of-the Art Music Source Separation Tool with Pre-Trained Models</article-title>
+          <source>J. Open Source Softw.</source>
+          <year>2019</year>
+          <volume>5</volume>
+          <fpage>2154</fpage>
+          <pub-id pub-id-type="doi">10.21105/joss.02154</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B13-ijerph-20-00123">
+        <label>13.</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Défossez</surname>
+              <given-names>A.</given-names>
+            </name>
+            <name>
+              <surname>Usunier</surname>
+              <given-names>N.</given-names>
+            </name>
+            <name>
+              <surname>Bottou</surname>
+              <given-names>L.</given-names>
+            </name>
+            <name>
+              <surname>Bach</surname>
+              <given-names>F.</given-names>
+            </name>
+          </person-group>
+          <article-title>Demucs: Deep Extractor for Music Sources with extra unlabeled data remixed</article-title>
+          <source>arXiv</source>
+          <year>2019</year>
+          <pub-id pub-id-type="arxiv">1909.01174</pub-id>
+          <pub-id pub-id-type="doi">10.48550/arxiv.1909.01174</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+    <sec><title>Aggregate result tables (selected)</title><table-wrap id="ijerph-20-00123-t0A1" position="float">
+          <object-id pub-id-type="pii">ijerph-20-00123-t0A1_Table A1</object-id>
+          <label>Table A1</label>
+          <caption>
+            <p>One-way ANOVA on average thresdhold level per block.</p>
+          </caption>
+          <table>
+            <thead>
+              <tr>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Source</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">SS</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">df</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">MS</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">F</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Sig</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" valign="middle">Interaction</td>
+                <td align="center" valign="middle">71,718.993</td>
+                <td align="center" valign="middle">1</td>
+                <td align="center" valign="middle">71,718.993</td>
+                <td align="center" valign="middle">1840.735</td>
+                <td align="center" valign="middle">0.000</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle" style="border-bottom:solid thin">Within</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">61,521.249</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">1579</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">38.962</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle" style="border-bottom:solid thin">Total</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">133,240.241</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">1580</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </table-wrap>
+        <table-wrap id="ijerph-20-00123-t0A2" position="float">
+          <object-id pub-id-type="pii">ijerph-20-00123-t0A2_Table A2</object-id>
+          <label>Table A2</label>
+          <caption>
+            <p>Two-way ANOVA on the influece of music sensitivity per block.</p>
+          </caption>
+          <table>
+            <thead>
+              <tr>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Source</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Type III SS</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">df</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">MS</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">F</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Sig</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Eta</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" valign="middle">Corrected Model</td>
+                <td align="center" valign="middle">72,708.072</td>
+                <td align="center" valign="middle">3</td>
+                <td align="center" valign="middle">24,236.024</td>
+                <td align="center" valign="middle">631.403</td>
+                <td align="center" valign="middle">0.000</td>
+                <td align="center" valign="middle">0.546</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Intercept</td>
+                <td align="center" valign="middle">1,325,914.095</td>
+                <td align="center" valign="middle">1</td>
+                <td align="center" valign="middle">1,325,914.095</td>
+                <td align="center" valign="middle">34,543.063</td>
+                <td align="center" valign="middle">0.000</td>
+                <td align="center" valign="middle">0.956</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">MusicSensitivity Block</td>
+                <td align="center" valign="middle">20.522</td>
+                <td align="center" valign="middle">1</td>
+                <td align="center" valign="middle">20.522</td>
+                <td align="center" valign="middle">0.535</td>
+                <td align="center" valign="middle">0.465</td>
+                <td align="center" valign="middle">0.000</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">MusicSensitivity</td>
+                <td align="center" valign="middle">967.956</td>
+                <td align="center" valign="middle">1</td>
+                <td align="center" valign="middle">967.956</td>
+                <td align="center" valign="middle">25.217</td>
+                <td align="center" valign="middle">0.000</td>
+                <td align="center" valign="middle">0.016</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Block</td>
+                <td align="center" valign="middle">66,501.569</td>
+                <td align="center" valign="middle">1</td>
+                <td align="center" valign="middle">66,501.569</td>
+                <td align="center" valign="middle">1732.516</td>
+                <td align="center" valign="middle">0.000</td>
+                <td align="center" valign="middle">0.523</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle" style="border-bottom:solid thin">Error</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">60,532.170</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">1577</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">38.384</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Total</td>
+                <td align="center" valign="middle">1,563,882.645</td>
+                <td align="center" valign="middle">1581</td>
+                <td align="center" valign="middle"> </td>
+                <td align="center" valign="middle"> </td>
+                <td align="center" valign="middle"> </td>
+                <td align="center" valign="middle"> </td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle" style="border-bottom:solid thin">Corrected Total</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">133,240.241</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">1580</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </table-wrap>
+        <table-wrap id="ijerph-20-00123-t0A3" position="float">
+          <object-id pub-id-type="pii">ijerph-20-00123-t0A3_Table A3</object-id>
+          <label>Table A3</label>
+          <caption>
+            <p>One-way ANOVA on listening conditions.</p>
+          </caption>
+          <table>
+            <thead>
+              <tr>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Source</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">SS</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">df</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">MS</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">F</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Sig.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" valign="middle">Between groups</td>
+                <td align="center" valign="middle">245,789,313.825</td>
+                <td align="center" valign="middle">2</td>
+                <td align="center" valign="middle">122,894,656.913</td>
+                <td align="center" valign="middle">14.399</td>
+                <td align="center" valign="middle">0.000</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Within groups</td>
+                <td align="center" valign="middle">20,595,133,416.946</td>
+                <td align="center" valign="middle">2413</td>
+                <td align="center" valign="middle">8,535,073.940</td>
+                <td align="center" valign="middle"> </td>
+                <td align="center" valign="middle"> </td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle" style="border-bottom:solid thin">Total</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">20,840,922,730.771</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">2415</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </table-wrap>
+        <table-wrap id="ijerph-20-00123-t0A4" position="float">
+          <object-id pub-id-type="pii">ijerph-20-00123-t0A4_Table A4</object-id>
+          <label>Table A4</label>
+          <caption>
+            <p>Tukey’s HSD test multiple comparisons on listening conditions.</p>
+          </caption>
+          <table>
+            <thead>
+              <tr>
+                <th rowspan="2" align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">(I) clipCondition</th>
+                <th rowspan="2" align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">(J) clipCondition</th>
+                <th rowspan="2" align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Mean dif. (I-J)</th>
+                <th rowspan="2" align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Std. Error</th>
+                <th rowspan="2" align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Sig.</th>
+                <th colspan="2" align="center" valign="middle" style="border-top:solid thin">95% Confidence Interval</th>
+              </tr>
+              <tr>
+                <th align="center" valign="middle" style="border-bottom:solid thin">Lower Bound</th>
+                <th align="center" valign="middle" style="border-bottom:solid thin">Upper Bound</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" valign="middle">headphones</td>
+                <td align="center" valign="middle">loudspeakers</td>
+                <td align="center" valign="middle">−515.15290 *</td>
+                <td align="center" valign="middle">146.36128</td>
+                <td align="center" valign="middle">0.001</td>
+                <td align="center" valign="middle">−858.3921</td>
+                <td align="center" valign="middle">−171.9136</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"> </td>
+                <td align="center" valign="middle">tv</td>
+                <td align="center" valign="middle">−758.63458 *</td>
+                <td align="center" valign="middle">144.23791</td>
+                <td align="center" valign="middle">0.000</td>
+                <td align="center" valign="middle">−1096.8942</td>
+                <td align="center" valign="middle">−420.3750</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">loudspeakers</td>
+                <td align="center" valign="middle">headphones</td>
+                <td align="center" valign="middle">515.15290 *</td>
+                <td align="center" valign="middle">146.36128</td>
+                <td align="center" valign="middle">0.001</td>
+                <td align="center" valign="middle">171.9136</td>
+                <td align="center" valign="middle">858.3921</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"> </td>
+                <td align="center" valign="middle">tv</td>
+                <td align="center" valign="middle">−243.48168</td>
+                <td align="center" valign="middle">146.31797</td>
+                <td align="center" valign="middle">0.219</td>
+                <td align="center" valign="middle">−586.6193</td>
+                <td align="center" valign="middle">99.6560</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">tv</td>
+                <td align="center" valign="middle">headphones</td>
+                <td align="center" valign="middle">758.63458 *</td>
+                <td align="center" valign="middle">144.23791</td>
+                <td align="center" valign="middle">0.000</td>
+                <td align="center" valign="middle">420.3750</td>
+                <td align="center" valign="middle">1096.8942</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle" style="border-bottom:solid thin"> </td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">loudspeakers</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">243.48168</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">146.31797</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">0.219</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">−99.6560</td>
+                <td align="center" valign="middle" style="border-bottom:solid thin">586.6193</td>
+              </tr>
+            </tbody>
+          </table>
+          <table-wrap-foot>
+            <fn>
+              <p>* The mean difference is significant at the 0.05 level.</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+      <table-wrap id="ijerph-20-00123-t001" position="float">
+        <object-id pub-id-type="pii">ijerph-20-00123-t001_Table 1</object-id>
+        <label>Table 1</label>
+        <caption>
+          <p>Average and media volumes set by the participants.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Condition</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Headphones</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Loudspeakers</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">TV</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="middle">Device average volume</td>
+              <td align="center" valign="middle">9.8</td>
+              <td align="center" valign="middle">3.5</td>
+              <td align="center" valign="middle">22.3</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Device median volume</td>
+              <td align="center" valign="middle">6</td>
+              <td align="center" valign="middle">30</td>
+              <td align="center" valign="middle">23</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin">Median in dBA</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">43</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">48</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">57</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <table-wrap id="ijerph-20-00123-t002" position="float">
+        <object-id pub-id-type="pii">ijerph-20-00123-t002_Table 2</object-id>
+        <label>Table 2</label>
+        <caption>
+          <p>Mean threshold values per type of video and experiment block.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Type of Content</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Ascending</th>
+              <th align="center" valign="middle" style="border-bottom:solid thin;border-top:solid thin">Descending</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="middle">Advertisement</td>
+              <td align="center" valign="middle">−25.00053</td>
+              <td align="center" valign="middle">−37.83150</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Cooking show</td>
+              <td align="center" valign="middle">−26.22300</td>
+              <td align="center" valign="middle">−35.11954</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Documentary</td>
+              <td align="center" valign="middle">−28.55084</td>
+              <td align="center" valign="middle">−33.22362</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">News</td>
+              <td align="center" valign="middle">−21.12964</td>
+              <td align="center" valign="middle">−36.85422</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Reality show</td>
+              <td align="center" valign="middle">n.a.</td>
+              <td align="center" valign="middle">−37.07983</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Sports</td>
+              <td align="center" valign="middle">n.a.</td>
+              <td align="center" valign="middle">−34.74023</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Talk show</td>
+              <td align="center" valign="middle">−21.03549</td>
+              <td align="center" valign="middle">−38.29974</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">TV contest</td>
+              <td align="center" valign="middle">−24.26186</td>
+              <td align="center" valign="middle">−35.86748</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle">Culture</td>
+              <td align="center" valign="middle">n.a.</td>
+              <td align="center" valign="middle">−42.69381</td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle" style="border-bottom:solid thin">Weather</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">−21.56692</td>
+              <td align="center" valign="middle" style="border-bottom:solid thin">n.a.</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+    </sec></back></article>

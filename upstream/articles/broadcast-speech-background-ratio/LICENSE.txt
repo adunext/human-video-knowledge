@@ -1,0 +1,10 @@
+Automatic Speech-to-Background Ratio Selection to Maintain Speech Intelligibility in Broadcasts Using an Objective Intelligibility Metric
+Authors: Yan Tang, Bruno M. Fazenda, Trevor J. Cox
+DOI: 10.3390/app8010059
+Rights: © 2018 by the authors.
+License: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/
+Article: https://www.mdpi.com/2076-3417/8/1/59
+Exact upstream JATS: https://mdpi-res.com/d_attachment/applsci/applsci-08-00059/article_deploy/applsci-08-00059.xml
+Exact original SHA-256: 687609225310a1e7ebd2cb4014094d74ccce6e2d7e3c7fde5d85b52fe1bc83bf
+
+Changes and scope: Adapted article text from publisher JATS: abstract, selected author sections, aggregate tables where retained, and references. Omits figures, linked packages, audio, stimuli materials and samples, individual data, contacts, and selected quotations. Not the original JATS or a complete illustrated article.

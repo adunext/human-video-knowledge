@@ -1,0 +1,10 @@
+Familiarity of Background Music Modulates the Cortical Tracking of Target Speech at the “Cocktail Party”
+Authors: Jane A. Brown, Gavin M. Bidelman
+DOI: 10.3390/brainsci12101320
+Rights: © 2022 by the authors.
+License: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/
+Article: https://www.mdpi.com/2076-3425/12/10/1320
+Exact upstream JATS: https://mdpi-res.com/d_attachment/brainsci/brainsci-12-01320/article_deploy/brainsci-12-01320.xml
+Exact original SHA-256: 649a222e04fbbb86b95741f5a8031a76f520a4bdff053952e88eb19322f68a1c
+
+Changes and scope: Adapted article text from publisher JATS: abstract, selected author sections, aggregate tables where retained, and references. Omits figures, linked packages, audio, stimuli materials and samples, individual data, contacts, and selected quotations. Not the original JATS or a complete illustrated article.
